@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.jeomo</groupId>
+  <artifactId>jeomo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>jeomo-mem</module>
+    <module>jeomo-mem-api</module>
+    <module>jeomo-web</module>
+    <module>jeomo-common</module>
+    <module>jeomo-sys</module>
+      <module>jeomo-sys-api</module>
+    <module>jeomo-public-dependencies</module>
+      <module>jeomo-gateway</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.3.RELEASE</version>
+  </parent>
+
+
+  <name>jeomo</name>
+  <url>http://www.jeomo.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <junit.version>4.11</junit.version>
+    <lambok.version>1.16.4</lambok.version>
+    <mybatis.plus.version>3.1.0</mybatis.plus.version>
+    <druid.version>1.1.10</druid.version>
+    <p6spy.version>3.8.1</p6spy.version>
+    <dubbo.spring.boot.starter.version>0.2.1</dubbo.spring.boot.starter.version>
+    <fastJson.version>1.2.56</fastJson.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lambok.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis.plus.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastJson.version}</version>
+      </dependency>
+
+
+
+
+    </dependencies>
+  </dependencyManagement>
+
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+
+    <!-- 热加载 -->
+    <!--<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>false</optional>
+      <scope>true</scope>
+    </dependency>-->
+  </dependencies>
+
+
+</project>

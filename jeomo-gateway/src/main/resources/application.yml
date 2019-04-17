@@ -1,0 +1,23 @@
+profiles: dev
+
+jeomo:
+  gateway:
+    server:
+      zk:
+        services: qbt.91biz.com.cn:2181
+        rootpath: dubbo
+        connectionTimeOut: 5000
+
+spring:
+  application:
+    name: jeomo-gateway
+server:
+  port: 9000
+
+
+
+
+logging:
+  config: classpath:logback-spring.xml
+  logging:
+    path: D:/nmyslog/nmys
