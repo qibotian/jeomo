@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: qbt
@@ -17,16 +18,6 @@ import java.util.List;
 public class DataTable<T> implements Serializable {
 
     /**
-     * 返回码
-     */
-    private  String code;
-
-    /**
-     * 返回信息
-     */
-    private  String msg;
-
-    /**
      * 总数
      */
     private long total;
@@ -34,7 +25,7 @@ public class DataTable<T> implements Serializable {
     /**
      * 数据
      */
-    private List<T> data;
+    private List<T> items;
 
     /**
      * 当前页码
@@ -45,6 +36,16 @@ public class DataTable<T> implements Serializable {
      * 页面大小
      */
     private long pageSize;
+
+    /**
+     * 排序条件
+     */
+    Map<String, String> sorts;
+
+    /**
+     * 查询条件
+     */
+    Map<String, Object> searchParams;
 
 
 

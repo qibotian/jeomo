@@ -1,6 +1,7 @@
 package com.jeomo.mem.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.jeomo.common.result.annotation.ResponseResult;
 import com.jeomo.mem.entity.Member;
 import com.jeomo.mem.service.IMemberService;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/mem")
+@ResponseResult
 public class MemController {
 
     @Reference(version="${mem.service.version}")

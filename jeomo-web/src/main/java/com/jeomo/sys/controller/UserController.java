@@ -1,6 +1,7 @@
 package com.jeomo.sys.controller;
 
 import com.jeomo.common.controller.BaseController;
+import com.jeomo.common.result.annotation.ResponseResult;
 import com.jeomo.common.vo.DataTable;
 import com.jeomo.sys.entity.User;
 import com.jeomo.sys.service.IUserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2019-03-22
  */
 @RestController
+@ResponseResult
 @RequestMapping("/sys/user")
 public class UserController extends BaseController {
 
@@ -25,11 +27,6 @@ public class UserController extends BaseController {
     @RequestMapping("/{id}")
     public User get(@PathVariable Long id) {
         return userService.getById(id);
-    }
-
-    @RequestMapping("")
-    public String list() {
-        return "sys/user/list";
     }
 
     @RequestMapping("/list")
@@ -42,5 +39,13 @@ public class UserController extends BaseController {
         return userService.removeById(id);
     }
 
+    @RequestMapping("/create")
+    public boolean create(@RequestBody User user) {
+       return userService.save(user);
+    }
 
+    @RequestMapping("/update")
+    public boolean update(@RequestBody User user) {
+        return userService.updateById(user);
+    }
 }

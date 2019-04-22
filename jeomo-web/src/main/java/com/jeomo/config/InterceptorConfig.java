@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
+ * 拦截器配置
  * @Author: qbt
  * @Date: 2019/4/10 23:38
  * @Version 1.0
@@ -14,6 +15,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
+    /**
+     * 统一Rest风格的返回风格过滤器
+     */
     @Autowired
     private ResponseResultInterceptor responseResultInterceptor;
 

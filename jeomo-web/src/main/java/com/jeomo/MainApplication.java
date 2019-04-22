@@ -3,6 +3,7 @@ package com.jeomo;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubboConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * @Author: qbt
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableDubboConfig
+@EnableCaching
 public class MainApplication {
 
     public static void main(String[] args) {

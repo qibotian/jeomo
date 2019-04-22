@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 /**
- * 跨域访问
+ * 因为要前后端分离
+ * 所以这里要跨域访问过滤设置
  * @Author: qbt
  * @Date: 2019/4/10 18:45
  * @Version 1.0

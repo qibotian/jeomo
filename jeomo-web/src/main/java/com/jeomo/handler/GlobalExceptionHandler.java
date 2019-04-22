@@ -25,7 +25,9 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
 
-    /* 处理400类异常 */
+    /**
+     *  处理400类异常
+     * */
     @Override
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)

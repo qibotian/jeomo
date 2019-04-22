@@ -8,10 +8,9 @@ package com.jeomo.enums;
  */
 public enum ApiStyleEnum {
 
+    /**
+     * 不需要统一风格返回
+     */
     NONE;
-
-    public static void main(String[] args) {
-        System.out.println(NONE.name());
-    }
 
 }

@@ -4,13 +4,14 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jeomo
@@ -18,6 +19,7 @@ import java.util.Date;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 @Accessors(chain = true)
 @TableName("sys_user")
 public class User extends BaseEntity {
