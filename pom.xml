@@ -40,6 +40,8 @@
     <p6spy.version>3.8.1</p6spy.version>
     <dubbo.spring.boot.starter.version>0.2.1</dubbo.spring.boot.starter.version>
     <fastJson.version>1.2.56</fastJson.version>
+    <springfox.swagger2.version>2.6.1</springfox.swagger2.version>
+    <springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
   </properties>
 
   <dependencyManagement>
@@ -69,9 +71,17 @@
         <version>${fastJson.version}</version>
       </dependency>
 
-
-
-
+      <!-- swagger -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${springfox.swagger2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${springfox.swagger.ui.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

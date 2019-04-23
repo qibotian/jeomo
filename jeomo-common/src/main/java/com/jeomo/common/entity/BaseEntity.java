@@ -1,5 +1,6 @@
 package com.jeomo.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,8 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 主键
      */
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Long id;
 
     /**

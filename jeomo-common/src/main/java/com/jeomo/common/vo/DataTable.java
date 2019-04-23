@@ -48,6 +48,4 @@ public class DataTable<T> implements Serializable {
     Map<String, Object> searchParams;
 
 
-
-
 }
