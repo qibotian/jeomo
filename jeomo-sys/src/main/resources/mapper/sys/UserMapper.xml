@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeomo.sys.mapper.UserMapper">
+    <sql id="base_select">
+        select * from sys_user
+    </sql>
+
+    <resultMap id="selectUserAllInfoMap" type="sysUser">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="loginName" column="login_name"></result>
+        <result property="password" column="password"></result>
+        <result property="age" column="age"></result>
+        <result property="email" column="email"></result>
+        <result property="phone" column="phone"></result>
+        <result property="mobile" column="su_mobile"></result>
+        <result property="photo" column="su_photo"></result>
+        <result property="loginFlag" column="su_login_flag"></result>
+
+        <association property="sysCompany" resultMap="com.slife.dao.SysCompanyDao.selectCompanyInfo"></association>
+
+        <collection property="sysRoles" resultMap="com.slife.dao.SysRoleDao.selectRoleList"></collection>
+    </resultMap>
+
+    <select id="selectByLoginName" resultMap="sysUser">
+
+
+    </select>
+
 
 </mapper>

@@ -13,4 +13,12 @@ import com.jeomo.sys.entity.User;
  */
 public interface IUserService extends IBaseService<User> {
 
+    /**
+     * 根据用户名查询号用户
+     * @param name
+     * @return
+     */
+    public User findUserByLoginName(String name);
+
+
 }

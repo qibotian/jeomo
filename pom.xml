@@ -16,6 +16,8 @@
       <module>jeomo-sys-api</module>
     <module>jeomo-public-dependencies</module>
       <module>jeomo-gateway</module>
+    <module>jeomo-content</module>
+    <module>jeomo-shiro</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -42,6 +44,7 @@
     <fastJson.version>1.2.56</fastJson.version>
     <springfox.swagger2.version>2.6.1</springfox.swagger2.version>
     <springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
+    <shiro.spring.boot.starter.version>1.4.0</shiro.spring.boot.starter.version>
   </properties>
 
   <dependencyManagement>
@@ -82,11 +85,23 @@
         <artifactId>springfox-swagger-ui</artifactId>
         <version>${springfox.swagger.ui.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-spring-boot-starter</artifactId>
+        <version>${shiro.spring.boot.starter.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>

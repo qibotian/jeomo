@@ -32,6 +32,16 @@ public class User extends BaseEntity {
     private String name;
 
     /**
+     * 登录名
+     */
+    private String loginName;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
      * 年龄
      */
     private Integer age;
