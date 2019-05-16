@@ -39,6 +39,11 @@ public class UserController extends BaseController {
         return userService.getById(id);
     }
 
+    @PostMapping("/detail/{id}")
+    public User detail(@PathVariable Long id) {
+        return userService.findUserAllInfoById(id);
+    }
+
     @PostMapping("/list")
     public DataTable<User> list(@RequestBody DataTable dt) {
         return userService.pageSearch(dt);
@@ -58,4 +63,11 @@ public class UserController extends BaseController {
     public boolean update(@RequestBody User user) {
         return userService.updateById(user);
     }
+
+    @PostMapping("/find/{loginName}")
+    public User selectByLoginName(@PathVariable String loginName) {
+        return userService.findUserByLoginName(loginName);
+    }
+
+
 }

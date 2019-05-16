@@ -49,7 +49,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
                         .data(defaultErrorResult.getErrors())
                         .build();
             } else if (body instanceof String) {
-                return JSON.toJSON(PlatformResult.success(body));
+                return JSON.toJSONString(PlatformResult.success(body));
             }
             return PlatformResult.success(body);
         }
@@ -57,4 +57,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
         return body;
     }
 
+    public static void main(String[] args) {
+        System.out.println(JSON.toJSON(PlatformResult.success("123")));;
+    }
 }

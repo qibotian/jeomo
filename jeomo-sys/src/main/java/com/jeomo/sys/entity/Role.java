@@ -1,10 +1,14 @@
 package com.jeomo.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -32,5 +36,10 @@ public class Role extends BaseEntity {
      */
     private String name;
 
+    /**
+     * 角色拥有的菜单
+     */
+    @TableField(exist = false)
+    private List<Menu> menus = new ArrayList<>();
 
 }

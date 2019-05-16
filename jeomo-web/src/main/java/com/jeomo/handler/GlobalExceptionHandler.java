@@ -2,6 +2,9 @@ package com.jeomo.handler;
 
 import com.jeomo.common.exception.BusinessException;
 import com.jeomo.common.result.DefaultErrorResult;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -55,6 +58,38 @@ public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
     public DefaultErrorResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request) {
         return super.handleMethodArgumentNotValidException(e, request);
     }
+
+    /**
+     * 权限认证失败
+     * @param e
+     * @param request
+     * @return
+     */
+    @Override
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    public DefaultErrorResult handleIncorrectCredentialsException(IncorrectCredentialsException e, HttpServletRequest request) {
+        return super.handleIncorrectCredentialsException(e, request);
+    }
+
+    /**
+     * 权限认证失败
+     * @param e
+     * @param request
+     * @return
+     */
+    @Override
+    @ExceptionHandler(UnknownAccountException.class)
+    public DefaultErrorResult handleUnknownAccountException(UnknownAccountException e, HttpServletRequest request) {
+        return super.handleUnknownAccountException(e, request);
+    }
+
+    @Override
+    @ExceptionHandler(UnauthenticatedException.class)
+    public DefaultErrorResult handleUnauthenticatedException(UnauthenticatedException e, HttpServletRequest request) {
+        return super.handleUnauthenticatedException(e, request);
+    }
+
+
 
     /* 处理自定义异常 */
     @Override

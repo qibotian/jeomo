@@ -1,5 +1,6 @@
 package com.jeomo.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
 import lombok.Data;
@@ -7,7 +8,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -65,6 +68,12 @@ public class User extends BaseEntity {
      * 最后访问时间
      */
     private Date lastAccessTime;
+
+    /**
+     * 角色
+     */
+    @TableField(exist = false)
+    private List<Role> roles = new ArrayList<>();
 
 
 }

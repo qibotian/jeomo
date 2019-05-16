@@ -5,6 +5,9 @@ import com.jeomo.common.enums.ResultCode;
 import com.jeomo.common.exception.BusinessException;
 import com.jeomo.common.result.DefaultErrorResult;
 import com.jeomo.common.vo.ParameterInvalidItem;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -80,5 +83,20 @@ public class BaseGlobalExceptionHandler {
     protected DefaultErrorResult handleRuntimeException(RuntimeException e, HttpServletRequest request) {
         log.error("handleRuntimeException start, uri:{}, caused by: ", request.getRequestURI(), e);
         return DefaultErrorResult.failure(ResultCode.SYSTEM_INNER_ERROR, e, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    protected DefaultErrorResult handleIncorrectCredentialsException(IncorrectCredentialsException e, HttpServletRequest request) {
+        log.info("handleIncorrectCredentialsException start, uri:{}, caused by: ", request.getRequestURI(), e);
+        return DefaultErrorResult.failure(ResultCode.UNAUTHORIZED, e, HttpStatus.UNAUTHORIZED);
+    }
+
+    protected DefaultErrorResult handleUnknownAccountException(UnknownAccountException e, HttpServletRequest request) {
+        log.info("handleUnknownAccountException start, uri:{}, caused by: ", request.getRequestURI(), e);
+        return DefaultErrorResult.failure(ResultCode.UNAUTHORIZED, e, HttpStatus.UNAUTHORIZED);
+    }
+
+    protected DefaultErrorResult handleUnauthenticatedException(UnauthenticatedException e, HttpServletRequest request) {
+        log.info("handleUnauthenticatedException start, uri:{}, caused by: ", request.getRequestURI(), e);
+        return DefaultErrorResult.failure(ResultCode.UNAUTHORIZED, e, HttpStatus.UNAUTHORIZED);
     }
 }

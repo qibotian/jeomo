@@ -41,17 +41,12 @@ spring:
     database: 0  # redis 数据库索引（默认为0）
     host: localhost
     port: 6379
-    password:
+    password: 123456
     jedis:
       pool:
         max-active: 8 # 连接池最大连接数
         max-wait: -1  # 最大阻塞时间(负值表示不限制)
         max-idle: 8 # 最大空闲连接
-
-
-
-
-
 
 mem:
   service:
@@ -73,6 +68,6 @@ dubbo:
   registry:
     id: zookeeper
     address: zookeeper://qbt.91biz.com.cn:2181
-
-
-
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*/*.xml
+  type-aliases-package: com.jeomo.*.entity

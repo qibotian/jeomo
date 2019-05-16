@@ -20,5 +20,12 @@ public interface IUserService extends IBaseService<User> {
      */
     public User findUserByLoginName(String name);
 
+    /**
+     * 根据用户id查询用户全部信息
+     * @param id
+     * @return
+     */
+    public User findUserAllInfoById(Long id);
+
 
 }
