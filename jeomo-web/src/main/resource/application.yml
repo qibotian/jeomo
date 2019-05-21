@@ -14,9 +14,9 @@ spring:
   datasource:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     druid:
-      url: jdbc:p6spy:mysql://localhost:3306/jeomo?useUnicode=true&characterEncoding=utf8&useSSL=false
+      url: jdbc:p6spy:mysql://qbt.91biz.com.cn:3309/jeomo?useUnicode=true&characterEncoding=utf8&useSSL=false
       username: root
-      password:
+      password: 123456
       validation-query: select 'X'
       min-evictable-idle-time-millis: 300000
       initial-size: 5
