@@ -93,7 +93,7 @@ public class DefaultErrorResult implements Result {
             return DefaultErrorResult.failure(ee.getResultCode(), e, ee.getHttpStatus(), e.getMessage());
         }
 
-        DefaultErrorResult defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ? ResultCode.FAILUER : e.getResultCode(), e, HttpStatus.OK, e.getMessage());
+        DefaultErrorResult defaultErrorResult = DefaultErrorResult.failure(e.getResultCode() == null ? ResultCode.SYSTEM_INNER_ERROR : e.getResultCode(), e, HttpStatus.OK, e.getMessage());
         if (!StringUtils.isEmpty(e.getMessage())) {
             defaultErrorResult.setMsg(e.getMessage());
         }

@@ -40,9 +40,9 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         //注意过滤器配置顺序 不能颠倒
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl
-        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/auth/logout", "logout");
         // 配置不会被拦截的链接 顺序判断
-        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/auth/login", "anon");
         filterChainDefinitionMap.put("/sys/**", "authc");
         //配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
         shiroFilterFactoryBean.setLoginUrl("/unauth");

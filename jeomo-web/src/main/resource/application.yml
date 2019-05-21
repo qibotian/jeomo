@@ -39,7 +39,7 @@ spring:
 ##### redis 配置 #####
   redis:
     database: 0  # redis 数据库索引（默认为0）
-    host: localhost
+    host: qbt.91biz.com.cn
     port: 6379
     password: 123456
     jedis:

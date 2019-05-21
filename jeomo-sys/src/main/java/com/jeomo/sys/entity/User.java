@@ -42,7 +42,7 @@ public class User extends BaseEntity {
     /**
      * 密码
      */
-    private String password;
+    private transient String password;
 
     /**
      * 年龄

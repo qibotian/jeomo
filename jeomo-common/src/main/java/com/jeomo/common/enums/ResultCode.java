@@ -8,8 +8,7 @@ package com.jeomo.common.enums;
  */
 public enum ResultCode {
 
-    SUCCESS(0,"成功"),
-    FAILUER(-1, "失败"),
+    SUCCESS(20000,"成功"),
     UNAUTHORIZED(401, "权限认证失败"),
     PARAM_IS_INVALID(400001, "参数无效"), SYSTEM_INNER_ERROR(500001, "系统错误" );
 
