@@ -39,6 +39,17 @@ public class SignController extends BaseController {
         return new LoginResult(user, subject.getSession().getId().toString());
     }
 
+    /**
+     * @return
+     */
+    @RequestMapping("/user/info")
+    public User user() {
+        Subject subject = SecurityUtils.getSubject();
+        System.out.println(subject.getPrincipal());
+        User user = (User)(subject.getPrincipal());
+        return user;
+    }
+
     @RequestMapping(value = "/logout")
     public void logout() {
         throw new UnauthenticatedException();

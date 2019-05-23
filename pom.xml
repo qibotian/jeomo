@@ -110,12 +110,12 @@
     </dependency>
 
     <!-- 热加载 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>false</optional>
-      <scope>true</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.boot</groupId>-->
+      <!--<artifactId>spring-boot-devtools</artifactId>-->
+      <!--<optional>false</optional>-->
+      <!--<scope>true</scope>-->
+    <!--</dependency>-->
   </dependencies>
 
 
