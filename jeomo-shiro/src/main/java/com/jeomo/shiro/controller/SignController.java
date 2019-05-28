@@ -1,7 +1,7 @@
-package com.jeomo.com.jeomo.shiro.controller;
+package com.jeomo.shiro.controller;
 
-import com.jeomo.com.jeomo.shiro.vo.LoginResult;
-import com.jeomo.com.jeomo.shiro.vo.LoginVo;
+import com.jeomo.shiro.vo.LoginResult;
+import com.jeomo.shiro.vo.LoginVo;
 import com.jeomo.common.controller.BaseController;
 import com.jeomo.common.result.annotation.ResponseResult;
 import com.jeomo.sys.entity.User;
@@ -45,7 +45,6 @@ public class SignController extends BaseController {
     @RequestMapping("/user/info")
     public User user() {
         Subject subject = SecurityUtils.getSubject();
-        System.out.println(subject.getPrincipal());
         User user = (User)(subject.getPrincipal());
         return user;
     }

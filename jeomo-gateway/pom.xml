@@ -43,13 +43,6 @@
             <version>${zkclient.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.jeomo</groupId>
-            <artifactId>jeomo-mem-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
 

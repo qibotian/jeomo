@@ -4,13 +4,6 @@ server:
 spring:
   application:
     name: jeomo
-
-### 使用前后端分离架构 这里不要配置模板
-#  mvc:
-#    view:
-#      prefix: /templates/
-#      suffix: .html
-
   datasource:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     druid:

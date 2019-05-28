@@ -1,7 +1,7 @@
-package com.jeomo.com.jeomo.shiro.config;
+package com.jeomo.shiro.config;
 
-import com.jeomo.com.jeomo.shiro.bean.MySessionManager;
-import com.jeomo.com.jeomo.shiro.bean.UserRealm;
+import com.jeomo.shiro.bean.MySessionManager;
+import com.jeomo.shiro.bean.UserRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -32,7 +32,7 @@ public class ShiroConfig {
     private String password;
 
     @Bean
-    public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
+    public ShiroFilterFactoryBean shirFilter(@Qualifier("defaultSecurityManager") DefaultWebSecurityManager securityManager) {
         System.out.println("ShiroConfiguration.shirFilter()");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -72,12 +72,12 @@ public class ShiroConfig {
     @Bean
     public UserRealm myShiroRealm() {
         UserRealm myShiroRealm = new UserRealm();
-        //myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        //myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher()); //设置密码加盐操作
         return myShiroRealm;
     }
 
 
-    @Bean(name="securityManager")
+    @Bean(name="defaultSecurityManager")
     public DefaultWebSecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myShiroRealm());
@@ -145,7 +145,7 @@ public class ShiroConfig {
      * @return
      */
     @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("defaultSecurityManager") DefaultWebSecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;

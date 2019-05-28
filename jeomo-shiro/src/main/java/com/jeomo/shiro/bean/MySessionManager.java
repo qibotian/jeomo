@@ -1,4 +1,4 @@
-package com.jeomo.com.jeomo.shiro.bean;
+package com.jeomo.shiro.bean;
 
 import com.jeomo.common.util.StringUtils;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;

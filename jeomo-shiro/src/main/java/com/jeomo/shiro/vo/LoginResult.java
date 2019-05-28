@@ -1,4 +1,4 @@
-package com.jeomo.com.jeomo.shiro.vo;
+package com.jeomo.shiro.vo;
 
 import com.jeomo.sys.entity.User;
 import lombok.AllArgsConstructor;

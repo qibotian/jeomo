@@ -1,4 +1,4 @@
-package com.jeomo.com.jeomo.shiro.vo;
+package com.jeomo.shiro.vo;
 
 import lombok.Data;
 
