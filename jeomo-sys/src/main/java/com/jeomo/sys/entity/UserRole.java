@@ -2,8 +2,10 @@ package com.jeomo.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -17,6 +19,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("sys_user_role")
 public class UserRole extends BaseEntity {
 

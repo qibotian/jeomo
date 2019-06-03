@@ -3,6 +3,7 @@ package com.jeomo.sys.mapper;
 import com.jeomo.common.mapper.IBaseMapper;
 import com.jeomo.sys.entity.UserRole;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -13,6 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2019-03-22
  */
 @Mapper
+@Component
 public interface UserRoleMapper extends IBaseMapper<UserRole> {
 
 }

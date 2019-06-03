@@ -3,6 +3,8 @@ package com.jeomo.sys.mapper;
 import com.jeomo.common.mapper.IBaseMapper;
 import com.jeomo.sys.entity.RoleMenu;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>

@@ -13,4 +13,5 @@ import com.jeomo.sys.entity.Role;
  */
 public interface IRoleService extends IBaseService<Role> {
 
+
 }

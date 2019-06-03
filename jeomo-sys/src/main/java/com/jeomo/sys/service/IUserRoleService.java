@@ -13,4 +13,31 @@ import com.jeomo.sys.entity.UserRole;
  */
 public interface IUserRoleService extends IBaseService<UserRole> {
 
+    /**
+     * 删除用户所有权限
+     * @param userId
+     */
+    void deleteByUserId(Long userId);
+
+    /**
+     * 批量删除用户权限
+     * @param userIds
+     */
+    void deleteByUserIds(Long[] userIds);
+
+    /**
+     * 给用户赋权
+     * @param userId
+     * @param roleIds
+     */
+    void insertUserRole(Long userId, Long[] roleIds);
+
+    /**
+     * 批量用户赋权
+     * @param userIds
+     * @param rolesIds
+     */
+    void insertUserRoles(Long[] userIds, Long[] rolesIds);
+
+
 }

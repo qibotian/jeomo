@@ -54,8 +54,8 @@ public class UserController extends BaseController {
         return userService.removeById(id);
     }
 
-    @PostMapping("/create")
-    public boolean create(@RequestBody User user) {
+    @PostMapping("/save")
+    public boolean save(@RequestBody User user) {
        return userService.save(user);
     }
 
@@ -68,7 +68,6 @@ public class UserController extends BaseController {
     public User selectByLoginName(@PathVariable String loginName) {
         return userService.findUserByLoginName(loginName);
     }
-
 
 
 }
