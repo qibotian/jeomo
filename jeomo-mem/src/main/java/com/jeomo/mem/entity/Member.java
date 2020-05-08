@@ -1,28 +1,32 @@
 package com.jeomo.mem.entity;
 
 import com.jeomo.common.entity.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 /**
  * <p>
- * 会员表
+ * 会员基本信息表
  * </p>
- *
  * @author jeomo
  * @since 2019-03-22
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Member extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    private String card;
+    /**
+     * 会员ID
+     */
+    private Long memberId;
 
     /**
      * 姓名
@@ -63,6 +67,16 @@ public class Member extends BaseEntity {
      * 最后访问时间
      */
     private Date lastAccessTime;
+
+    /**
+     * 首次开卡商场
+     */
+    private Integer firstOpenMallId;
+
+    /**
+     * 开卡时间
+     */
+    private Date openTime;
 
 
 }

@@ -3,8 +3,10 @@ package com.jeomo.mem;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @Author: qbt
@@ -15,6 +17,8 @@ import org.springframework.context.annotation.ImportResource;
 @EnableDubbo(scanBasePackages = "com.jeomo.mem")
 @ImportResource({"classpath:dubbo.xml"})
 @Configuration
+@EnableTransactionManagement
+@ComponentScan(basePackages ={"com.jeomo"})
 public class MemMainApplication {
 
     public static void main(String[] args) {

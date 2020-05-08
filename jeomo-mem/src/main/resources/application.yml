@@ -1,9 +1,15 @@
 server:
   port: 9002
+  dataCenterId: 1 #雪花算法数据中心ID
+  machineId: 1 #雪花算法机器ID
 
 spring:
   application:
     name: jeomo-mem
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
 
   mvc:
     view:
@@ -23,6 +29,37 @@ spring:
       max-active: 500
       max-wait: 60000
       time-between-eviction-runs-millis: 60000
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        concurrency: 10 #消费者初始化值
+        max-concurrency: 10 #最大消费者值
+        prefetch: 5 #每个消费者拉取的消息数量
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*/*.xml
+  type-aliases-package: com.jeomo.*.entity
+
+member:
+  register:
+    queue:
+      name: member.register.queue
+    exchange:
+      name: member.register.exchange
+
+log:
+  member:
+    queue:
+      name: log.member.queue.name
+    exchange:
+      name: log.member.exchange.name
+    routing:
+      key:
+        name: log.member.routing.key.name
 
 mem:
   service:

@@ -10,7 +10,11 @@ public enum ResultCode {
 
     SUCCESS(20000,"成功"),
     UNAUTHORIZED(401, "权限认证失败"),
-    PARAM_IS_INVALID(400001, "参数无效"), SYSTEM_INNER_ERROR(500001, "系统错误" );
+    PARAM_IS_INVALID(400001, "参数无效"),
+    SYSTEM_INNER_ERROR(500001, "系统错误" ),
+    ;
+
+
 
     Integer code;
     String msg;

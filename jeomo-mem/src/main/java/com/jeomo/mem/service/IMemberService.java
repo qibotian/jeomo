@@ -1,6 +1,8 @@
 package com.jeomo.mem.service;
 
 import com.jeomo.common.service.IBaseService;
+import com.jeomo.mem.dto.MemberCardDto;
+import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.Member;
 
 /**
@@ -14,14 +16,10 @@ import com.jeomo.mem.entity.Member;
 public interface IMemberService extends IBaseService<Member> {
 
     /**
-     * 测试方法
+     * 会员注册方法
+     * @return 会员卡号
      */
-    String sayHi();
+    MemberCardDto register(MemberRegisterDto dto);
 
-    /**
-     * 测试实体类
-     * @param id
-     * @return
-     */
-    Member testGetById(Long id);
+
 }

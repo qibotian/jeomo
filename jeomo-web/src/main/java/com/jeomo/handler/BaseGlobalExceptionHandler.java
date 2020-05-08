@@ -1,6 +1,6 @@
 package com.jeomo.handler;
 
-import com.jeomo.ConvertUtil;
+import com.jeomo.util.ParameterInvalidItemHelper;
 import com.jeomo.common.enums.ResultCode;
 import com.jeomo.common.exception.BusinessException;
 import com.jeomo.common.result.DefaultErrorResult;
@@ -35,7 +35,7 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
         log.info("handleConstraintViolationException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        List<ParameterInvalidItem> parameterInvalidItemList = ConvertUtil.convertCVSetToParameterInvalidItemList(e.getConstraintViolations());
+        List<ParameterInvalidItem> parameterInvalidItemList = ParameterInvalidItemHelper.convertCVSetToParameterInvalidItemList(e.getConstraintViolations());
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 
@@ -52,7 +52,7 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleBindException(BindException e, HttpServletRequest request) {
         log.info("handleBindException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        List<ParameterInvalidItem> parameterInvalidItemList = ConvertUtil.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
+        List<ParameterInvalidItem> parameterInvalidItemList = ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 
@@ -61,7 +61,7 @@ public class BaseGlobalExceptionHandler {
      */
     protected DefaultErrorResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request) {
         log.info("handleMethodArgumentNotValidException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        List<ParameterInvalidItem> parameterInvalidItemList = ConvertUtil.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
+        List<ParameterInvalidItem> parameterInvalidItemList = ParameterInvalidItemHelper.convertBindingResultToMapParameterInvalidItemList(e.getBindingResult());
         return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
     }
 

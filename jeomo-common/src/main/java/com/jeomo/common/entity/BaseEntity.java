@@ -1,12 +1,8 @@
 package com.jeomo.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @Author: qbt
@@ -15,36 +11,13 @@ import java.util.Date;
  */
 
 @Data
-@Getter
-@Setter
 public abstract class BaseEntity implements Serializable {
 
     /**
-     * 主键
+     * 物理主键，没有任何业务含义
+     * 其他表禁止关联此Id
      */
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Long id;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 创建人ID
-     */
-    private Long createUserId;
-
-    /**
-     * 最后修改人ID
-     */
-    private Long lastModifyUserId;
-
-    /**
-     * 最后修改时间
-     */
-    private Date lastModifyTime;
 
     /**
      * 版本号

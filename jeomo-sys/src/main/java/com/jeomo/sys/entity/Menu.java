@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 /**
  * <p>
  * 菜单
@@ -25,7 +27,7 @@ public class Menu extends BaseEntity {
     /**
      * 菜单名称
      */
-    private String name;
+    private String label;
 
     /**
      * 菜单路径
@@ -36,6 +38,16 @@ public class Menu extends BaseEntity {
      * 父ID
      */
     private Long parentId;
+
+    /**
+     * 子菜单
+     */
+    private List<Menu> children;
+
+    /**
+     * 排序
+     */
+    private int sort;
 
 
 }

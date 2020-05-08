@@ -10,7 +10,7 @@ import lombok.Getter;
  */
 
 @Getter
-public class BusinessException extends Exception {
+public class BusinessException extends RuntimeException {
 
     private ResultCode resultCode;
 

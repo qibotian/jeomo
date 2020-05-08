@@ -70,10 +70,12 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M,
                     String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_RIGHT_LIKE)[1]);
                     wrapper.likeRight(fieldName, value);
                 }else if(idLoadWrapper(SearchParam.SEARCH_LIKE, name, value)) {
-                    String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_RIGHT_LIKE)[1]);
+                    System.out.println("hahaha");
+                    System.out.println(name.split(SearchParam.SEARCH_LIKE).length);
+                    String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_LIKE)[1]);
                     wrapper.like(fieldName, value);
                 }
-            });
+             });
         }
     }
 

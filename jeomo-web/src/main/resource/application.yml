@@ -60,7 +60,7 @@ dubbo:
 
   registry:
     id: zookeeper
-    address: zookeeper://qbt.91biz.com.cn:2181
+    address: zookeeper://localhost:2181
 mybatis-plus:
   mapper-locations: classpath*:mapper/*/*.xml
   type-aliases-package: com.jeomo.*.entity

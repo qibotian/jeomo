@@ -57,7 +57,4 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
         return body;
     }
 
-    public static void main(String[] args) {
-        System.out.println(JSON.toJSON(PlatformResult.success("123")));;
-    }
 }
