@@ -14,8 +14,8 @@ import org.apache.ibatis.annotations.Update;
 public interface FlashSaleActivityMapper extends BaseMapper<FlashSaleActivity> {
 
 
-    @Update("update flash_sale_activity set num = num - 1, version = version + 1 where id = #{activityId} and goods_id = #{goodsId} and num >= 1 and version = #{version}")
-    int flash(Long activityId, Long goodsId, Long version);
+    @Update("update flash_sale_activity set num = num - 1, version = version + 1 where id = #{activityId} and goods_id = #{goodsId} and num >= 1")
+    int flash(Long activityId, Long goodsId);
 
 
 }

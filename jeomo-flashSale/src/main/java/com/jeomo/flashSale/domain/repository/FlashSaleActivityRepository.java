@@ -20,8 +20,8 @@ public class FlashSaleActivityRepository {
         return  flashSaleActivityMapper.selectById(id);
     }
 
-    public int flash(Long activityId, Long goodsId, Long version) {
-        return flashSaleActivityMapper.flash(activityId, goodsId, version);
+    public int flash(Long activityId, Long goodsId) {
+        return flashSaleActivityMapper.flash(activityId, goodsId);
     }
 
 

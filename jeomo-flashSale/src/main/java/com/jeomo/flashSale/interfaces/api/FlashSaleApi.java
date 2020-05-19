@@ -4,9 +4,11 @@ import com.jeomo.flashSale.application.service.OrderService;
 import com.jeomo.flashSale.domain.entity.order.Order;
 import com.jeomo.flashSale.interfaces.dto.FlashSaleReqDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * @Author: qbt
@@ -22,8 +24,30 @@ public class FlashSaleApi {
     OrderService orderService;
 
     @RequestMapping("/flash")
-    public Order flash(@RequestBody  FlashSaleReqDto dto) {
-        return  orderService.flashSaling(dto);
+    public Order flash() {
+        final CyclicBarrier cyclicBarrier = new CyclicBarrier(500);
+        for(int i = 0; i < 500; i++) {
+            long finalI = i;
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    FlashSaleReqDto dto = new FlashSaleReqDto();
+                    dto.setActivityId(1L);
+                    dto.setGoodsId(1L);
+                    dto.setCustomerId(finalI);
+                    try {
+                        cyclicBarrier.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (BrokenBarrierException e) {
+                        e.printStackTrace();
+                    }
+                    Order order = orderService.flashSaling(dto);
+                }
+            });
+            t.start();
+        }
+        return null;
     }
 
 
