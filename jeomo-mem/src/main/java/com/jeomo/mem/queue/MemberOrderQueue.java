@@ -4,7 +4,6 @@ import com.jeomo.mem.consumer.MemberOrderListener;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,7 +57,7 @@ public class MemberOrderQueue {
     public SimpleMessageListenerContainer listenerContainerMemberOrder(@Qualifier("memberOrderQueue1") Queue memberOrderQueue) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setMessageConverter(new Jackson2JsonMessageConverter());
+        //container.setMessagePropertiesConverter(new Jackson2JsonMessageConverter());
 
         //并发配置
         container.setConcurrentConsumers(concurrentConsumers);

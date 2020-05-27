@@ -25,7 +25,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>2.2.7.RELEASE</version>
     </parent>
 
 
@@ -47,6 +47,7 @@
         <springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
         <shiro.spring.boot.web.starter>1.4.0</shiro.spring.boot.web.starter>
         <shiro.core.version>1.4.0</shiro.core.version>
+        <redisson.version>3.12.5</redisson.version>
     </properties>
 
     <dependencyManagement>
@@ -103,6 +104,12 @@
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
 
         </dependencies>
