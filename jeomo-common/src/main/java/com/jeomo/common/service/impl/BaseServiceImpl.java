@@ -33,7 +33,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M,
     }
 
 
-    private void loadSorts(QueryWrapper<T> wrapper, Map<String, String> sorts) {
+    public void loadSorts(QueryWrapper<T> wrapper, Map<String, String> sorts) {
         if(null != sorts) {
             StringBuffer stringBuffer = new StringBuffer();
             sorts.forEach((k,v) -> {
@@ -51,13 +51,15 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M,
      * 加载过滤条件
      * @param searchParams
      */
-    private void loadSearchParams(QueryWrapper<T> wrapper, Map<String, Object> searchParams) {
+    public void loadSearchParams(QueryWrapper<T> wrapper, Map<String, Object> searchParams) {
         if(null != searchParams) {
             searchParams.forEach((name, value) -> {
-                if(idLoadWrapper(SearchParam.SEARCH_EQ, name, value)) {
+                if(StringUtils.isEmpty(value)) {
+
+                }else if(idLoadWrapper(SearchParam.SEARCH_EQ, name, value)) {
                     String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_EQ)[1]);
                     wrapper.eq(fieldName, value);
-                } else if(idLoadWrapper(SearchParam.SEARCH_GE, name, value)) {
+                }else if(idLoadWrapper(SearchParam.SEARCH_GE, name, value)) {
                     String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_GE)[1]);
                     wrapper.ge(fieldName, value);
                 }else if(idLoadWrapper(SearchParam.SEARCH_LE, name, value)) {
@@ -70,8 +72,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M,
                     String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_RIGHT_LIKE)[1]);
                     wrapper.likeRight(fieldName, value);
                 }else if(idLoadWrapper(SearchParam.SEARCH_LIKE, name, value)) {
-                    System.out.println("hahaha");
-                    System.out.println(name.split(SearchParam.SEARCH_LIKE).length);
                     String fieldName = StringUtils.camelToUnderline(name.split(SearchParam.SEARCH_LIKE)[1]);
                     wrapper.like(fieldName, value);
                 }

@@ -22,6 +22,8 @@ public class MemberVo extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    private Long memberId;
+
     /**
      * 姓名
      */

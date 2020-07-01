@@ -52,6 +52,8 @@ public class MemberServiceImpl extends BaseServiceImpl<MemberMapper, Member> imp
         return dto;
     }
 
+
+
     private Long newMember(MemberRegisterDto registerDto, Date openTime) {
         Member member = new Member();
         BeanUtils.copyProperties(registerDto, member);

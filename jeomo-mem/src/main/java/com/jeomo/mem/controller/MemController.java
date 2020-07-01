@@ -3,13 +3,16 @@ package com.jeomo.mem.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeomo.common.result.annotation.ResponseResult;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.common.vo.DataTable;
 import com.jeomo.mem.dto.MemberCardDto;
 import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.Member;
+import com.jeomo.mem.entity.MemberCard;
 import com.jeomo.mem.enums.MemberLogTypeEnum;
 import com.jeomo.mem.log.MemberLog;
+import com.jeomo.mem.service.IMemberCardService;
 import com.jeomo.mem.service.IMemberService;
-import com.jeomo.mem.service.impl.OrderInitServer;
 import com.jeomo.mem.vo.LoginVo;
 import com.jeomo.mem.vo.MemberCardVo;
 import org.springframework.amqp.core.Message;
@@ -25,6 +28,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: qbt
  * @Date: 2019/3/24 20:47
@@ -36,9 +41,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MemController {
 
-//    @Reference(version="${mem.service.version}")
     @Autowired
     IMemberService memberService;
+
+    @Autowired
+    IMemberCardService memberCardService;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -51,13 +58,6 @@ public class MemController {
 
     @Value("log.member.routing.key.name")
     private String memberRoutingKeyName;
-
-
-    @RequestMapping(value = "hi")
-    @ResponseBody
-    public String sayHi() {
-        return "hello dubbo";
-    }
 
 
     @RequestMapping("/{id}")
@@ -82,6 +82,15 @@ public class MemController {
         return vo;
     }
 
+    @PostMapping("/list")
+    public DataTable<MemberCardVo> list(@RequestBody DataTable dt) {
+        memberCardService.pageSearch(dt);
+        List<MemberCard> items = dt.getItems();
+        List<MemberCardVo> memberCardVos = BeanCopyUtil.copyListProperties(items, MemberCardVo::new);
+        dt.setItems(memberCardVos);
+        return dt;
+    }
+
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public void login(@RequestBody LoginVo loginVo) {
         MemberLog log = MemberLog.builder().type(MemberLogTypeEnum.LOGIN).memberId(123L).message("成功").build();
@@ -97,13 +106,6 @@ public class MemController {
         }
     }
 
-    @Autowired
-    private OrderInitServer initServer;
-
-    @RequestMapping("robbing")
-    public void robbingThread() {
-        initServer.generateMultiThread();
-    }
 
 
 }

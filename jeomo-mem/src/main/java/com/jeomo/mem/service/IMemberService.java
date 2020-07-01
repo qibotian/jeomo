@@ -20,6 +20,4 @@ public interface IMemberService extends IBaseService<Member> {
      * @return 会员卡号
      */
     MemberCardDto register(MemberRegisterDto dto);
-
-
 }

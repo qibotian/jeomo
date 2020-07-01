@@ -1,10 +1,8 @@
-package com.jeomo.filter;
+package com.jeomo.common.filter;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -26,7 +24,6 @@ import java.util.Enumeration;
 @Order(Integer.MIN_VALUE)
 public class CorsFilter implements Filter {
 
-
     private static final String PARAMS_SEPARATE = ", ";
 
     @Value("${cors.access.control.maxAge:7200}")
@@ -38,24 +35,18 @@ public class CorsFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        HttpServletResponse httpServletResponse = ((HttpServletResponse) servletResponse);
-
-        httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, httpServletRequest.getHeader(HttpHeaders.ORIGIN));
-        httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, getHeaders(httpServletRequest));
-        httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_MAX_AGE, corsAccessControlMaxAge);
-
-        if (HttpMethod.OPTIONS.name().equalsIgnoreCase(httpServletRequest.getMethod())) {
-            httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, httpServletRequest.getHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD));
-            httpServletResponse.setStatus(HttpStatus.NO_CONTENT.value());
-
-        } else {
-            httpServletResponse.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, httpServletRequest.getMethod());
-            filterChain.doFilter(servletRequest, servletResponse);
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.addHeader("Access-Control-Allow-Credentials", "true");
+        res.addHeader("Access-Control-Allow-Origin", "*");
+        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+        res.addHeader("Access-Control-Allow-Headers", "Content-Type,X-CAF-Authorization-Token,sessionToken,X-TOKEN");
+        if (((HttpServletRequest) request).getMethod().equals("OPTIONS")) {
+            response.getWriter().println("ok");
+            return;
         }
-
+        filterChain.doFilter(request, response);
     }
 
     private String getHeaders(HttpServletRequest httpServletRequest) {

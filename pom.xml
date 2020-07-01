@@ -19,6 +19,8 @@
         <module>jeomo-order</module>
         <module>jeomo-flashSale</module>
         <module>jeomo-masterdata-intf</module>
+        <module>jeomo-points</module>
+        <module>jeomo-crawler</module>
     </modules>
     <packaging>pom</packaging>
 

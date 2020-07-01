@@ -1,6 +1,7 @@
 package com.jeomo.mem.service.impl;
 
 import com.jeomo.mem.service.IMemberLevelService;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class MemberLevelServiceImpl implements IMemberLevelService {
 
     @Override
-    public Long queryDefaultMemberLevel() {
-        return 1L;
+    public Integer queryDefaultMemberLevel() {
+        return 1;
     }
 }

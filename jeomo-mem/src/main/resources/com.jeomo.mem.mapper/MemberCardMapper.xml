@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeomo.mem.mapper.MemberCardMapper">
+
+    <select  id="selectPage" resultType="com.jeomo.mem.entity.MemberCard">
+      select * from (
+      SELECT
+        member.member_id,
+        member.`name`,
+        member.phone,
+        member.sex,
+        member.birthday,
+        member.address,
+        member_card.mall_group_id,
+        member_card.open_mall_id,
+        member_card.open_time,
+        member_card.card_no,
+        member_card.`level`,
+        member_card.last_check_time,
+        member_card.`status`,
+        member_card.version
+      FROM member_card JOIN member ON member_card.member_id = member.member_id ) as t
+      ${ew.customSqlSegment}
+    </select>
+
+
+
+</mapper>

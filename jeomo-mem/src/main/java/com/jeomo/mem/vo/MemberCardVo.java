@@ -1,6 +1,6 @@
 package com.jeomo.mem.vo;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,27 +16,55 @@ public class MemberCardVo {
     /**
      * 会员基本信息Id
      */
+    @JsonFormat(shape=JsonFormat.Shape.STRING)
     private Long memberId;
 
     /**
      * 会员卡号
      */
+    @JsonFormat(shape=JsonFormat.Shape.STRING)
     private Long cardNo;
 
     /**
      * 会员级别
      */
-    private Long level;
+    private Integer level;
+
+    private String name;
+
+    private String phone;
+
+    private Integer sex;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date birthday;
+
+    private String address;
+
+    /**
+     * 同城ID
+     */
+    private Integer mallGroupId;
 
     /**
      * 开卡商场
      */
-    private Long openMallId;
+    private Integer openMallId;
 
     /**
      * 开卡时间
      */
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date openTime;
 
+    /**
+     * 身份最后检查时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date lastCheckTime;
+
+    /**
+     * 当前状态
+     */
+    private Integer status;
 }

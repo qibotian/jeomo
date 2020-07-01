@@ -1,5 +1,6 @@
 package com.jeomo.mem.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.jeomo.common.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,20 +26,25 @@ public class MemberCard extends BaseEntity {
      */
     private Long memberId;
 
+    @TableField(exist = false)
+    private String name;
+
+    @TableField(exist = false)
+    private String phone;
+
+    @TableField(exist = false)
+    private Integer sex;
+
+    @TableField(exist = false)
+    private Date birthday;
+
+    @TableField(exist = false)
+    private String address;
+
     /**
      * 同城ID
      */
     private Integer mallGroupId;
-
-    /**
-     * 会员卡号
-     */
-    private Long cardNo;
-
-    /**
-     * 会员级别
-     */
-    private Long level;
 
     /**
      * 开卡商场
@@ -51,10 +57,28 @@ public class MemberCard extends BaseEntity {
     private Date openTime;
 
     /**
+     * 会员卡号
+     */
+    private Long cardNo;
+
+    /**
+     * 会员级别
+     */
+    private Integer level;
+
+    /**
      * 身份最后检查时间
      */
     private Date lastCheckTime;
 
+    /**
+     * 当前状态
+     */
+    private Integer status;
 
+    /**
+     * 版本号
+     */
+    private Long version;
 
 }
