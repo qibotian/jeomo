@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class MallGroup extends BaseEntity {
 
+    private Integer orgId;
+
     private Integer groupId;
 
     private String name;

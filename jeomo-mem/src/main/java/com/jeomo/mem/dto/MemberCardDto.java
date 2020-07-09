@@ -14,12 +14,12 @@ public class MemberCardDto {
     /**
      * 会员基本信息Id
      */
-    private Long memberId;
+    private String memberId;
 
     /**
      * 会员卡号
      */
-    private Long cardNo;
+    private String cardNo;
 
     /**
      * 会员级别

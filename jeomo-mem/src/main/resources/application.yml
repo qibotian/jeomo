@@ -21,6 +21,9 @@ spring:
       allow_unquoted_control_chars: true
       #允许出现单引号
       allow_single_quotes: true
+  redis:
+    host: localhost
+    port: 6379
 
 
   mvc:

@@ -7,13 +7,7 @@ package com.jeomo.mem.factory;
  */
 public class MemberCardFactory {
 
-    /**
-     * 生成一个新的会员卡号
-     * @return
-     */
-    public static Long createMemberCard() {
-        return System.currentTimeMillis();
-    }
+
 
 
 }

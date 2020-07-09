@@ -8,6 +8,11 @@ package com.jeomo.masterdata.dto;
 public class MallDto {
 
     /**
+     * 所属组织
+     */
+    private Integer orgId;
+
+    /**
      * 同城店Id
      */
     private Integer groupId;
@@ -21,6 +26,14 @@ public class MallDto {
      * 购物中心名称
      */
     private String name;
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+    }
 
     public Integer getGroupId() {
         return groupId;

@@ -1,7 +1,10 @@
 package com.jeomo.mem.service;
 
 import com.jeomo.common.service.IBaseService;
+import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.mem.entity.MemberCard;
+
+import java.util.Date;
 
 /**
  * @Author: qbt
@@ -10,5 +13,13 @@ import com.jeomo.mem.entity.MemberCard;
  */
 public interface IMemberCardService extends IBaseService<MemberCard> {
 
+    /**
+     * 开卡
+     * @param memberId
+     * @param openMall
+     * @param openTime
+     * @return
+     */
+    MemberCard newMemberCard(String memberId, MallDto openMall, Date openTime);
 
 }

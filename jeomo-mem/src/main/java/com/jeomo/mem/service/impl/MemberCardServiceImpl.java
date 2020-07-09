@@ -1,11 +1,18 @@
 package com.jeomo.mem.service.impl;
 
 import com.jeomo.common.service.impl.BaseServiceImpl;
+import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.mem.entity.MemberCard;
 import com.jeomo.mem.mapper.MemberCardMapper;
 import com.jeomo.mem.service.IMemberCardService;
+import com.jeomo.mem.service.IMemberLevelService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * @Author: qbt
@@ -14,7 +21,44 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class MemberCardServiceImpl extends BaseServiceImpl<MemberCardMapper, MemberCard> implements IMemberCardService {
+public class MemberCardServiceImpl extends BaseServiceImpl<MemberCardMapper, MemberCard> implements IMemberCardService, BeanPostProcessor {
 
+    @Autowired
+    private RedisTemplate<String, String> stringRedisTemplate;
+
+    @Autowired
+    private IMemberLevelService memberLevelService;
+
+    /**
+     * 新的卡号，
+     * 同一个购物中心族群下使用一个卡号和同一个会员级别
+     * @param groupId
+     * @return
+     */
+    private String newCardNo(Integer groupId) {
+        String key = "groupId:" + groupId + "cardNo";
+        Long serialNo = stringRedisTemplate.opsForValue().increment(key);
+        return String.valueOf(groupId) + String.valueOf(serialNo);
+    }
+
+    /**
+     * 新开卡
+     * @param memberId
+     * @param openMall
+     * @param openTime
+     * @return
+     */
+    public MemberCard newMemberCard(String memberId, MallDto openMall, Date openTime) {
+        MemberCard card = new MemberCard();
+        card.setMallGroupId(openMall.getGroupId());
+        card.setCardNo(newCardNo(openMall.getGroupId())); //生成会员卡号
+        card.setLevel(memberLevelService.queryDefaultMemberLevel()); //设置会员级别
+        card.setLastCheckTime(openTime);
+        card.setOpenTime(openTime);
+        card.setMemberId(memberId);
+        card.setOpenMallId(openMall.getMallId());
+        baseMapper.insert(card);
+        return card;
+    }
 
 }

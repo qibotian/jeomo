@@ -26,7 +26,7 @@ public class Member extends BaseEntity {
     /**
      * 会员ID
      */
-    private Long memberId;
+    private String memberId;
 
     /**
      * 姓名

@@ -19,6 +19,11 @@ import lombok.NoArgsConstructor;
 public class Mall extends BaseEntity {
 
     /**
+     * 所属组织
+     */
+    private Integer orgId;
+
+    /**
      * 同城店Id
      */
     private Integer groupId;

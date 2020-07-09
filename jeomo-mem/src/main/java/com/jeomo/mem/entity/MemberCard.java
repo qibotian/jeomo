@@ -24,7 +24,7 @@ public class MemberCard extends BaseEntity {
     /**
      * 会员基本信息Id
      */
-    private Long memberId;
+    private String memberId;
 
     @TableField(exist = false)
     private String name;
@@ -59,7 +59,7 @@ public class MemberCard extends BaseEntity {
     /**
      * 会员卡号
      */
-    private Long cardNo;
+    private String cardNo;
 
     /**
      * 会员级别
