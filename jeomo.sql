@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local
+Source Server         : 本地
 Source Server Version : 50527
 Source Host           : localhost:3306
 Source Database       : jeomo
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2020-07-09 14:36:31
+Date: 2020-07-10 17:57:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,7 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `base_data`;
 CREATE TABLE `base_data` (
   `id` bigint(20) NOT NULL,
-  `type_id` bigint(20) DEFAULT NULL,
+  `base_id` bigint(20) DEFAULT NULL,
   `code` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
@@ -38,6 +38,7 @@ CREATE TABLE `base_data` (
 DROP TABLE IF EXISTS `base_data_type`;
 CREATE TABLE `base_data_type` (
   `id` bigint(20) NOT NULL,
+  `base_id` bigint(20) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
@@ -46,6 +47,15 @@ CREATE TABLE `base_data_type` (
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for customer
+-- ----------------------------
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for flash_sale_activity
@@ -79,7 +89,7 @@ CREATE TABLE `goods` (
 DROP TABLE IF EXISTS `mall`;
 CREATE TABLE `mall` (
   `id` bigint(20) NOT NULL,
-  `mall_id` int(5) DEFAULT NULL COMMENT '角色代码',
+  `base_id` int(5) DEFAULT NULL COMMENT '角色代码',
   `org_id` int(11) DEFAULT NULL,
   `group_id` int(5) DEFAULT NULL,
   `name` varchar(40) CHARACTER SET utf8 DEFAULT NULL COMMENT '角色名称',
@@ -133,7 +143,7 @@ CREATE TABLE `member` (
   `open_time` datetime DEFAULT NULL COMMENT '注册时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `手机号唯一索引` (`phone`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=8034491260012068866 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=1281494398065446915 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Table structure for member_card
@@ -201,7 +211,7 @@ CREATE TABLE `order_goods` (
 DROP TABLE IF EXISTS `org`;
 CREATE TABLE `org` (
   `id` bigint(20) NOT NULL,
-  `org_id` int(11) DEFAULT NULL,
+  `base_id` int(11) DEFAULT NULL,
   `org_name` varchar(50) DEFAULT NULL,
   `version` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
