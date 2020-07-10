@@ -1,9 +1,11 @@
 package com.jeomo.masterdata.entity;
 
 import com.jeomo.common.entity.BaseEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -16,12 +18,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class MallGroup extends BaseEntity {
 
-    private Integer orgId;
+	/**  */
+	private static final long serialVersionUID = 1L;
 
-    private Integer groupId;
+    private Long orgId;
 
+    /**
+     * 族群号
+     */
+    private String code; 
+    
+    /**
+     * 族群名称
+     */
     private String name;
 
 

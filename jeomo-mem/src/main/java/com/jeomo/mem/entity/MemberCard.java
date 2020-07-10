@@ -1,13 +1,16 @@
 package com.jeomo.mem.entity;
 
+import java.util.Date;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.jeomo.common.entity.BaseEntity;
+import com.jeomo.mem.enums.MemberCardStatusEnums;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * 会员卡信息
@@ -19,12 +22,31 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class MemberCard extends BaseEntity {
 
-    /**
+    /**  */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * 会员基本信息Id
      */
-    private String memberId;
+    private Long memberId;
+    
+    /**
+     * 组织ID
+     */
+    private Long orgId;
+    
+    /**
+     * 同城ID
+     */
+    private Long mallGroupId;
+
+    /**
+     * 开卡商场
+     */
+    private Long openMallId;
 
     @TableField(exist = false)
     private String name;
@@ -34,22 +56,12 @@ public class MemberCard extends BaseEntity {
 
     @TableField(exist = false)
     private Integer sex;
-
+    
     @TableField(exist = false)
     private Date birthday;
 
     @TableField(exist = false)
     private String address;
-
-    /**
-     * 同城ID
-     */
-    private Integer mallGroupId;
-
-    /**
-     * 开卡商场
-     */
-    private Integer openMallId;
 
     /**
      * 开卡时间
@@ -64,7 +76,7 @@ public class MemberCard extends BaseEntity {
     /**
      * 会员级别
      */
-    private Integer level;
+    private Long level;
 
     /**
      * 身份最后检查时间
@@ -74,7 +86,7 @@ public class MemberCard extends BaseEntity {
     /**
      * 当前状态
      */
-    private Integer status;
+    private MemberCardStatusEnums status;
 
     /**
      * 版本号

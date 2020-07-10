@@ -20,6 +20,6 @@ public interface IMemberCardService extends IBaseService<MemberCard> {
      * @param openTime
      * @return
      */
-    MemberCard newMemberCard(String memberId, MallDto openMall, Date openTime);
+    MemberCard openCard(Long memberId, MallDto openMall, Date openTime);
 
 }

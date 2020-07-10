@@ -1,8 +1,8 @@
 package com.jeomo.common.entity;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * @Author: qbt
@@ -13,12 +13,14 @@ import java.io.Serializable;
 @Data
 public abstract class BaseEntity implements Serializable {
 
-    /**
-     * 物理主键，没有任何业务含义
-     * 其他表禁止关联此Id
+    /**  */
+	private static final long serialVersionUID = 1L;
+
+	/**
+     * 默认使用雪花算法实现ID
      */
     private Long id;
-
+    
     /**
      * 版本号
      */

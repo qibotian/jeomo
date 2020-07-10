@@ -12,6 +12,6 @@ public interface IMemberLevelService {
      * 获取默认的会员级别
      * @return
      */
-    Integer queryDefaultMemberLevel();
+	Long queryDefaultMemberLevel();
 
 }

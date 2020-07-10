@@ -1,12 +1,14 @@
 package com.jeomo.mem.entity;
 
+import java.util.Date;
+
 import com.jeomo.common.entity.BaseEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * <p>
@@ -19,14 +21,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class Member extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
-
+    
     /**
-     * 会员ID
+     * 组织ID
      */
-    private String memberId;
+    private Long orgId;
 
     /**
      * 姓名
@@ -61,7 +64,7 @@ public class Member extends BaseEntity {
     /**
      * 性别
      */
-    private String sex;
+    private Integer sex;
 
     /**
      * 最后访问时间
@@ -71,7 +74,7 @@ public class Member extends BaseEntity {
     /**
      * 首次开卡商场
      */
-    private Integer firstOpenMallId;
+    private Long firstOpenMallId;
 
     /**
      * 开卡时间

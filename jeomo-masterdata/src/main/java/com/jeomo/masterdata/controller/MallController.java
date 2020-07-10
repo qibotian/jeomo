@@ -23,7 +23,7 @@ public class MallController {
 
     @RequestMapping("/{mallId}")
     @ResponseBody
-    public MallDto get(@PathVariable Integer mallId) {
+    public MallDto get(@PathVariable Long mallId) {
         return  mallService.queryMallByMallId(mallId);
     }
 

@@ -1,8 +1,12 @@
 package com.jeomo.mem.mapper;
 
-import com.jeomo.common.mapper.IBaseMapper;
-import com.jeomo.mem.entity.MemberCard;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+
+import com.jeomo.common.mapper.IBaseMapper;
+import com.jeomo.mem.dto.MaxMemberCardNoDto;
+import com.jeomo.mem.entity.MemberCard;
 
 /**
  * <p>
@@ -14,5 +18,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MemberCardMapper extends IBaseMapper<MemberCard> {
+	
+	List<MaxMemberCardNoDto> selectMaxCardNo();
 
 }

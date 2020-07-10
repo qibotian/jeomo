@@ -10,15 +10,34 @@ import com.jeomo.common.entity.BaseEntity;
  * @Version 1.0
  */
 public class Org extends BaseEntity {
-    /**
-     * 组织ID
-     */
-    private Integer orgId;
-
+	
+    /**  */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 组织码
+	 */
+	private String code;
+	
     /**
      * 组织名称
      */
     private String orgName;
+    
+	public String getCode() {
+		return code;
+	}
 
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getOrgName() {
+		return orgName;
+	}
+
+	public void setOrgName(String orgName) {
+		this.orgName = orgName;
+	}
 
 }

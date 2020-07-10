@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class MallServiceImpl extends BaseServiceImpl<MallMapper, Mall> implements IMallService {
 
     @Override
-    public MallDto queryMallByMallId(Integer mallId) {
+    public MallDto queryMallByMallId(Long mallId) {
         Wrapper<Mall> wrapper = new QueryWrapper<>();
         ((QueryWrapper<Mall>) wrapper).eq("mall_Id", mallId);
         Mall mall = this.baseMapper.selectOne(wrapper);

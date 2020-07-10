@@ -10,52 +10,53 @@ public class MallDto {
     /**
      * 所属组织
      */
-    private Integer orgId;
+    private Long orgId;
 
     /**
      * 同城店Id
      */
-    private Integer groupId;
+    private Long groupId;
 
     /**
      * 购物中心编号
      */
-    private Integer mallId;
+    private Long baseId;
 
     /**
      * 购物中心名称
      */
     private String name;
 
-    public Integer getOrgId() {
-        return orgId;
-    }
+	public Long getOrgId() {
+		return orgId;
+	}
 
-    public void setOrgId(Integer orgId) {
-        this.orgId = orgId;
-    }
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
+	}
 
-    public Integer getGroupId() {
-        return groupId;
-    }
+	public Long getGroupId() {
+		return groupId;
+	}
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
+	public void setGroupId(Long groupId) {
+		this.groupId = groupId;
+	}
 
-    public Integer getMallId() {
-        return mallId;
-    }
+	public Long getBaseId() {
+		return baseId;
+	}
 
-    public void setMallId(Integer mallId) {
-        this.mallId = mallId;
-    }
+	public void setBaseId(Long baseId) {
+		this.baseId = baseId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

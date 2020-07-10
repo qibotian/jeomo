@@ -1,6 +1,8 @@
 package com.jeomo.mem.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jeomo.mem.enums.MemberCardStatusEnums;
+
 import lombok.Data;
 
 import java.util.Date;
@@ -17,13 +19,13 @@ public class MemberCardVo {
      * 会员基本信息Id
      */
     @JsonFormat(shape=JsonFormat.Shape.STRING)
-    private Long memberId;
+    private String memberId;
 
     /**
      * 会员卡号
      */
     @JsonFormat(shape=JsonFormat.Shape.STRING)
-    private Long cardNo;
+    private String cardNo;
 
     /**
      * 会员级别
@@ -66,5 +68,5 @@ public class MemberCardVo {
     /**
      * 当前状态
      */
-    private Integer status;
+    private MemberCardStatusEnums status;
 }
