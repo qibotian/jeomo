@@ -1,7 +1,5 @@
 package com.jeomo.common.util;
 
-import org.springframework.lang.Nullable;
-
 /**
  * 字符串工具类
  * @Author: qbt
@@ -41,6 +39,48 @@ public class StringUtils {
     public static boolean isEmpty(Object str) {
         return (str == null || "".equals(str));
     }
+    
+  
+    /**
+     * <p>方法说明：将指定的padding填充到src尾部，使src达到长度length</p>
+     * @param src
+     * @param padding
+     * @param length
+     * @author qibotian
+     * @time 2020年7月13日 下午4:09:46
+     */
+    public static String tailAppend(String src, char padding, int length){
+    	int srcLength = src.length();
+    	int tl = length - srcLength;
+    	StringBuilder builder = new StringBuilder(src);
+    	for(int i = 1; i <= tl; i++) {
+    		builder.append(padding);
+    	}
+    	return builder.toString();
+    }
+    
+    /**
+     * <p>方法说明：将指定的padding填充到src头部，使src达到长度length</p>
+     * @param src
+     * @param padding
+     * @param length
+     * @author qibotian
+     * @time 2020年7月13日 下午4:09:46
+     */
+    public static String headerAppend(String src, char padding, int length) {
+    	int srcLength = src.length();
+    	int tl = length - srcLength;
+    	StringBuilder builder = new StringBuilder();
+    	for(int i = 1; i <= tl; i++) {
+    		builder.append(padding);
+    	}
+    	builder.append(src);
+    	return builder.toString();
+    }
+    
+    public static void main(String[] args) {
+		System.out.println(headerAppend("1", '0', 5));
+	}
 
 
 }

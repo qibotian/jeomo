@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeomo.mem.mapper.MemberCardMapper">
 
     <select id="selectPage" resultType="com.jeomo.mem.entity.MemberCard">
@@ -9,23 +9,26 @@
         member.sex,
         member.birthday,
         member.address,
-        member_card.id,
-        member_card.member_id,
-        member_card.org_id,
-        member_card.mall_group_id,
-        member_card.open_mall_id,
+        member_card.code,
+        member_card.member_code,
+        member_card.org_code,
+        member_card.mall_group_code,
+        member_card.open_mall_code,
         member_card.open_time,
-        member_card.card_no,
         member_card.`level`,
         member_card.last_check_time,
         member_card.`status`,
         member_card.version
-      FROM member_card JOIN member ON member_card.member_id = member.member_id
+      FROM member_card JOIN member ON member_card.member_code = member.code
       ${ew.customSqlSegment}
     </select>
 	
-	<select id="selectMaxCardNo" resultType="com.jeomo.mem.dto.MaxMemberCardNoDto">
-		select group_id as group_id, max(card_no) as max_card_no from member_card group by group_id
+	<select id="selectMaxCardNo" resultType="com.jeomo.mem.dto.MallGroupMaxCardCodeDto">
+		select mall_group_code as group_code, max(code) as max_card_no from member_card group by mall_group_code
+	</select>
+	
+	<select id="queryMallGroupMaxCadeCode" resultType="String">
+		select max(code) as max_code from member_card group by mall_group_code
 	</select>
 
 </mapper>

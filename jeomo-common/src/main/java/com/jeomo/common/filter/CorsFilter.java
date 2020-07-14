@@ -1,16 +1,20 @@
 package com.jeomo.common.filter;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Enumeration;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 /**
  * 因为要前后端分离
@@ -23,8 +27,6 @@ import java.util.Enumeration;
 @WebFilter
 @Order(Integer.MIN_VALUE)
 public class CorsFilter implements Filter {
-
-    private static final String PARAMS_SEPARATE = ", ";
 
     @Value("${cors.access.control.maxAge:7200}")
     String corsAccessControlMaxAge;
@@ -47,25 +49,5 @@ public class CorsFilter implements Filter {
             return;
         }
         filterChain.doFilter(request, response);
-    }
-
-    private String getHeaders(HttpServletRequest httpServletRequest) {
-        StringBuilder params = new StringBuilder();
-        String accessControlRequestHeaders = httpServletRequest.getHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS);
-        if (!(accessControlRequestHeaders == null || accessControlRequestHeaders.isEmpty())) {
-            params.append(accessControlRequestHeaders).append(PARAMS_SEPARATE);
-        }
-
-        Enumeration<String> names = httpServletRequest.getHeaderNames();
-        while (names.hasMoreElements()) {
-            params.append(names.nextElement()).append(PARAMS_SEPARATE);
-        }
-        params.setLength(params.length() - PARAMS_SEPARATE.length());
-        return params.toString();
-    }
-
-    @Override
-    public void destroy() {
-
     }
 }

@@ -31,47 +31,32 @@ public class MemberCard extends BaseEntity {
 	/**
      * 会员基本信息Id
      */
-    private Long memberId;
+    private String memberCode;
     
     /**
      * 组织ID
      */
-    private Long orgId;
+    private String orgCode;
     
     /**
      * 同城ID
      */
-    private Long mallGroupId;
-
-    /**
-     * 开卡商场
-     */
-    private Long openMallId;
-
-    @TableField(exist = false)
-    private String name;
-
-    @TableField(exist = false)
-    private String phone;
-
-    @TableField(exist = false)
-    private Integer sex;
-    
-    @TableField(exist = false)
-    private Date birthday;
-
-    @TableField(exist = false)
-    private String address;
-
-    /**
-     * 开卡时间
-     */
-    private Date openTime;
+    private String mallGroupCode;
 
     /**
      * 会员卡号
      */
-    private String cardNo;
+    private String code;
+    
+    /**
+     * 开卡商场
+     */
+    private String openMallCode;
+    
+    /**
+     * 开卡时间
+     */
+    private Date openTime;
 
     /**
      * 会员级别
@@ -87,6 +72,21 @@ public class MemberCard extends BaseEntity {
      * 当前状态
      */
     private MemberCardStatusEnums status;
+
+    @TableField(exist = false)
+    private String name;
+
+    @TableField(exist = false)
+    private String phone;
+
+    @TableField(exist = false)
+    private Integer sex;
+    
+    @TableField(exist = false)
+    private Date birthday;
+
+    @TableField(exist = false)
+    private String address;
 
     /**
      * 版本号

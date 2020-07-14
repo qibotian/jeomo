@@ -16,6 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper extends IBaseMapper<Member> {
 
 
+	String queryMaxMemberCode(String orgCode);
 
 
 

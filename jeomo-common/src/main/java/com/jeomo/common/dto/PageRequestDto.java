@@ -1,33 +1,18 @@
-package com.jeomo.common.vo;
+package com.jeomo.common.dto;
+
+import java.io.Serializable;
+import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-
-/**
- * @Author: qbt
- * @Date: 2019/3/21 23:26
- * @Version 1.0
- */
-
 @Getter
 @Setter
-public class DataTable<T> implements Serializable {
+public class PageRequestDto implements Serializable {
 
-    /**
-     * 总数
-     */
-    private long total;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 数据
-     */
-    private List<T> items;
-
-    /**
+	/**
      * 当前页码
      */
     private long pageNumber;

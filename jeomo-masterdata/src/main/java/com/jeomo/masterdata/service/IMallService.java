@@ -9,7 +9,7 @@ import com.jeomo.masterdata.dto.MallDto;
  */
 public interface IMallService {
 
-   MallDto queryMallByMallId(Long mallId);
+   MallDto queryMallByCode(String mallCode);
 
 
 }

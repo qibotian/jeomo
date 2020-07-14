@@ -1,6 +1,6 @@
-package com.jeomo.masterdata.entity;
+package com.jeomo.masterdata.dto;
 
-import com.jeomo.common.entity.BaseEntity;
+import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper=false)
-public class MallGroup extends BaseEntity {
+public class MallGroupDto implements Serializable{
 
 	/**  */
 	private static final long serialVersionUID = 1L;

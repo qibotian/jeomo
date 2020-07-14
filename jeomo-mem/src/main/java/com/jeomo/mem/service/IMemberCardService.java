@@ -1,10 +1,10 @@
 package com.jeomo.mem.service;
 
+import java.util.Date;
+
 import com.jeomo.common.service.IBaseService;
 import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.mem.entity.MemberCard;
-
-import java.util.Date;
 
 /**
  * @Author: qbt
@@ -20,6 +20,6 @@ public interface IMemberCardService extends IBaseService<MemberCard> {
      * @param openTime
      * @return
      */
-    MemberCard openCard(Long memberId, MallDto openMall, Date openTime);
+    MemberCard openCard(String memberCode, MallDto openMall, Date openTime);
 
 }

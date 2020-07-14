@@ -27,12 +27,12 @@ public class Mall extends BaseEntity {
 	/**
      * 所属组织
      */
-    private Integer orgId;
+    private String orgCode;
 
     /**
      * 同城店Id
      */
-    private Integer groupId;
+    private String groupCode;
     
     /**
      * 购物中心号

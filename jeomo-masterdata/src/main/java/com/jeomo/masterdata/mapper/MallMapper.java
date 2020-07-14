@@ -15,7 +15,7 @@ import org.apache.ibatis.annotations.Select;
 public interface MallMapper extends IBaseMapper<Mall> {
 
 
-    @Select("select * from mall where mall_id = #{mallId}")
-    Mall queryMallByMallId(Integer mallId);
+    @Select("select * from mall where code = #{code}")
+    Mall queryMallByCode(String code);
 
 }

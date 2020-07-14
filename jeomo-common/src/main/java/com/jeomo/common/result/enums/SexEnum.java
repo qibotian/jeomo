@@ -1,19 +1,30 @@
-package com.jeomo.mem.enums;
+package com.jeomo.common.result.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * @Author: qbt
- * @Date: 2020/5/8 16:10
- * @Version 1.0
+ * <p>标题: 性别枚举 </p>
+ * @author qibotian
+ * @time 2020年7月13日 下午2:18:34
  */
-public enum MemberRegisterTypeEnum {
-
-    MEMBER_CENTER(1, "会员中心注册"),
-    MINI_PROGRAM(2, "小程序注册"),
-    OFFICIAL_ACCOUNT(3, "公众号注册"),;
+public enum SexEnum {
+	/**
+	 * 正常
+	 */
+	MALE(0, "男"),
 	
+	/**
+	 * 冻结
+	 */
+	FEMALE(1, "女"),
+	
+	/**
+	 * 保密
+	 */
+	SECRET(2, "已注销");
+	
+
 	public int getCode() {
 		return this.code;
 	}
@@ -28,10 +39,8 @@ public enum MemberRegisterTypeEnum {
 	
 	private String desc;
 	
-	private MemberRegisterTypeEnum(int code, String desc) {
+	private SexEnum(int code, String desc) {
 		this.code = code;
 		this.desc = desc;
 	}
-
 }
-

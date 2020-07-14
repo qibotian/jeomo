@@ -26,7 +26,7 @@ public class MemberRegisterDto {
      * 注册的商场Id
      */
     @Getter
-    private Long mallId;
+    private String mallCode;
 
     /**
      * 注册类型

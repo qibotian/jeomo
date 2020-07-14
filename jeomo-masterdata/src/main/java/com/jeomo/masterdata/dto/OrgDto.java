@@ -1,6 +1,6 @@
-package com.jeomo.masterdata.entity;
+package com.jeomo.masterdata.dto;
 
-import com.jeomo.common.entity.BaseEntity;
+import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * 同城店
+ * 权限隔离的最高粒度，不同组织的之间的数据是绝对透明的
  * @Author: qbt
- * @Date: 2020/3/1 0:08
+ * @Date: 2020/7/7 23:00
  * @Version 1.0
  */
 @Data
@@ -19,25 +19,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper=false)
-public class MallGroup extends BaseEntity {
-
-	/**  */
+public class OrgDto implements Serializable {
+	
+    /**  */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
-	 * 族群所属的组织号
+	 * 组织码
 	 */
-    private String orgCode;
-
+	private String code;
+	
     /**
-     * 族群号
-     */
-    private String code; 
-    
-    /**
-     * 族群名称
+     * 组织名称
      */
     private String name;
-
-
+    
 }

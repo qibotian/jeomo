@@ -1,20 +1,7 @@
 package com.jeomo.mem.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jeomo.common.result.annotation.ResponseResult;
-import com.jeomo.common.util.BeanCopyUtil;
-import com.jeomo.common.vo.DataTable;
-import com.jeomo.mem.dto.MemberCardDto;
-import com.jeomo.mem.dto.MemberRegisterDto;
-import com.jeomo.mem.entity.Member;
-import com.jeomo.mem.entity.MemberCard;
-import com.jeomo.mem.enums.MemberLogTypeEnum;
-import com.jeomo.mem.log.MemberLog;
-import com.jeomo.mem.service.IMemberCardService;
-import com.jeomo.mem.service.IMemberService;
-import com.jeomo.mem.vo.LoginVo;
-import com.jeomo.mem.vo.MemberCardVo;
+import java.util.List;
+
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessageDeliveryMode;
@@ -26,9 +13,29 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jeomo.common.dto.PageRequestDto;
+import com.jeomo.common.dto.PageResponseDto;
+import com.jeomo.common.result.annotation.ResponseResult;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.mem.dto.MemberCardDto;
+import com.jeomo.mem.dto.MemberRegisterDto;
+import com.jeomo.mem.entity.Member;
+import com.jeomo.mem.enums.MemberLogTypeEnum;
+import com.jeomo.mem.log.MemberLog;
+import com.jeomo.mem.service.IMemberCardService;
+import com.jeomo.mem.service.IMemberService;
+import com.jeomo.mem.vo.LoginVo;
+import com.jeomo.mem.vo.MemberCardVo;
 
 /**
  * @Author: qbt
@@ -39,7 +46,7 @@ import java.util.List;
 @RequestMapping("/mem")
 @ResponseResult
 @RestController
-public class MemController {
+public class MemberController {
 
     @Autowired
     IMemberService memberService;
@@ -83,12 +90,11 @@ public class MemController {
     }
 
     @PostMapping("/list")
-    public DataTable<MemberCardVo> list(@RequestBody DataTable dt) {
-        memberCardService.pageSearch(dt);
-        List<MemberCard> items = dt.getItems();
-        List<MemberCardVo> memberCardVos = BeanCopyUtil.copyListProperties(items, MemberCardVo::new);
-        dt.setItems(memberCardVos);
-        return dt;
+    public PageResponseDto list(@RequestBody PageRequestDto pageRequestDto) {
+        PageResponseDto pageResponseDto = memberCardService.pageSearch(pageRequestDto);
+        List<MemberCardVo> memberCardVos = BeanCopyUtil.copyListProperties(pageResponseDto.getItems(), MemberCardVo::new);
+        pageResponseDto.setItems(memberCardVos);
+        return pageResponseDto;
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)

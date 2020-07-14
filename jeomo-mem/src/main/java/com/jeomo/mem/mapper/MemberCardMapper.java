@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.jeomo.common.mapper.IBaseMapper;
-import com.jeomo.mem.dto.MaxMemberCardNoDto;
+import com.jeomo.mem.dto.MallGroupMaxCardCodeDto;
 import com.jeomo.mem.entity.MemberCard;
 
 /**
@@ -19,6 +19,8 @@ import com.jeomo.mem.entity.MemberCard;
 @Mapper
 public interface MemberCardMapper extends IBaseMapper<MemberCard> {
 	
-	List<MaxMemberCardNoDto> selectMaxCardNo();
+	List<MallGroupMaxCardCodeDto> selectMaxCardNo();
+	
+	String queryMallGroupMaxCadeCode(String groupCode);
 
 }

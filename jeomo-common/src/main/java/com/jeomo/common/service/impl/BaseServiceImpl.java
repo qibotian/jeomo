@@ -1,5 +1,7 @@
 package com.jeomo.common.service.impl;
 
+import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -7,11 +9,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jeomo.common.consts.SearchParam;
 import com.jeomo.common.consts.Sort;
+import com.jeomo.common.dto.PageRequestDto;
+import com.jeomo.common.dto.PageResponseDto;
 import com.jeomo.common.service.IBaseService;
 import com.jeomo.common.util.StringUtils;
-import com.jeomo.common.vo.DataTable;
-
-import java.util.Map;
 
 /**
  * @Author: qbt
@@ -21,21 +22,18 @@ import java.util.Map;
 public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M, T> implements IBaseService<T> {
 
     @Override
-    public DataTable<T> pageSearch(DataTable<T> dt) {
+    public PageResponseDto pageSearch(PageRequestDto dt) {
         IPage<T> page = new Page<T>(dt.getPageNumber(), dt.getPageSize());
         QueryWrapper<T> wrapper = new QueryWrapper<>();
         loadSearchParams(wrapper, dt.getSearchParams());
         loadSorts(wrapper, dt.getSorts());
         page = page(page, wrapper);
-        dt.setTotal(page.getTotal());
-        dt.setItems(page.getRecords());
-        return dt;
+        return PageResponseDto.builder().total(page.getTotal()).items(page.getRecords()).build();
     }
 
 
     public void loadSorts(QueryWrapper<T> wrapper, Map<String, String> sorts) {
         if(null != sorts) {
-            StringBuffer stringBuffer = new StringBuffer();
             sorts.forEach((k,v) -> {
                 String fieldName = StringUtils.camelToUnderline(k);
                 if(Sort.ASC.equals(v.toLowerCase())) {

@@ -1,7 +1,8 @@
 package com.jeomo.common.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.jeomo.common.vo.DataTable;
+import com.jeomo.common.dto.PageRequestDto;
+import com.jeomo.common.dto.PageResponseDto;
 
 /**
  * @Author: qbt
@@ -15,6 +16,6 @@ public interface IBaseService<T> extends IService<T> {
      * @param dt
      * @return
      */
-    DataTable<T> pageSearch(DataTable<T> dt);
+	PageResponseDto pageSearch(PageRequestDto pageRequest);
 
 }

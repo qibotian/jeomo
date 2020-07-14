@@ -1,6 +1,6 @@
-package com.jeomo.masterdata.entity;
+package com.jeomo.masterdata.dto;
 
-import com.jeomo.common.entity.BaseEntity;
+import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * 同城店
+ * 购物中心
  * @Author: qbt
- * @Date: 2020/3/1 0:08
+ * @Date: 2020/3/1 0:06
  * @Version 1.0
  */
 @Data
@@ -19,25 +19,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper=false)
-public class MallGroup extends BaseEntity {
+public class MallDto implements Serializable {
 
-	/**  */
+    /**  */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
-	 * 族群所属的组织号
-	 */
+     * 所属组织
+     */
     private String orgCode;
 
     /**
-     * 族群号
+     * 同城店Id
      */
-    private String code; 
+    private String groupCode;
     
     /**
-     * 族群名称
+     * 购物中心号
+     */
+    private String code;
+
+    /**
+     * 购物中心名称
      */
     private String name;
+
 
 
 }

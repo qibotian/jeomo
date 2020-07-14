@@ -1,12 +1,14 @@
 package com.jeomo.mem.entity;
 
+import java.util.Date;
+
 import com.jeomo.common.entity.BaseEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * @Author: qbt
@@ -17,9 +19,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper=false)
 public class MemberPointDetail extends BaseEntity {
 
-    /**
+	private static final long serialVersionUID = 1L;
+
+	/**
      * 业务类型
      * 1 普通消费
      * 2 消费退货

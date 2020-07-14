@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2020-07-10 17:57:40
+Date: 2020-07-14 17:55:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,14 +23,14 @@ CREATE TABLE `base_data` (
   `id` bigint(20) NOT NULL,
   `base_id` bigint(20) DEFAULT NULL,
   `code` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
   `last_modify_time` timestamp NULL DEFAULT NULL COMMENT '最后修改时间',
   `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人',
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for base_data_type
@@ -39,14 +39,14 @@ DROP TABLE IF EXISTS `base_data_type`;
 CREATE TABLE `base_data_type` (
   `id` bigint(20) NOT NULL,
   `base_id` bigint(20) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
   `last_modify_time` timestamp NULL DEFAULT NULL COMMENT '最后修改时间',
   `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人',
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for customer
@@ -89,17 +89,13 @@ CREATE TABLE `goods` (
 DROP TABLE IF EXISTS `mall`;
 CREATE TABLE `mall` (
   `id` bigint(20) NOT NULL,
-  `base_id` int(5) DEFAULT NULL COMMENT '角色代码',
-  `org_id` int(11) DEFAULT NULL,
-  `group_id` int(5) DEFAULT NULL,
-  `name` varchar(40) CHARACTER SET utf8 DEFAULT NULL COMMENT '角色名称',
-  `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
-  `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
-  `last_modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人',
+  `org_code` varchar(10) DEFAULT NULL,
+  `group_code` varchar(10) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL COMMENT '角色名称',
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for mall_group
@@ -107,43 +103,36 @@ CREATE TABLE `mall` (
 DROP TABLE IF EXISTS `mall_group`;
 CREATE TABLE `mall_group` (
   `id` bigint(20) NOT NULL,
-  `group_id` int(5) NOT NULL COMMENT '角色代码',
-  `org_id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '角色名称',
-  `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
-  `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
-  `last_modify_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人',
+  `org_code` varchar(10) NOT NULL,
+  `code` varchar(10) NOT NULL COMMENT '角色代码',
+  `name` varchar(255) NOT NULL COMMENT '角色名称',
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for member
 -- ----------------------------
 DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `member_id` varchar(20) NOT NULL,
-  `org_id` int(11) NOT NULL,
-  `phone` varchar(20) NOT NULL COMMENT '手机号',
-  `name` varchar(30) DEFAULT NULL COMMENT '姓名',
+  `id` bigint(20) unsigned NOT NULL,
+  `org_code` int(11) NOT NULL,
+  `code` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT '' COMMENT '姓名',
+  `phone` varchar(20) NOT NULL DEFAULT '' COMMENT '手机号',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   `address` varchar(100) DEFAULT NULL COMMENT '地址',
   `id_card` varchar(20) DEFAULT NULL COMMENT '身份证号',
-  `birthday` date DEFAULT NULL,
-  `sex` char(1) DEFAULT NULL,
-  `last_access_time` datetime DEFAULT NULL COMMENT '最后访问时间',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建人',
-  `last_modify_time` datetime DEFAULT NULL COMMENT '最后修改时间',
-  `last_modify_user_id` bigint(20) DEFAULT NULL COMMENT '最后修改人',
-  `version` bigint(20) DEFAULT NULL COMMENT '版本号',
-  `first_open_mall_id` bigint(20) DEFAULT NULL COMMENT '注册商场ID',
+  `birthday` date DEFAULT NULL COMMENT '出生日期',
+  `sex` char(1) DEFAULT NULL COMMENT '性别',
+  `last_access_time` datetime DEFAULT NULL COMMENT '最近访问时间（包含注册，消费或者参与活动等）',
+  `first_open_mall_code` varchar(10) DEFAULT NULL COMMENT '注册商场ID',
   `open_time` datetime DEFAULT NULL COMMENT '注册时间',
+  `version` bigint(20) DEFAULT NULL COMMENT '版本号',
+  `last_access_mall_code` varchar(10) DEFAULT NULL COMMENT '最后访问门店',
   PRIMARY KEY (`id`),
   UNIQUE KEY `手机号唯一索引` (`phone`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=1281494398065446915 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Table structure for member_card
@@ -151,18 +140,18 @@ CREATE TABLE `member` (
 DROP TABLE IF EXISTS `member_card`;
 CREATE TABLE `member_card` (
   `id` bigint(20) NOT NULL,
-  `org_id` int(11) DEFAULT NULL,
-  `member_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `mall_group_id` int(5) DEFAULT NULL COMMENT '同城门店号',
-  `card_no` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `org_code` varchar(10) DEFAULT NULL,
+  `mall_group_code` varchar(10) DEFAULT NULL COMMENT '同城门店号',
+  `member_code` varchar(20) DEFAULT NULL,
+  `code` varchar(11) NOT NULL COMMENT '会员卡号',
   `level` bigint(11) DEFAULT NULL,
-  `open_mall_id` bigint(20) DEFAULT NULL,
+  `open_mall_code` bigint(20) DEFAULT NULL,
   `open_time` datetime DEFAULT NULL COMMENT '开卡时间',
   `status` int(11) DEFAULT NULL,
   `last_check_time` datetime DEFAULT NULL COMMENT '身份最后检查时间',
   `version` bigint(20) DEFAULT NULL COMMENT '版本号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for order
@@ -211,8 +200,8 @@ CREATE TABLE `order_goods` (
 DROP TABLE IF EXISTS `org`;
 CREATE TABLE `org` (
   `id` bigint(20) NOT NULL,
-  `base_id` int(11) DEFAULT NULL,
-  `org_name` varchar(50) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `version` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

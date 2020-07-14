@@ -3,6 +3,8 @@ package com.jeomo.mem.entity;
 import java.util.Date;
 
 import com.jeomo.common.entity.BaseEntity;
+import com.jeomo.common.result.enums.SexEnum;
+import com.jeomo.mem.enums.MemberRegisterTypeEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,9 +29,17 @@ public class Member extends BaseEntity {
     private static final long serialVersionUID = 1L;
     
     /**
+     * 外表关联，则关联这个ID
+     * 会员ID，逻辑主键
+     * 一个组织中对一个人的唯一标识
+     * 一个会员可以在多个MallGroup有不同的会员等级或身份
+     */
+    private String code;
+    
+    /**
      * 组织ID
      */
-    private Long orgId;
+    private String orgCode;
 
     /**
      * 姓名
@@ -64,22 +74,35 @@ public class Member extends BaseEntity {
     /**
      * 性别
      */
-    private Integer sex;
+    private SexEnum sex;
 
+    /**
+     * 注册方式
+     */
+    private MemberRegisterTypeEnum registerType;
+    
+    
     /**
      * 最后访问时间
      */
     private Date lastAccessTime;
-
+    
     /**
-     * 首次开卡商场
+     * 最后访问门店
      */
-    private Long firstOpenMallId;
+    private String lastAccessMallCode;
 
     /**
      * 开卡时间
      */
     private Date openTime;
+    
+    /**
+     * 首次开卡门店
+     */
+    private String firstOpenMallCode;
+
+    
 
 
 }

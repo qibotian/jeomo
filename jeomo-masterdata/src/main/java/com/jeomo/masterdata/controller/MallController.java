@@ -21,10 +21,10 @@ public class MallController {
     @Autowired
     private IMallService mallService;
 
-    @RequestMapping("/{mallId}")
+    @RequestMapping("/{code}")
     @ResponseBody
-    public MallDto get(@PathVariable Long mallId) {
-        return  mallService.queryMallByMallId(mallId);
+    public MallDto get(@PathVariable String code) {
+        return  mallService.queryMallByCode(code);
     }
 
 

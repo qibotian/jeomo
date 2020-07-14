@@ -1,14 +1,13 @@
 package com.jeomo.masterdata.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+
 import com.jeomo.common.service.impl.BaseServiceImpl;
 import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.masterdata.entity.Mall;
 import com.jeomo.masterdata.mapper.MallMapper;
 import com.jeomo.masterdata.service.IMallService;
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
 
 /**
  * @Author: qbt
@@ -19,10 +18,8 @@ import org.springframework.stereotype.Service;
 public class MallServiceImpl extends BaseServiceImpl<MallMapper, Mall> implements IMallService {
 
     @Override
-    public MallDto queryMallByMallId(Long mallId) {
-        Wrapper<Mall> wrapper = new QueryWrapper<>();
-        ((QueryWrapper<Mall>) wrapper).eq("mall_Id", mallId);
-        Mall mall = this.baseMapper.selectOne(wrapper);
+    public MallDto queryMallByCode(String mallCode) {
+    	Mall mall = baseMapper.queryMallByCode(mallCode);
         MallDto dto = new MallDto();
         BeanUtils.copyProperties(mall, dto);
         return dto;

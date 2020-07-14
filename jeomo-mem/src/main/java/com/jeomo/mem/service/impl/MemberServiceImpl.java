@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jeomo.common.service.impl.BaseServiceImpl;
+import com.jeomo.common.util.StringUtils;
 import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.masterdata.service.IMallService;
 import com.jeomo.mem.dto.MemberCardDto;
@@ -39,31 +40,52 @@ public class MemberServiceImpl extends BaseServiceImpl<MemberMapper, Member> imp
 
     @Override
     public MemberCardDto register(MemberRegisterDto registerDto) {
-        MallDto mallDto = mallService.queryMallByMallId(registerDto.getMallId());
+        MallDto mallDto = mallService.queryMallByCode(registerDto.getMallCode());
         Date openTime = new Date();
         Member member = newMember(registerDto, openTime);
-        MemberCard memberCard = memberCardService.openCard(member.getId(), mallDto, openTime);
+        MemberCard memberCard = memberCardService.openCard(member.getCode(), mallDto, openTime);
         MemberCardDto dto = new MemberCardDto();
         BeanUtils.copyProperties(memberCard, dto);
         return dto;
     }
 
     /**
-     * 新的会员
+     * 新增会员
      * @param registerDto
      * @param openTime
      * @return
      */
     private Member newMember(MemberRegisterDto registerDto, Date openTime) {
-        MallDto mallDto = mallService.queryMallByMallId(registerDto.getMallId());
+        MallDto mallDto = mallService.queryMallByCode(registerDto.getMallCode());
         Member member = new Member();
-        BeanUtils.copyProperties(registerDto, member);
         //设置会员注册时间
+        member.setOrgCode(mallDto.getOrgCode());
         member.setOpenTime(openTime);
-        member.setFirstOpenMallId(registerDto.getMallId());
-        member.setOrgId(mallDto.getOrgId());
+        member.setName(registerDto.getName());
+        member.setCode(newMemberCode(mallDto.getOrgCode()));
+        member.setPhone(registerDto.getPhone());
+        member.setFirstOpenMallCode(registerDto.getMallCode());
+        member.setLastAccessTime(openTime);
+        member.setLastAccessMallCode(registerDto.getMallCode());
         this.baseMapper.insert(member);
         return member;
+    }
+    
+    /**
+     * <p>方法名称：生成新的会员code</p>
+     * <p>方法说明：会员CODE由组织号+8位流水号组成， 8位流水号最多可以注册一个亿的会员，完全够一个组织的会员使用</p>
+     * @param orgCode
+     * @return
+     * @author qibotian
+     * @time 2020年7月13日 下午4:16:18
+     */
+    private synchronized String newMemberCode(String orgCode) {
+    	String maxCode = baseMapper.queryMaxMemberCode(orgCode);
+    	int serialNo = 0;
+    	if(!StringUtils.isEmpty(maxCode)) {
+    		serialNo = Integer.valueOf(maxCode.substring(orgCode.length() + 1)) + 1;
+    	}
+    	return orgCode + StringUtils.headerAppend(String.valueOf(serialNo), '0', 8);
     }
 
 }
