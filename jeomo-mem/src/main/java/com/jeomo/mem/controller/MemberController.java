@@ -13,7 +13,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,13 +28,15 @@ import com.jeomo.common.result.annotation.ResponseResult;
 import com.jeomo.common.util.BeanCopyUtil;
 import com.jeomo.mem.dto.MemberCardDto;
 import com.jeomo.mem.dto.MemberRegisterDto;
-import com.jeomo.mem.entity.Member;
 import com.jeomo.mem.enums.MemberLogTypeEnum;
 import com.jeomo.mem.log.MemberLog;
 import com.jeomo.mem.service.IMemberCardService;
 import com.jeomo.mem.service.IMemberService;
 import com.jeomo.mem.vo.LoginVo;
 import com.jeomo.mem.vo.MemberCardVo;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * @Author: qbt
@@ -67,22 +68,10 @@ public class MemberController {
     private String memberRoutingKeyName;
 
 
-    @RequestMapping("/{id}")
+    @PostMapping("register")
     @ResponseBody
-    public Member get(@PathVariable Long id) {
-        return  memberService.getById(id);
-    }
-
-
-    @RequestMapping("/t/{id}")
-    public Member tGet(@PathVariable Long id) {
-        return  memberService.getById(id);
-    }
-
-
-    @RequestMapping("register")
-    @ResponseBody
-    public MemberCardVo register(@RequestBody MemberRegisterDto memberRegisterDto) {
+    @ApiOperation("会员注册接口")
+    public MemberCardVo register(@RequestBody @ApiParam("会员注册表单") MemberRegisterDto memberRegisterDto) {
         MemberCardDto memberCardDto = memberService.register(memberRegisterDto);
         MemberCardVo vo = new MemberCardVo();
         BeanUtils.copyProperties(memberCardDto, vo);

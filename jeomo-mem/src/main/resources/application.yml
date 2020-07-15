@@ -1,11 +1,13 @@
-server:
-  port: 9002
-  dataCenterId: 1 #雪花算法数据中心ID
-  machineId: 1 #雪花算法机器ID
-
 spring:
+  profiles:
+    active: dev
   application:
     name: jeomo-mem
+    title: 久萌会员服务
+    author: 久萌
+    author-url: www.jiumeng.com
+    email: jiumemg@jiu.com
+    description: 久萌会员服务
   jackson:
     defaultPropertyInclusion: NON_EMPTY
   redis:

@@ -1,0 +1,4 @@
+server:
+  port: 9002
+  dataCenterId: 1 #雪花算法数据中心ID
+  machineId: 1 #雪花算法机器ID

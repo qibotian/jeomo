@@ -19,10 +19,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages ={"com.jeomo"})
-public class MemMainApplication {
+public class MemberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MemMainApplication.class,args);
+        SpringApplication.run(MemberApplication.class,args);
 
     }
 

@@ -18,7 +18,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis.plus.version}</version>
         </dependency>
 
         <dependency>
@@ -54,7 +53,6 @@
         <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>
-            <version>${p6spy.version}</version>
         </dependency>
 
         <dependency>
@@ -72,6 +70,12 @@
             <artifactId>shiro-core</artifactId>
             <scope>compile</scope>
         </dependency>
+        <!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+        
     </dependencies>
 
 
