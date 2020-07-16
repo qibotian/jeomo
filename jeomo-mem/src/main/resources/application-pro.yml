@@ -1,0 +1,9 @@
+server:
+  port: 9002
+  dataCenterId: 1 #雪花算法数据中心ID
+  machineId: 1 #雪花算法机器ID
+
+spring:
+  flyway:
+    enabled: false # 生产环境下关闭这个脚本
+
