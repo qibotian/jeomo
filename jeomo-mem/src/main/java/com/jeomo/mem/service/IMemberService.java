@@ -1,7 +1,7 @@
 package com.jeomo.mem.service;
 
 import com.jeomo.common.service.IBaseService;
-import com.jeomo.mem.dto.MemberCardDto;
+import com.jeomo.mem.dto.MemberDto;
 import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.Member;
 
@@ -16,8 +16,12 @@ import com.jeomo.mem.entity.Member;
 public interface IMemberService extends IBaseService<Member> {
 
     /**
-     * 会员注册方法
+     * 
+     * 保存会员基本信息
+     * 以组织号和会员手机号为查询主键， 
+     * 如果已经存在了相应的会员基本信息，
+     * 则进行修改，如果不存在，则新增
      * @return 会员卡号
      */
-    MemberCardDto register(MemberRegisterDto dto);
+	MemberDto memberRegister(MemberRegisterDto dto);
 }

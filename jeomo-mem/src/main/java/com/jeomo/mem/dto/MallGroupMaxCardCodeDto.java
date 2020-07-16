@@ -7,16 +7,16 @@ package com.jeomo.mem.dto;
  */
 public class MallGroupMaxCardCodeDto {
 
-	private Long mallId;
+	private String mallCode;
 	
 	private String maxCardNo;
 
-	public Long getMallId() {
-		return mallId;
+	public String getMallCode() {
+		return mallCode;
 	}
 
-	public void setMallId(Long mallId) {
-		this.mallId = mallId;
+	public void setMallCode(String mallCode) {
+		this.mallCode = mallCode;
 	}
 
 	public String getMaxCardNo() {

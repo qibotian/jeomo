@@ -1,13 +1,22 @@
 package com.jeomo.sys.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.jeomo.common.controller.BaseController;
 import com.jeomo.common.result.annotation.ResponseResult;
-import com.jeomo.common.vo.DataTable;
 import com.jeomo.sys.entity.User;
 import com.jeomo.sys.service.IUserService;
-import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 /**
  * <p>
@@ -30,10 +39,6 @@ public class UserController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="path",name="id",dataType="String",required=true,value="用户Id"),
     })
-    @ApiResponses({
-            @ApiResponse(code=400,message="请求参数无效"),
-            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
-    })
     @PostMapping("/{id}")
     public User get(@PathVariable Long id) {
         return userService.getById(id);
@@ -42,11 +47,6 @@ public class UserController extends BaseController {
     @PostMapping("/detail/{id}")
     public User detail(@PathVariable Long id) {
         return userService.findUserAllInfoById(id);
-    }
-
-    @PostMapping("/list")
-    public DataTable<User> list(@RequestBody DataTable dt) {
-        return userService.pageSearch(dt);
     }
 
     @PostMapping("/del/{id}")

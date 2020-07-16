@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jeomo.common.consts.SearchParam;
 import com.jeomo.common.consts.Sort;
-import com.jeomo.common.dto.PageRequestDto;
 import com.jeomo.common.dto.PageResponseDto;
+import com.jeomo.common.query.PageQuery;
 import com.jeomo.common.service.IBaseService;
 import com.jeomo.common.util.StringUtils;
 
@@ -22,7 +22,7 @@ import com.jeomo.common.util.StringUtils;
 public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M, T> implements IBaseService<T> {
 
     @Override
-    public PageResponseDto pageSearch(PageRequestDto dt) {
+    public PageResponseDto pageSearch(PageQuery dt) {
         IPage<T> page = new Page<T>(dt.getPageNumber(), dt.getPageSize());
         QueryWrapper<T> wrapper = new QueryWrapper<>();
         loadSearchParams(wrapper, dt.getSearchParams());

@@ -2,8 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeomo.mem.mapper.MemberMapper">
 	
+	
+	<sql id="baseSelect">
+		select id, org_code, code, name, phone, email, address, id_card, birthday, sex, last_access_time, first_open_mall_code, open_time, version, last_access_mall_code from member 
+	</sql>
+	
+	
 	<select id="queryMaxMemberCode" parameterType="string" resultType="String">
 		select max(code) from member where org_code = #{orgCode}
 	</select>
+	
+	
+	<select id = "queryMemberByOrgCodeAndPhone" parameterType="com.jeomo.mem.query.QueryMemberByOrgCodeAndPhone" resultType="Member">
+		<include refid = "baseSelect"></include>
+		
+		where phone = #{phone} and org_code = #{orgCode}
+		
+	</select>
+	
+	
+	<insert id="saveMemberIfAbsent" parameterType="Member">
+		INSERT IGNORE INTO member 
+		(id, org_code, code, name, phone, email, address, id_card, birthday, sex, last_access_time, first_open_mall_code, open_time, version, last_access_mall_code) 
+		values
+		(#{id}, #{orgCode}, #{code}, #{name}, #{phone}, #{email}, #{address}, #{idCard}, #{birthday}, #{sex, typeHandler=com.baomidou.mybatisplus.extension.handlers.EnumTypeHandler}, #{lastAccessTime}, #{firstOpenMallCode}, #{openTime}, #{version}, #{lastAccessMallCode})
+	</insert>
 	
 </mapper>

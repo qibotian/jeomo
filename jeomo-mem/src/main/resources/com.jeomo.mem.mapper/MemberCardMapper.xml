@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeomo.mem.mapper.MemberCardMapper">
 
-    <select id="selectPage" resultType="com.jeomo.mem.entity.MemberCard">
-      SELECT
+	<!-- 基础查询 -->
+	<sql id="baseSelect">
+	  SELECT
         member.`name`,
         member.phone,
         member.sex,
@@ -20,15 +21,38 @@
         member_card.`status`,
         member_card.version
       FROM member_card JOIN member ON member_card.member_code = member.code
+	</sql>
+
+
+    <select id="selectPage" resultType="MemberCard">
+      <include refid="baseSelect"></include>
       ${ew.customSqlSegment}
     </select>
-	
+    
+    <!-- 根据会员号和门店号查询会员卡号 -->
+    <select id="selectByMemberCodeAndMallCode" parameterType = "com.jeomo.mem.query.QueryMemberCardByMemberCodeAndMallGroupCode" resultType="MemberCard">
+    	<include refid="baseSelect"></include>
+    	where member_card.member_code = #{memberCode} and member_card.mall_group_code = #{mallGroupCode}
+    </select>
+    
+     <!-- 根据会员卡号查找会员 -->
+    <select id="queryByCode" parameterType = "String" resultType="MemberCard">
+    	<include refid="baseSelect"></include>
+    	where member_card.code = #{code}
+    </select>
+    
+    
+    
+	<!-- 查询购物中心群组最大的卡号  -->
 	<select id="selectMaxCardNo" resultType="com.jeomo.mem.dto.MallGroupMaxCardCodeDto">
 		select mall_group_code as group_code, max(code) as max_card_no from member_card group by mall_group_code
 	</select>
 	
+	<!-- 查询购物中心群组最大的卡号  以购物中心分组-->
 	<select id="queryMallGroupMaxCadeCode" resultType="String">
 		select max(code) as max_code from member_card group by mall_group_code
 	</select>
+	
+	
 
 </mapper>

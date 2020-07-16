@@ -1,8 +1,8 @@
 package com.jeomo.common.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.jeomo.common.dto.PageRequestDto;
 import com.jeomo.common.dto.PageResponseDto;
+import com.jeomo.common.query.PageQuery;
 
 /**
  * @Author: qbt
@@ -16,6 +16,6 @@ public interface IBaseService<T> extends IService<T> {
      * @param dt
      * @return
      */
-	PageResponseDto pageSearch(PageRequestDto pageRequest);
+	PageResponseDto pageSearch(PageQuery pageRequest);
 
 }

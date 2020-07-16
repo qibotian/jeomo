@@ -1,4 +1,4 @@
-package com.jeomo.common.dto;
+package com.jeomo.common.vo;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ApiModel("分页查询")
-public class PageRequestDto implements Serializable {
+public class PageRequestVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

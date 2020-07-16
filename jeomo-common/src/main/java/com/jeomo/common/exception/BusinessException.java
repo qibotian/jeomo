@@ -9,10 +9,10 @@ import lombok.Getter;
  * @Version 1.0
  */
 
-@Getter
 public class BusinessException extends RuntimeException {
-
-    private ResultCode resultCode;
+	private static final long serialVersionUID = 1L;
+	
+	private ResultCode resultCode;
 
     public BusinessException(String msg) {
         super(msg);
@@ -23,5 +23,8 @@ public class BusinessException extends RuntimeException {
         this.resultCode = resultCode;
     }
 
+	public ResultCode getResultCode() {
+		return resultCode;
+	}
 
 }

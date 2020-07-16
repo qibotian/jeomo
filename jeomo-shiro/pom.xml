@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>jeomo</artifactId>
         <groupId>com.jeomo</groupId>
@@ -21,14 +21,21 @@
         <dependency>
             <groupId>org.crazycake</groupId>
             <artifactId>shiro-redis</artifactId>
-            <version>3.1.0</version>
             <exclusions>
+            	<!-- 排除掉自帶的shiro框架， 使用項目中帶的 -->
                 <exclusion>
                     <groupId>org.apache.shiro</groupId>
                     <artifactId>shiro-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
+        
+        <!-- 修补shiro-redis 中的com.sun.tools的引用问题 -->
+        <dependency>
+          <groupId>com.sun</groupId>
+          <artifactId>tools</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>com.jeomo</groupId>
             <artifactId>jeomo-sys</artifactId>
