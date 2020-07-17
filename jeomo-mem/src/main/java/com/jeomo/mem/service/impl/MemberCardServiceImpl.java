@@ -10,12 +10,12 @@ import com.jeomo.common.util.BeanCopyUtil;
 import com.jeomo.common.util.StringUtils;
 import com.jeomo.masterdata.dto.MallDto;
 import com.jeomo.masterdata.service.IMallService;
-import com.jeomo.mem.dto.MemberCardDto;
 import com.jeomo.mem.dto.MemberDto;
-import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.MemberCard;
 import com.jeomo.mem.enums.MemberCardStatusEnums;
 import com.jeomo.mem.exceptions.PhoneHasRegisterExcetion;
+import com.jeomo.mem.intf.dto.MemberCardDto;
+import com.jeomo.mem.intf.dto.MemberRegisterDto;
 import com.jeomo.mem.mapper.MemberCardMapper;
 import com.jeomo.mem.query.QueryMemberCardByMemberCodeAndMallGroupCode;
 import com.jeomo.mem.service.IMemberCardService;
@@ -52,7 +52,7 @@ public class MemberCardServiceImpl extends BaseServiceImpl<MemberCardMapper, Mem
         MemberDto member = memberService.memberRegister(registerDto);
         //首先查找该会员是否已经在本店开过卡
         QueryMemberCardByMemberCodeAndMallGroupCode queryMemberCardByMemberCodeAndMallCode = new QueryMemberCardByMemberCodeAndMallGroupCode(member.getCode(), mallDto.getGroupCode());
-		MemberCard card = selectByMemberCodeAndMallCode(queryMemberCardByMemberCodeAndMallCode );
+		MemberCard card = baseMapper.selectByMemberCodeAndMallCode(queryMemberCardByMemberCodeAndMallCode);
         if(card != null) {
         	throw new PhoneHasRegisterExcetion();
         }
@@ -71,8 +71,8 @@ public class MemberCardServiceImpl extends BaseServiceImpl<MemberCardMapper, Mem
     }
 
 	@Override
-	public MemberCard selectByMemberCodeAndMallCode(QueryMemberCardByMemberCodeAndMallGroupCode queryMemberCardByMemberCodeAndMallCode) {
-		return baseMapper.selectByMemberCodeAndMallCode(queryMemberCardByMemberCodeAndMallCode);
+	public MemberCardDto selectByMemberCodeAndMallCode(QueryMemberCardByMemberCodeAndMallGroupCode queryMemberCardByMemberCodeAndMallCode) {
+		return coverMemberCard2Dto(baseMapper.selectByMemberCodeAndMallCode(queryMemberCardByMemberCodeAndMallCode));
 	}
 
 	@Override

@@ -1,22 +1,24 @@
 package com.jeomo.sys.entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jeomo.common.entity.BaseEntity;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 /**
  * <p>
+ *	系统用户
+ *	用户应是组织隔离的
+ *	但是用户名应当唯一，可以使用业务规定用户名唯一，比如使用企业邮箱等作为用户名
  *
  * </p>
- *
  * @author jeomo
  * @since 2019-03-22
  */
@@ -25,22 +27,32 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 @TableName("sys_user")
-public class User extends BaseEntity {
+public class User extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 姓名
+     * 所属组织
      */
-    private String name;
+    private String orgCode;
+    
+    /**
+     * 所属购物中心
+     */
+    private String mallCode;
+    
+    /**
+     * 用户名/登录名
+     */
+    private String username;
+    
+    /**
+     * 用户姓名，昵称
+     */
+    private String nickname;
 
     /**
-     * 登录名
-     */
-    private String loginName;
-
-    /**
-     * 密码
+     * 用户密码
      */
     private transient String password;
 
@@ -68,7 +80,7 @@ public class User extends BaseEntity {
      * 最后访问时间
      */
     private Date lastAccessTime;
-
+    
     /**
      * 角色
      */

@@ -1,20 +1,21 @@
 package com.jeomo.sys.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jeomo.common.entity.BaseEntity;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * <p>
- * 角色
+ * 系统角色
+ * 角色应是组织分离的
+ * 即每个组织都有自己的角色体系
  * </p>
- *
  * @author jeomo
  * @since 2019-03-22
  */
@@ -22,12 +23,18 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("sys_role")
-public class Role extends BaseEntity {
+public class Role extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
+    
+    /**
+     * 组织码
+     */
+    private String orgCode;
 
     /**
      * 角色代码
+     * 默认生成规则为 组织码+序列号
      */
     private String code;
 
@@ -35,7 +42,7 @@ public class Role extends BaseEntity {
      * 角色名称
      */
     private String name;
-
+    
     /**
      * 角色拥有的菜单
      */

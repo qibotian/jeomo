@@ -1,7 +1,7 @@
 package com.jeomo.common.result.handler;
 
-import com.jeomo.common.exception.BusinessException;
-import com.jeomo.common.result.DefaultErrorResult;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolationException;
+import com.jeomo.common.exception.BusinessException;
+import com.jeomo.common.result.DefaultErrorResult;
 
 /**
  * 统一异常处理
@@ -28,15 +28,15 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class GlobalExceptionHandler extends BaseGlobalExceptionHandler{
 
-    /**
-     *  处理400类异常
-     * */
-    @Override
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(ConstraintViolationException.class)
-    public DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
-        return super.handleConstraintViolationException(e, request);
-    }
+//    /**
+//     *  处理400类异常
+//     * */
+//    @Override
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(ConstraintViolationException.class)
+//    public DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
+//        return super.handleConstraintViolationException(e, request);
+//    }
 
     @Override
     @ResponseStatus(HttpStatus.BAD_REQUEST)

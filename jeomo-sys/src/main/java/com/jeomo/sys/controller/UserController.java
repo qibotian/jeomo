@@ -1,6 +1,7 @@
 package com.jeomo.sys.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,14 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jeomo.common.controller.BaseController;
 import com.jeomo.common.result.annotation.ResponseResult;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.sys.dto.UserDto;
 import com.jeomo.sys.entity.User;
 import com.jeomo.sys.service.IUserService;
+import com.jeomo.sys.vo.UserVo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 /**
  * <p>
@@ -37,21 +40,17 @@ public class UserController extends BaseController {
 
     @ApiOperation("获取用户详情")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType="path",name="id",dataType="String",required=true,value="用户Id"),
+    	@ApiImplicitParam(paramType="path",name="username",dataType="String", required=true, value="用户名"),
     })
-    @PostMapping("/{id}")
-    public User get(@PathVariable Long id) {
-        return userService.getById(id);
+    @GetMapping("/info/{username}")
+    public UserVo detail(@PathVariable String username) {
+    	UserDto userDto = userService.findByUsername(username);
+        return coverDto2Vo(userDto);
     }
 
-    @PostMapping("/detail/{id}")
-    public User detail(@PathVariable Long id) {
-        return userService.findUserAllInfoById(id);
-    }
-
-    @PostMapping("/del/{id}")
-    public boolean del(@PathVariable Long id) {
-        return userService.removeById(id);
+    @PostMapping("/del/{username}")
+    public int del(@PathVariable String username) {
+        return userService.removeByUsername(username);
     }
 
     @PostMapping("/save")
@@ -64,10 +63,14 @@ public class UserController extends BaseController {
         return userService.updateById(user);
     }
 
-    @PostMapping("/find/{loginName}")
-    public User selectByLoginName(@PathVariable String loginName) {
-        return userService.findUserByLoginName(loginName);
+    private UserVo coverDto2Vo(UserDto userDto) {
+    	if(userDto != null) {
+    		UserVo userVo = new UserVo();
+        	BeanCopyUtil.copyProperties(userDto, userVo);
+        	return userVo;
+    	}
+    	return null;
     }
-
-
+    
+    
 }

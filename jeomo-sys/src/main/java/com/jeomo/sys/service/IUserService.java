@@ -1,6 +1,7 @@
 package com.jeomo.sys.service;
 
 import com.jeomo.common.service.IBaseService;
+import com.jeomo.sys.dto.UserDto;
 import com.jeomo.sys.entity.User;
 
 /**
@@ -18,14 +19,13 @@ public interface IUserService extends IBaseService<User> {
      * @param name
      * @return
      */
-    public User findUserByLoginName(String name);
-
+    public int removeByUsername(String username);
+    
     /**
-     * 根据用户id查询用户全部信息
-     * @param id
+     * 根据用户名查询号用户
+     * @param name
      * @return
      */
-    public User findUserAllInfoById(Long id);
-
+    public UserDto findByUsername(String username);
 
 }

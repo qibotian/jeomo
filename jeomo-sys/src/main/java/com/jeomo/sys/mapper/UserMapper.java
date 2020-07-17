@@ -19,17 +19,19 @@ import org.springframework.cache.annotation.CacheConfig;
 public interface UserMapper extends IBaseMapper<User> {
 
     /**
-     * 根据登录名查询
+     * 根据用户名查询用户信息
      * @param loginName
      * @return
      */
-    User selectByLoginName(@NonNull String loginName);
-
+    User queryByUsername(@NonNull String username);
+    
     /**
-     * 根据ID查询用户全部信息
-     * @param id
+     * <p>方法名称：根据用户名删除用户</p>
+     * @param username
      * @return
+     * @author qibotian
+     * @time 2020年7月17日 下午2:13:16
      */
-    User selectAllInfoById(@NonNull Long id);
+    int removeByUsername(@NonNull String username);
 
 }

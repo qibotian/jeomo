@@ -1,9 +1,12 @@
 package com.jeomo.shiro.bean;
 
 import com.jeomo.common.util.StringUtils;
+
+import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.util.WebUtils;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -16,6 +19,7 @@ import java.io.Serializable;
  * @Version 1.0
  */
 
+@Component("sessionManager")
 public class MySessionManager extends DefaultWebSessionManager {
 
     private static final String AUTHORIZATION = "Authorization";
@@ -43,4 +47,11 @@ public class MySessionManager extends DefaultWebSessionManager {
             return null;
         }
     }
+    
+    @Override
+    public void setSessionDAO(SessionDAO sessionDAO) {
+    	super.setSessionDAO(sessionDAO);
+    }
+    
+    
 }

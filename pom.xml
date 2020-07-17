@@ -1,177 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jeomo</groupId>
-    <artifactId>jeomo</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>jeomo-mem</module>
-        <module>jeomo-web</module>
-        <module>jeomo-common</module>
-        <module>jeomo-sys</module>
-        <module>jeomo-public-dependencies</module>
-        <module>jeomo-gateway</module>
-        <module>jeomo-shiro</module>
-        <module>jeomo-masterdata</module>
-        <module>jeomo-order</module>
-        <module>jeomo-flashSale</module>
-        <module>jeomo-masterdata-intf</module>
-        <module>jeomo-points</module>
-        <module>jeomo-crawler</module>
-        <module>jeomo-mem-intf</module>
-        <module>jeomo-bonus</module>
-    </modules>
-    <packaging>pom</packaging>
+	<groupId>com.jeomo</groupId>
+	<artifactId>jeomo</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.7.RELEASE</version>
-    </parent>
+	<modules>
+		<!-- eureka注册中心 -->
+		<module>jeomo-eureka</module>
+		<!-- 会员接口及其核心包 -->
+		<module>jeomo-mem-intf</module>
+		<module>jeomo-mem</module>
+
+		<module>jeomo-web</module>
+		<module>jeomo-common</module>
+		<module>jeomo-sys</module>
+		<module>jeomo-public-dependencies</module>
+		<module>jeomo-gateway</module>
+		<module>jeomo-shiro</module>
+		<module>jeomo-masterdata</module>
+		<module>jeomo-order</module>
+		<module>jeomo-flashSale</module>
+		<module>jeomo-masterdata-intf</module>
+		<module>jeomo-points</module>
+		<module>jeomo-crawler</module>
+		<module>jeomo-bonus</module>
 
 
-    <name>jeomo</name>
-    <url>http://www.jeomo.com</url>
+	</modules>
+	<packaging>pom</packaging>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <lambok.version>1.16.4</lambok.version>
-        <mybatis.plus.version>3.1.0</mybatis.plus.version>
-        <druid.version>1.1.10</druid.version>
-        <p6spy.version>3.8.1</p6spy.version>
-        <dubbo.spring.boot.starter.version>0.2.1</dubbo.spring.boot.starter.version>
-        <fastJson.version>1.2.56</fastJson.version>
-        <springfox.swagger2.version>2.6.1</springfox.swagger2.version>
-        <springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+	</parent>
 
-        <shiro.spring.boot.web.starter>1.4.0</shiro.spring.boot.web.starter>
-        <shiro.core.version>1.4.0</shiro.core.version>
-        <shiro.redis.version>3.1.0</shiro.redis.version>
 
-        <redisson.version>3.12.5</redisson.version>
-        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+	<name>jeomo</name>
+	<url>http://www.jeomo.com</url>
 
-        <flywaydb.version>5.2.4</flywaydb.version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<lambok.version>1.16.4</lambok.version>
+		<mybatis.plus.version>3.1.0</mybatis.plus.version>
+		<druid.version>1.1.10</druid.version>
+		<p6spy.version>3.8.1</p6spy.version>
+		<fastJson.version>1.2.56</fastJson.version>
+		<springfox.swagger2.version>2.6.1</springfox.swagger2.version>
+		<springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
 
-    </properties>
+		<shiro.spring.boot.web.starter>1.4.0</shiro.spring.boot.web.starter>
+		<shiro.core.version>1.4.0</shiro.core.version>
+		<shiro.redis.version>3.1.0</shiro.redis.version>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lambok.version}</version>
-            </dependency>
+		<redisson.version>3.12.5</redisson.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis.plus.version}</version>
-            </dependency>
+		<flywaydb.version>5.2.4</flywaydb.version>
+		
+		<spring.cloud.version>Hoxton.SR6</spring.cloud.version>
 
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
+	</properties>
 
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastJson.version}</version>
-            </dependency>
-
-            <!-- swagger -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox.swagger2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox.swagger.ui.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring-boot-web-starter</artifactId>
-                <version>${shiro.spring.boot.web.starter}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-core</artifactId>
-                <version>${shiro.core.version}</version>
-            </dependency>
+	<dependencyManagement>
+		<dependencies>
 			<dependency>
-	            <groupId>org.crazycake</groupId>
-	            <artifactId>shiro-redis</artifactId>
-	            <version>${shiro.redis.version}</version>
-	            <exclusions>
-	                <exclusion>
-	                    <groupId>org.apache.shiro</groupId>
-	                    <artifactId>shiro-core</artifactId>
-	                </exclusion>
-	            </exclusions>
-	        </dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lambok.version}</version>
+			</dependency>
 
-	        <!-- 修补shiro-redis 中的com.sun.tools的引用问题 -->
-	        <!--<dependency>-->
-	          <!--<groupId>com.sun</groupId>-->
-	          <!--<artifactId>tools</artifactId>-->
-	          <!--<version>${tools.jar.version}</version>-->
-	          <!--<scope>system</scope>-->
-	          <!--<systemPath>${java.home}/lib/tools.jar</systemPath>-->
-	        <!--</dependency>-->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis.plus.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>p6spy</groupId>
-                <artifactId>p6spy</artifactId>
-                <version>${p6spy.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-annotation</artifactId>
+				<version>${mybatis.plus.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>${redisson.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-core</artifactId>
-                <version>${flywaydb.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastJson.version}</version>
+			</dependency>
 
-        </dependencies>
-    </dependencyManagement>
+			<!-- swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springfox.swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springfox.swagger.ui.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring-boot-web-starter</artifactId>
+				<version>${shiro.spring.boot.web.starter}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.crazycake</groupId>
+				<artifactId>shiro-redis</artifactId>
+				<version>${shiro.redis.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.shiro</groupId>
+						<artifactId>shiro-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- 修补shiro-redis 中的com.sun.tools的引用问题 -->
+			<dependency>
+				<groupId>com.sun</groupId>
+				<artifactId>tools</artifactId>
+				<version>${tools.jar.version}</version>
+				<scope>system</scope>
+				<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+			</dependency>
+
+			<dependency>
+				<groupId>p6spy</groupId>
+				<artifactId>p6spy</artifactId>
+				<version>${p6spy.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-core</artifactId>
+				<version>${flywaydb.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
 
-    <dependencies>
+	<dependencies>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
-        <!-- 热加载 -->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-devtools</artifactId>-->
-        <!--<optional>false</optional>-->
-        <!--<scope>true</scope>-->
-        <!--</dependency>-->
-    </dependencies>
+		<!-- 热加载 -->
+		<!--<dependency> -->
+		<!--<groupId>org.springframework.boot</groupId> -->
+		<!--<artifactId>spring-boot-devtools</artifactId> -->
+		<!--<optional>false</optional> -->
+		<!--<scope>true</scope> -->
+		<!--</dependency> -->
+	</dependencies>
 
 
 </project>

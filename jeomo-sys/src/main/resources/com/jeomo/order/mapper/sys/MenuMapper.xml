@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeomo.sys.mapper.MenuMapper">
-    <resultMap id="menuListResult" type="menu">
-        <id property="id" column="m_id"></id>
-        <result property="label" column="m_label"></result>
-        <result property="path" column="m_path"></result>
-        <result property="parentId" column="m_parent_id"></result>
-        <result property="sort" column="m_sort"></result>
-        <result property="createTime" column="m_create_time"></result>
-        <result property="createUserId" column="m_create_user_id"></result>
-        <result property="lastModifyTime" column="m_last_modify_time"></result>
-        <result property="lastModifyUserId" column="m_last_modify_user_id"></result>
-        <result property="version" column="m_version"></result>
-    </resultMap>
 
-    <sql id="base_select">
-        select  m.id m_id, m.path m_path, m.label m_label, m.sort m_sort, m.parent_id m_parent_id, m.create_time m_create_time, m.create_user_id m_create_user_id, m.last_modify_time m_last_modify_time, m.last_modify_user_id m_last_modify_user_id, m.version m_version from sys_menu m
-    </sql>
-
-    <sql id="base_sort">
-        order by m.sort asc
-    </sql>
-
-    <select id="selectByParentId" resultMap="menuListResult">
-        <include refid="base_select"/> WHERE m.parent_id = #{parentId} <include refid="base_sort"/>
-    </select>
-
-    <select id="selectLikeByLabel" resultMap="menuListResult">
-        <include refid="base_select"/> WHERE m.label like "%"#{label}"%" <include refid="base_sort"/>
+    <select id="queryByParentCode" parameterType="string" resultMap="menuListResult">
+        select * from sys_menu WHERE m.parent_code = #{parentCode} order by sort asc
     </select>
 
 </mapper>

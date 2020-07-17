@@ -1,10 +1,13 @@
 package com.jeomo.sys.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.jeomo.common.service.impl.BaseServiceImpl;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.sys.dto.UserDto;
 import com.jeomo.sys.entity.User;
 import com.jeomo.sys.mapper.UserMapper;
 import com.jeomo.sys.service.IUserService;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -18,13 +21,22 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements IUserService {
 
     @Override
-    public User findUserByLoginName(String loginName) {
-        return this.baseMapper.selectByLoginName(loginName);
+    public UserDto findByUsername(String username) {
+    	User user = this.baseMapper.queryByUsername(username);
+        return coverUser2Dto(user);
     }
-
+    
+    
     @Override
-    public User findUserAllInfoById(Long id) {
-        return this.baseMapper.selectAllInfoById(id);
+    public int removeByUsername(String username) {
+    	return baseMapper.removeByUsername(username);
     }
 
+    private UserDto coverUser2Dto(User user) {
+    	UserDto dto = new UserDto();
+    	BeanCopyUtil.copyProperties(user, dto);
+		return dto;
+    }
+    
+    
 }

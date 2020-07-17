@@ -1,7 +1,7 @@
 package com.jeomo.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jeomo.common.entity.BaseEntity;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -18,19 +18,18 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("sys_role_menu")
-public class RoleMenu extends BaseEntity {
+public class RoleMenu extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 角色id
      */
-    private Integer roleId;
+    private String roleCode;
 
     /**
      * 菜单ID
      */
-    private Integer menuId;
-
+    private Integer menuCode;
 
 }

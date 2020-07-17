@@ -1,7 +1,7 @@
 package com.jeomo.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jeomo.common.entity.BaseEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,19 +22,18 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sys_user_role")
-public class UserRole extends BaseEntity {
+public class UserRole extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 用户ID
      */
-    private Long userId;
+    private String username;
 
     /**
      * 角色ID
      */
-    private Long roleId;
-
-
+    private String roleCode;
+    
 }

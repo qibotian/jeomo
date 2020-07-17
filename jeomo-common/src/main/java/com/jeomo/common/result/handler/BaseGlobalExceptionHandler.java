@@ -17,7 +17,6 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 /**
@@ -30,14 +29,14 @@ public class BaseGlobalExceptionHandler {
 
     private Logger log = LoggerFactory.getLogger(BaseGlobalExceptionHandler.class);
 
-    /**
-     * 违反约束异常
-     */
-    protected DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
-        log.info("handleConstraintViolationException start, uri:{}, caused by: ", request.getRequestURI(), e);
-        List<ParameterInvalidItem> parameterInvalidItemList = ParameterInvalidItemHelper.convertCVSetToParameterInvalidItemList(e.getConstraintViolations());
-        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
-    }
+//    /**
+//     * 违反约束异常
+//     */
+//    protected DefaultErrorResult handleConstraintViolationException(ConstraintViolationException e, HttpServletRequest request) {
+//        log.info("handleConstraintViolationException start, uri:{}, caused by: ", request.getRequestURI(), e);
+//        List<ParameterInvalidItem> parameterInvalidItemList = ParameterInvalidItemHelper.convertCVSetToParameterInvalidItemList(e.getConstraintViolations());
+//        return DefaultErrorResult.failure(ResultCode.PARAM_IS_INVALID, e, HttpStatus.BAD_REQUEST, parameterInvalidItemList);
+//    }
 
     /**
      * 处理验证参数封装错误时异常

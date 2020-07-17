@@ -1,21 +1,18 @@
 package com.jeomo.sys.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jeomo.common.consts.SearchParam;
-import com.jeomo.common.service.impl.BaseServiceImpl;
-import com.jeomo.common.util.StringUtils;
-import com.jeomo.sys.entity.UserRole;
-import com.jeomo.sys.service.IUserRoleService;
-import com.jeomo.sys.mapper.UserRoleMapper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jeomo.common.service.impl.BaseServiceImpl;
+import com.jeomo.sys.entity.UserRole;
+import com.jeomo.sys.mapper.UserRoleMapper;
+import com.jeomo.sys.service.IUserRoleService;
 
 /**
  * <p>
@@ -32,37 +29,37 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRoleMapper, UserRol
     UserRoleMapper userRoleMapper;
 
     @Override
-    public void deleteByUserId(Long userId) {
-        Wrapper<UserRole> wrapper = new QueryWrapper<>();
-        ((QueryWrapper<UserRole>) wrapper).eq("user_id", userId);
+    public void deleteByUsername(String username) {
+    	QueryWrapper<UserRole> wrapper = new QueryWrapper<UserRole>();
+    	wrapper.eq("username", username);
         userRoleMapper.delete(wrapper);
     }
 
     @Override
-    public void deleteByUserIds(Long[] userIds) {
-        Wrapper<UserRole> wrapper = new QueryWrapper<>();
-        ((QueryWrapper<UserRole>) wrapper).in("user_id",userIds);
+    public void deleteByUsernames(String[] usernames) {
+    	QueryWrapper<UserRole> wrapper = new QueryWrapper<>();
+    	wrapper.in("username", Arrays.asList(usernames));
         userRoleMapper.delete(wrapper);
     }
 
 
     @Override
-    public void insertUserRole(Long userId, Long[] roleIds) {
-        List<UserRole> userRoles = Arrays.stream(roleIds).parallel().map(roleId -> {
-            return new UserRole(userId, roleId);
+    public void insertUserRole(String username, String[] roleCodes) {
+        List<UserRole> userRoles = Arrays.stream(roleCodes).parallel().map(roleCode -> {
+            return new UserRole(username, roleCode);
         }).collect(Collectors.toList());
         saveBatch(userRoles);
     }
 
     @Override
-    public void insertUserRoles(Long[] userIds, Long[] roleIds) {
+    public void insertUserRoles(String[] usernames, String[] roleCodes) {
         List<UserRole> userRoles = new ArrayList<>();
-        Arrays.stream(userIds).forEach(userId -> {
-            userRoles.addAll(Arrays.stream(roleIds).parallel().map(roleId -> {
-                return new UserRole(userId, roleId);
+        Arrays.stream(usernames).forEach(username -> {
+            userRoles.addAll(Arrays.stream(roleCodes).parallel().map(roleCode -> {
+                return new UserRole(username, roleCode);
             }).collect(Collectors.toList()));
         });
-        deleteByUserIds(userIds);
+        deleteByUsernames(usernames);
         saveBatch(userRoles);
     }
 }

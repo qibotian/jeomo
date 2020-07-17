@@ -1,9 +1,9 @@
 package com.jeomo.mem.service;
 
 import com.jeomo.common.service.IBaseService;
-import com.jeomo.mem.dto.MemberCardDto;
-import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.MemberCard;
+import com.jeomo.mem.intf.dto.MemberCardDto;
+import com.jeomo.mem.intf.dto.MemberRegisterDto;
 import com.jeomo.mem.query.QueryMemberCardByMemberCodeAndMallGroupCode;
 
 /**
@@ -30,7 +30,7 @@ public interface IMemberCardService extends IBaseService<MemberCard> {
 	 * @author qibotian
 	 * @time 2020年7月16日 下午3:34:10
 	 */
-	MemberCard selectByMemberCodeAndMallCode(QueryMemberCardByMemberCodeAndMallGroupCode queryMemberCardByMemberCodeAndMallCode);
+	MemberCardDto selectByMemberCodeAndMallCode(QueryMemberCardByMemberCodeAndMallGroupCode queryMemberCardByMemberCodeAndMallCode);
 	
 	/**
 	 * 

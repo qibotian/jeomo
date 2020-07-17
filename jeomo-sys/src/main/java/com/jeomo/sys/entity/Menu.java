@@ -1,12 +1,13 @@
 package com.jeomo.sys.entity;
 
+import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jeomo.common.entity.BaseEntity;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 /**
  * <p>
@@ -20,9 +21,14 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("sys_menu")
-public class Menu extends BaseEntity {
+public class Menu extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
+    
+    /**
+     * 菜单编号
+     */
+    private String code;
 
     /**
      * 菜单名称
@@ -37,17 +43,17 @@ public class Menu extends BaseEntity {
     /**
      * 父ID
      */
-    private Long parentId;
-
-    /**
-     * 子菜单
-     */
-    private List<Menu> children;
+    private String parentCode;
 
     /**
      * 排序
      */
     private int sort;
-
-
+    
+    /**
+     * 子菜单
+     */
+    @TableField(exist=false)
+    private List<Menu> children;
+    
 }

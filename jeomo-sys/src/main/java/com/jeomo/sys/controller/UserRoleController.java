@@ -19,8 +19,8 @@ public class UserRoleController extends BaseController {
     private IUserRoleService userRoleService;
 
     @PostMapping("/save")
-    public boolean save(Long userId, Long[] roleIds) {
-        userRoleService.insertUserRole(userId, roleIds);
+    public boolean save(String username, String[] roleCodes) {
+        userRoleService.insertUserRole(username, roleCodes);
         return true;
     }
 

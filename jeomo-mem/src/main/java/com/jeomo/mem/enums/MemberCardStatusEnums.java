@@ -24,8 +24,6 @@ public enum MemberCardStatusEnums{
 	 * 注销
 	 */
 	CLOSED(2, "已注销")
-	
-	
 	;
 	
 

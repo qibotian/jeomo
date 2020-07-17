@@ -1,12 +1,11 @@
 package com.jeomo.sys.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.jeomo.common.service.impl.BaseServiceImpl;
 import com.jeomo.sys.entity.Role;
-import com.jeomo.sys.service.IRoleService;
 import com.jeomo.sys.mapper.RoleMapper;
-import com.jeomo.sys.service.IUserRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.jeomo.sys.service.IRoleService;
 
 /**
  * <p>

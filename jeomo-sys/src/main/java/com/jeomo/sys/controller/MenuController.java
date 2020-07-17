@@ -55,9 +55,4 @@ public class MenuController extends BaseController {
         return menuService.updateById(menu);
     }
 
-    @PostMapping("/selectLikeByLabel")
-    public  List<Menu> selectLikeByLabel(@RequestBody String label) {
-        return menuService.selectLikeByLabel(label);
-    }
-
 }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.jeomo.common.entity.BaseEntity;
 import com.jeomo.common.result.enums.SexEnum;
-import com.jeomo.mem.enums.MemberRegisterTypeEnum;
+import com.jeomo.mem.intf.enums.MemberRegisterTypeEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

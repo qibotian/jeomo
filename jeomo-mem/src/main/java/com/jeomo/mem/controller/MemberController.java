@@ -18,10 +18,10 @@ import com.jeomo.common.result.annotation.ResponseResult;
 import com.jeomo.common.util.BeanCopyUtil;
 import com.jeomo.common.vo.PageRequestVo;
 import com.jeomo.common.vo.PageResponseVo;
-import com.jeomo.mem.dto.MemberCardDto;
-import com.jeomo.mem.dto.MemberRegisterDto;
+import com.jeomo.mem.intf.dto.MemberCardDto;
+import com.jeomo.mem.intf.dto.MemberRegisterDto;
+import com.jeomo.mem.intf.vo.MemberCardVo;
 import com.jeomo.mem.service.IMemberCardService;
-import com.jeomo.mem.vo.MemberCardVo;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

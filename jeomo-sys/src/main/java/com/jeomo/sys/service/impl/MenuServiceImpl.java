@@ -1,12 +1,16 @@
 package com.jeomo.sys.service.impl;
 
-import com.jeomo.common.service.impl.BaseServiceImpl;
-import com.jeomo.sys.entity.Menu;
-import com.jeomo.sys.service.IMenuService;
-import com.jeomo.sys.mapper.MenuMapper;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.jeomo.common.service.impl.BaseServiceImpl;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.sys.dto.MenuDto;
+import com.jeomo.sys.entity.Menu;
+import com.jeomo.sys.mapper.MenuMapper;
+import com.jeomo.sys.service.IMenuService;
 
 /**
  * <p>
@@ -18,29 +22,24 @@ import java.util.List;
  */
 @Service
 public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implements IMenuService {
-
-    private final static long TOP_MENU_ID = 0L;
-
+	
     @Override
-    public List<Menu> list() {
-        return listAllChildren(TOP_MENU_ID);
-    }
-
-    @Override
-    public List<Menu> listAllChildren(Long parentId) {
-        List<Menu> menus = this.baseMapper.selectByParentId(parentId);
+    public List<MenuDto> listAllChildren(String parentCode) {
+        List<Menu> menus = this.baseMapper.queryByParentCode(parentCode);
         if(menus != null) {
             menus.forEach(menu -> {
-                System.out.println(menu);
-                menu.setChildren(listAllChildren(menu.getId()));
+                menu.setChildren(this.baseMapper.queryByParentCode(menu.getCode()));
             });
         }
-        return menus;
+        return coverMenu2Dots(menus);
     }
 
-    @Override
-    public List<Menu> selectLikeByLabel(String label) {
-        return baseMapper.selectLikeByLabel(label);
+    private List<MenuDto> coverMenu2Dots(List<Menu> menus) {
+    	List<MenuDto> dots = new ArrayList<>();
+    	if(menus != null) {
+    		return BeanCopyUtil.copyListProperties(menus, MenuDto::new);
+    	}
+    	return dots;
     }
 
 }

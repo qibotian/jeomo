@@ -1,6 +1,7 @@
 package com.jeomo.sys.service;
 
 import com.jeomo.common.service.IBaseService;
+import com.jeomo.sys.dto.MenuDto;
 import com.jeomo.sys.entity.Menu;
 
 import java.util.List;
@@ -20,13 +21,6 @@ public interface IMenuService extends IBaseService<Menu> {
      * @param parentId 父节点ID
      * @return
      */
-    List<Menu> listAllChildren(Long parentId);
-
-    /**
-     * 根据babel相似查询
-     * @param label
-     * @return
-     */
-    List<Menu> selectLikeByLabel(String label);
+    List<MenuDto> listAllChildren(String parentId);
 
 }

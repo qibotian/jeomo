@@ -22,13 +22,6 @@ public interface MenuMapper extends IBaseMapper<Menu> {
      * @param parentId
      * @return
      */
-    List<Menu> selectByParentId(Long parentId);
-
-    /**
-     * 根据label查询
-     * @param label
-     * @return
-     */
-    List<Menu> selectLikeByLabel(String label);
+    List<Menu> queryByParentCode(String parentCode);
 
 }

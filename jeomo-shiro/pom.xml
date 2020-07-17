@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jeomo-shiro</artifactId>
-
     <name>jeomo-shiro</name>
 
     <dependencies>

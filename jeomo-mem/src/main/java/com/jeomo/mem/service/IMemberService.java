@@ -2,8 +2,8 @@ package com.jeomo.mem.service;
 
 import com.jeomo.common.service.IBaseService;
 import com.jeomo.mem.dto.MemberDto;
-import com.jeomo.mem.dto.MemberRegisterDto;
 import com.jeomo.mem.entity.Member;
+import com.jeomo.mem.intf.dto.MemberRegisterDto;
 
 /**
  * <p>
