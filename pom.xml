@@ -63,13 +63,21 @@
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 
 		<flywaydb.version>5.2.4</flywaydb.version>
-		
+
+		<validation.version>1.1.0.Final</validation.version>
+
 		<spring.cloud.version>Hoxton.SR6</spring.cloud.version>
 
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${validation.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
@@ -134,7 +142,7 @@
 				</exclusions>
 			</dependency>
 
-			<!-- 修补shiro-redis 中的com.sun.tools的引用问题 -->
+			<!-- 修补shiro-redis 中的com.sun.tools的引用问题
 			<dependency>
 				<groupId>com.sun</groupId>
 				<artifactId>tools</artifactId>
@@ -142,7 +150,7 @@
 				<scope>system</scope>
 				<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
 			</dependency>
-
+			 -->
 			<dependency>
 				<groupId>p6spy</groupId>
 				<artifactId>p6spy</artifactId>
@@ -175,16 +183,7 @@
 
 	<dependencies>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+		
 
 		<!-- 热加载 -->
 		<!--<dependency> -->

@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -25,6 +27,8 @@ import java.util.List;
  * @Version 1.0
  */
 
+@RestController
+@ControllerAdvice
 public class BaseGlobalExceptionHandler {
 
     private Logger log = LoggerFactory.getLogger(BaseGlobalExceptionHandler.class);

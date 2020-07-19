@@ -1,17 +1,5 @@
 package com.jeomo.mem.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.jeomo.common.dto.PageResponseDto;
 import com.jeomo.common.query.PageQuery;
 import com.jeomo.common.result.annotation.ResponseResult;
@@ -22,9 +10,16 @@ import com.jeomo.mem.intf.dto.MemberCardDto;
 import com.jeomo.mem.intf.dto.MemberRegisterDto;
 import com.jeomo.mem.intf.vo.MemberCardVo;
 import com.jeomo.mem.service.IMemberCardService;
-
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @Author: qbt
@@ -37,8 +32,19 @@ import io.swagger.annotations.ApiParam;
 @RestController
 public class MemberController {
 
+    final Logger logger  = Logger.getLogger(this.getClass().getName());
+
+
     @Autowired
     IMemberCardService memberCardService;
+
+
+    @GetMapping("test/{code}")
+    public String test(@PathVariable(name="code", required=true) String code) throws InterruptedException {
+        Thread.sleep(3000);
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        return code;
+    }
 
 
     @PostMapping("register")
@@ -48,7 +54,7 @@ public class MemberController {
         MemberCardDto memberCardDto = memberCardService.openCard(memberRegisterDto);
         return coverMemberCardDto2Vo(memberCardDto);
     }
-    
+
     @GetMapping("info/{code}")
     public MemberCardVo info(@PathVariable(name="code", required=true) String code) {
     	MemberCardDto memberCardDto = memberCardService.queryByCode(code);
@@ -66,7 +72,28 @@ public class MemberController {
         BeanCopyUtil.copyProperties(pageResponseDto, pageResponseVo);
         return pageResponseVo;
     }
-    
+
+    @Autowired
+    DiscoveryClient discoveryClient;
+
+    @GetMapping("/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        logger.info("获取服务");
+        for(String service : services) {
+            logger.info("******发现服务：" + service);
+            List<ServiceInstance> instances = discoveryClient.getInstances(service);
+            for(ServiceInstance instance: instances) {
+                logger.info("******发现实例：" + instance.getHost() + ":" + instance.getPort() + "\t" + instance.getUri());
+            }
+        }
+        return discoveryClient;
+    }
+
+
+
+
+
     private MemberCardVo coverMemberCardDto2Vo(MemberCardDto memberCardDto) {
     	if(memberCardDto == null) {
     		return null;
@@ -75,5 +102,7 @@ public class MemberController {
         BeanCopyUtil.copyProperties(memberCardDto, vo);
         return vo;
 	}
+
+
 
 }

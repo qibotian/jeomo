@@ -50,9 +50,12 @@ mybatis-plus:
     default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
 
 eureka:
+  instance:
+    instance-id: jeomo-mem-9001 #实例名称
+    prefer-ip-address: true #显示IP
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: true #使用eureka注册
+    fetch-registry: true #获取eureka服务列表
     service-url:
       defaultZone: http://localhost:7001/eureka
 

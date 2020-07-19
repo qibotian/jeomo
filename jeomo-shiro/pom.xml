@@ -28,19 +28,20 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
-        <!-- 修补shiro-redis 中的com.sun.tools的引用问题 -->
-        <dependency>
-          <groupId>com.sun</groupId>
-          <artifactId>tools</artifactId>
-        </dependency>
-        
+
         <dependency>
             <groupId>com.jeomo</groupId>
             <artifactId>jeomo-sys</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

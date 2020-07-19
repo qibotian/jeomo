@@ -1,5 +1,5 @@
 server:
-  port: 9002
+  port: 9001
   dataCenterId: 1 #雪花算法数据中心ID
   machineId: 1 #雪花算法机器ID
 
@@ -11,3 +11,7 @@ spring:
     # 验证错误时 是否自动清除数据库 高危操作!
     clean-on-validation-error: false
     clean-disabled: true
+
+
+eureka:
+
