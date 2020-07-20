@@ -4,12 +4,14 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.jeomo.mem.intf.fallback.MemberFeignServiceFallback;
+
 /**
  * @Author: qbt
  * @Date: 2020/7/19 21:38
  * @Version 1.0
  */
-@FeignClient("JEOMO-MEM")
+@FeignClient(value="JEOMO-MEM", fallback = MemberFeignServiceFallback.class)
 public interface MemberFeignService {
 
     @GetMapping("/mem/test/{code}")

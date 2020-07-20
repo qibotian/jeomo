@@ -1,23 +1,28 @@
-profiles: dev
-
-jeomo:
-  gateway:
-    server:
-      zk:
-        services: qbt.91biz.com.cn:2181
-        rootpath: dubbo
-        connectionTimeOut: 5000
-
+server:
+  port: 9527
+  
 spring:
   application:
     name: jeomo-gateway
-server:
-  port: 9000
+  cloud:
+    gateway:
+      routes:
+      - id: mem-route
+        uri: http://localhost:9001
+        predicates:
+        - Path=/mem/test/*
+      
 
+eureka:
+  instance:
+    instance-id: jeomo-gateway #实例名称
+    prefer-ip-address: true #显示IP
+  client:
+    register-with-eureka: true #使用eureka注册
+    fetch-registry: true #获取eureka服务列表
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+      
+      
+# gateway 配置
 
-
-
-logging:
-  config: classpath:logback-spring.xml
-  logging:
-    path: D:/nmyslog/nmys

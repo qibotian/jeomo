@@ -15,11 +15,9 @@
 		<module>jeomo-mem-intf</module>
 		<module>jeomo-mem</module>
 
-		<module>jeomo-web</module>
 		<module>jeomo-common</module>
 		<module>jeomo-sys</module>
 		<module>jeomo-public-dependencies</module>
-		<module>jeomo-gateway</module>
 		<module>jeomo-shiro</module>
 		<module>jeomo-masterdata</module>
 		<module>jeomo-order</module>
@@ -30,6 +28,8 @@
 		<module>jeomo-bonus</module>
 
 
+		<module>jeomo-gateway</module>
+		<module>jeomo-test</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -72,6 +72,15 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+			  <groupId>org.springframework.cloud</groupId>
+		      <artifactId>spring-cloud-dependencies</artifactId>
+		      <version>${spring.cloud.version}</version>
+		      <type>pom</type>
+		      <scope>import</scope>
+			</dependency>
+		
+		
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -141,16 +150,6 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-
-			<!-- 修补shiro-redis 中的com.sun.tools的引用问题
-			<dependency>
-				<groupId>com.sun</groupId>
-				<artifactId>tools</artifactId>
-				<version>${tools.jar.version}</version>
-				<scope>system</scope>
-				<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
-			</dependency>
-			 -->
 			<dependency>
 				<groupId>p6spy</groupId>
 				<artifactId>p6spy</artifactId>
@@ -169,13 +168,7 @@
 				<version>${flywaydb.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring.cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+			
 
 		</dependencies>
 	</dependencyManagement>

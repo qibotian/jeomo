@@ -36,3 +36,6 @@ ribbon:
 logging:
   level:
     com.jeomo.mem.intf.feign.MemberFeignService: debug # 设置feign日志级别
+feign:
+  hystrix:
+    enabled: true #开启hystrix

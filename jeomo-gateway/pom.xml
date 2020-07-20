@@ -1,51 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>jeomo</artifactId>
-        <groupId>com.jeomo</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.jeomo</groupId>
+    <artifactId>jeomo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>jeomo-gateway</artifactId>
+  <name>jeomo-gateway</name>
+  
+  <dependencies>
+  
+  	<dependency>
+  	  <groupId>org.springframework.cloud</groupId>
+  	  <artifactId>spring-cloud-starter-gateway</artifactId>
+  	</dependency>
 
-    <artifactId>jeomo-api-gateway</artifactId>
+   	<dependency>
+       <groupId>org.springframework.cloud</groupId>
+ 	  <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 	</dependency>
 
-    <properties>
-        <zookeeper.version>3.4.13</zookeeper.version>
-        <zkclient.version>0.1</zkclient.version>
-    </properties>
-
-
-    <dependencies>
-
-        <dependency>
-            <groupId>com.jeomo</groupId>
-            <artifactId>jeomo-public-dependencies</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>${zkclient.version}</version>
-        </dependency>
-
-    </dependencies>
-
-
-
-
+	<dependency>
+  	  <groupId>org.springframework.boot</groupId>
+  	  <artifactId>spring-boot-starter-webflux</artifactId>
+  	</dependency>
+	
+	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>

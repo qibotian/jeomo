@@ -13,5 +13,4 @@ spring:
     clean-disabled: true
 
 
-eureka:
 

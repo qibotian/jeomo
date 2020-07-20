@@ -12,18 +12,15 @@ import com.jeomo.mem.mapper.MemberMapper;
 /**
  * Unit test for simple App.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = MemberApplication.class)
+
 public class AppTest 
 {
-	@Autowired
-	MemberMapper memberMapper;
-	
+
+
     @Test
     public void testGetMaxMemberCode()
     {
-    	String maxMemberCode = memberMapper.queryMaxMemberCode("123123");
-    	System.out.println(maxMemberCode);
+
         
     }
 }
