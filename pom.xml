@@ -52,7 +52,7 @@
         <springfox.swagger.ui.version>2.6.1</springfox.swagger.ui.version>
 
         <shiro.spring.boot.web.starter>1.4.0</shiro.spring.boot.web.starter>
-        <shiro.core.version>1.4.0</shiro.core.version>
+        <shiro.core.version>1.4.2</shiro.core.version>
         <shiro.redis.version>3.1.0</shiro.redis.version>
 
         <redisson.version>3.12.5</redisson.version>
