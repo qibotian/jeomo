@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
@@ -48,15 +49,17 @@ public class MemberController {
     @Autowired
     IMemberCardService memberCardService;
 
+    @Value("${server.port}")
+    private String port;
+
 
     @GetMapping("test/{code}")
     @HystrixCommand(fallbackMethod = "testFallback", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
         })
     public String test(@PathVariable(name="code", required=true) String code) throws InterruptedException {
-        Thread.sleep(5000);
         System.out.println("O(∩_∩)O哈哈~");
-        return "O(∩_∩)O哈哈~  " + code;
+        return "O(∩_∩)O哈哈~,端口 " + port + " 接收到请求码： " + code ;
     }
     
     public String testFallback(@PathVariable(name="code", required=true) String code) throws InterruptedException {
@@ -106,9 +109,6 @@ public class MemberController {
         }
         return discoveryClient;
     }
-
-
-
 
 
     private MemberCardVo coverMemberCardDto2Vo(MemberCardDto memberCardDto) {

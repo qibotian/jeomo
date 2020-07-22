@@ -20,22 +20,18 @@ spring:
       max-wait: 60000
       time-between-eviction-runs-millis: 60000
 
-eureka:
-  instance:
-    instance-id: jeomo-mem-9001
-    prefer-ip-address: true
-  client:
-    register-with-eureka: false #消费端不用注册到注册服务器上
-    fetch-registry: true #获取eureka服务列表
-    service-url:
-      defaultZone: http://localhost:7001/eureka
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        # 配置sentinel dashboard地址
+        dashboard: localhost:8080
+        port: 8719
 
-ribbon:
-  ReadTimeout: 5000 # 设置读取资源最大时间
-  ConnectTimeOut: 5000 # 设置连接最大时间
 logging:
   level:
     com.jeomo.mem.intf.feign.MemberFeignService: debug # 设置feign日志级别
 feign:
-  hystrix:
+  sentinel:
     enabled: true #开启hystrix

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import com.jeomo.mem.intf.feign.MemberFeignService;
 
-@Component
 public class MemberFeignServiceFallback implements MemberFeignService {
 
 	@Override

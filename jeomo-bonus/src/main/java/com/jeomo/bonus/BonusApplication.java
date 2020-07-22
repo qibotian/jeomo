@@ -2,22 +2,21 @@ package com.jeomo.bonus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableEurekaClient
-@ComponentScan(basePackages ={"com.jeomo"})
 @Configuration
-@EnableFeignClients(basePackages ="com.jeomo")
-@EnableHystrix
+@EnableTransactionManagement
+@ComponentScan(basePackages ={"com.jeomo"})
+@EnableCircuitBreaker //开启断路器
+@EnableDiscoveryClient
+@EnableFeignClients(basePackages ={"com.jeomo"})
 public class BonusApplication {
 	
 	
@@ -25,15 +24,5 @@ public class BonusApplication {
         SpringApplication.run(BonusApplication.class, args);
     }
     
-    @Bean
-    public ServletRegistrationBean<HystrixMetricsStreamServlet> getServlet() {
-    	HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-    	ServletRegistrationBean<HystrixMetricsStreamServlet> registrationBean = new ServletRegistrationBean<HystrixMetricsStreamServlet>(streamServlet);
-    	registrationBean.setLoadOnStartup(1);
-    	registrationBean.addUrlMappings("/hystrix.stream");
-    	registrationBean.setName("HystrixMetricsStreamServlet");
-        return registrationBean;
-    }
-    
-    
+
 }

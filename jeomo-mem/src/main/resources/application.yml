@@ -13,10 +13,6 @@ spring:
   redis:
     host: localhost
     port: 6379
-  mvc:
-    view:
-      prefix: /templates/
-      suffix: .html
 
   datasource:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
@@ -41,6 +37,15 @@ spring:
         concurrency: 10 #消费者初始化值
         max-concurrency: 10 #最大消费者值
         prefetch: 5 #每个消费者拉取的消息数量
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        # 配置sentinel dashboard地址
+        dashboard: localhost:8080
+        port: 8719
+
 
 mybatis-plus:
   mapper-locations: classpath:com.jeomo.*.mapper/*.xml
@@ -48,17 +53,6 @@ mybatis-plus:
   type-enums-package: com.jeomo.*.enums
   configuration:
     default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
-
-eureka:
-  instance:
-    instance-id: jeomo-mem-9001 #实例名称
-    prefer-ip-address: true #显示IP
-  client:
-    register-with-eureka: true #使用eureka注册
-    fetch-registry: true #获取eureka服务列表
-    service-url:
-      defaultZone: http://localhost:7001/eureka
-
 
 
 member:
@@ -81,4 +75,8 @@ log:
 mem:
   service:
     version: 1.0.0
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

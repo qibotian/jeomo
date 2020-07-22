@@ -28,7 +28,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl <M,
         loadSearchParams(wrapper, dt.getSearchParams());
         loadSorts(wrapper, dt.getSorts());
         page = page(page, wrapper);
-        return PageResponseDto.builder().total(page.getTotal()).items(page.getRecords()).build();
+        return new PageResponseDto(page.getTotal(), page.getRecords());
     }
 
 

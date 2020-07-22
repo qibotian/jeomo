@@ -3,7 +3,7 @@ package com.jeomo.mem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages ={"com.jeomo"})
-@EnableEurekaClient //开启Eureka客户端
 @EnableCircuitBreaker //开启断路器
+@EnableDiscoveryClient
 public class MemberApplication {
 
     public static void main(String[] args) {
