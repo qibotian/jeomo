@@ -3,10 +3,6 @@ package com.jeomo.common.result;
 import com.jeomo.common.enums.ExceptionEnum;
 import com.jeomo.common.enums.ResultCode;
 import com.jeomo.common.exception.BusinessException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 
@@ -19,10 +15,6 @@ import java.util.Date;
  * @Date: 2019/4/10 22:47
  * @Version 1.0
  */
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class DefaultErrorResult implements Result {
 
     /**
@@ -101,7 +93,67 @@ public class DefaultErrorResult implements Result {
     }
 
 
+    public Integer getStatus() {
+        return status;
+    }
 
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
+    public String getError() {
+        return error;
+    }
 
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getException() {
+        return exception;
+    }
+
+    public void setException(String exception) {
+        this.exception = exception;
+    }
+
+    public Object getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Object errors) {
+        this.errors = errors;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 }

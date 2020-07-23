@@ -32,6 +32,14 @@ spring:
 logging:
   level:
     com.jeomo.mem.intf.feign.MemberFeignService: debug # 设置feign日志级别
+
 feign:
   sentinel:
-    enabled: true #开启hystrix
+    enabled: true #开启openfeign
+
+ribbon:
+  eager-load:
+    enabled: true #开启饿加载模式，防止首次加载超时
+  ReadTimeout: 6000
+  ConnectionTimeout: 6000
+

@@ -1,7 +1,6 @@
 package com.jeomo.masterdata.entity;
 
 import com.jeomo.common.entity.BaseEntity;
-import lombok.*;
 
 /**
  * 基础数据分类名称
@@ -9,10 +8,6 @@ import lombok.*;
  * @Date: 2020/3/1 1:43
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class BaseDataType extends BaseEntity {
 
     /**
@@ -20,5 +15,11 @@ public class BaseDataType extends BaseEntity {
      */
     private String name;
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

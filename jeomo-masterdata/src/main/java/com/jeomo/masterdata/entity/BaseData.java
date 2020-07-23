@@ -1,10 +1,7 @@
 package com.jeomo.masterdata.entity;
 
 import com.jeomo.common.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 /**
  * 基础数据
@@ -20,10 +17,6 @@ import lombok.NoArgsConstructor;
  * @Date: 2020/3/1 1:44
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class BaseData extends BaseEntity {
 
     private Long typeId;
@@ -32,4 +25,27 @@ public class BaseData extends BaseEntity {
 
     private String name;
 
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -1,7 +1,6 @@
 package com.jeomo.common.exception;
 
 import com.jeomo.common.enums.ResultCode;
-import lombok.Getter;
 
 /**
  * @Author: qbt

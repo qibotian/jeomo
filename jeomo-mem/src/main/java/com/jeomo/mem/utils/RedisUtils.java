@@ -10,8 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import lombok.NonNull;
-
 @Component
 public class RedisUtils {
 	
@@ -163,7 +161,7 @@ public class RedisUtils {
      * @param key  键 不能为null
      * @param item 项 不能为null
      */
-    public Object hget(@NonNull String key, @NonNull String item) {
+    public Object hget(String key, String item) {
         return redisTemplate.opsForHash().get(key, item);
     }
     
@@ -181,7 +179,7 @@ public class RedisUtils {
      * @param key 键
      * @param map 对应多个键值
      */
-    public boolean hmset(@NonNull String key, Map<String, Object> map) {
+    public boolean hmset(String key, Map<String, Object> map) {
         try {
             redisTemplate.opsForHash().putAll(key, map);
             return true;

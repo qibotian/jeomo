@@ -5,11 +5,9 @@ import java.util.Map;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+
 @ApiModel("分页查询")
 public class PageRequestVo implements Serializable {
 
@@ -39,5 +37,48 @@ public class PageRequestVo implements Serializable {
 	@ApiModelProperty("搜索条件")
     Map<String, Object> searchParams;
 
+    public PageRequestVo() {
+        super();
+    }
 
+    public PageRequestVo(long pageNumber, long pageSize, Map<String, String> sorts, Map<String, Object> searchParams) {
+        super();
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.sorts = sorts;
+        this.searchParams = searchParams;
+    }
+
+
+    public long getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(long pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Map<String, String> getSorts() {
+        return sorts;
+    }
+
+    public void setSorts(Map<String, String> sorts) {
+        this.sorts = sorts;
+    }
+
+    public Map<String, Object> getSearchParams() {
+        return searchParams;
+    }
+
+    public void setSearchParams(Map<String, Object> searchParams) {
+        this.searchParams = searchParams;
+    }
 }

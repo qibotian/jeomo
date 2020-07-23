@@ -1,7 +1,6 @@
 package com.jeomo.common.enums;
 
 import com.jeomo.common.exception.BusinessException;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -9,7 +8,6 @@ import org.springframework.http.HttpStatus;
  * @Date: 2019/4/10 22:56
  * @Version 1.0
  */
-@AllArgsConstructor
 public enum ExceptionEnum {
 
     BUSINESS_DEMO_EXCEPTION(ResultCode.PARAM_IS_INVALID,HttpStatus.BAD_GATEWAY);
@@ -18,7 +16,10 @@ public enum ExceptionEnum {
 
     private HttpStatus httpStatus;
 
-
+    ExceptionEnum(ResultCode resultCode, HttpStatus httpStatus) {
+        this.resultCode = resultCode;
+        this.httpStatus = httpStatus;
+    }
 
     public static ExceptionEnum getByEClass(Class<? extends BusinessException> aClass) {
         return BUSINESS_DEMO_EXCEPTION;

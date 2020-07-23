@@ -1,8 +1,6 @@
 package com.jeomo.mem.log;
 
 import com.jeomo.mem.enums.MemberLogTypeEnum;
-import lombok.Builder;
-import lombok.Data;
 
 import java.util.Date;
 
@@ -12,8 +10,7 @@ import java.util.Date;
  * @Date: 2020/2/28 11:49
  * @Version 1.0
  */
-@Data
-@Builder
+
 public class MemberLog {
 
     /**
@@ -36,4 +33,35 @@ public class MemberLog {
      */
     private String message;
 
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public MemberLogTypeEnum getType() {
+        return type;
+    }
+
+    public void setType(MemberLogTypeEnum type) {
+        this.type = type;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

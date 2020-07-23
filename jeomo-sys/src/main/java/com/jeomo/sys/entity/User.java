@@ -7,11 +7,6 @@ import java.util.List;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
 /**
  * <p>
  *	系统用户
@@ -22,10 +17,6 @@ import lombok.experimental.Accessors;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@Accessors(chain = true)
 @TableName("sys_user")
 public class User extends SysBaseEntity {
 
@@ -87,5 +78,91 @@ public class User extends SysBaseEntity {
     @TableField(exist = false)
     private List<Role> roles = new ArrayList<>();
 
+    public String getOrgCode() {
+        return orgCode;
+    }
 
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
+    public String getMallCode() {
+        return mallCode;
+    }
+
+    public void setMallCode(String mallCode) {
+        this.mallCode = mallCode;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getLastAccessTime() {
+        return lastAccessTime;
+    }
+
+    public void setLastAccessTime(Date lastAccessTime) {
+        this.lastAccessTime = lastAccessTime;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

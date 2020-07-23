@@ -1,20 +1,12 @@
 package com.jeomo.masterdata.entity;
 
 import com.jeomo.common.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @Author: qbt
  * @Date: 2020/3/1 1:15
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Goods extends BaseEntity {
 
     /**
@@ -32,4 +24,27 @@ public class Goods extends BaseEntity {
      */
     private Integer stock;
 
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 }

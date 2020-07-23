@@ -1,16 +1,10 @@
 package com.jeomo.mem.dto;
 
-import java.util.Date;
-
 import com.jeomo.common.entity.BaseEntity;
 import com.jeomo.common.result.enums.SexEnum;
 import com.jeomo.mem.intf.enums.MemberRegisterTypeEnum;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.Date;
 
 /**
  * <p>
@@ -19,11 +13,6 @@ import lombok.NoArgsConstructor;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@EqualsAndHashCode(callSuper=false)
 public class MemberDto extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -102,7 +91,116 @@ public class MemberDto extends BaseEntity {
      */
     private String firstOpenMallCode;
 
-    
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getOrgCode() {
+        return orgCode;
+    }
+
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public SexEnum getSex() {
+        return sex;
+    }
+
+    public void setSex(SexEnum sex) {
+        this.sex = sex;
+    }
+
+    public MemberRegisterTypeEnum getRegisterType() {
+        return registerType;
+    }
+
+    public void setRegisterType(MemberRegisterTypeEnum registerType) {
+        this.registerType = registerType;
+    }
+
+    public Date getLastAccessTime() {
+        return lastAccessTime;
+    }
+
+    public void setLastAccessTime(Date lastAccessTime) {
+        this.lastAccessTime = lastAccessTime;
+    }
+
+    public String getLastAccessMallCode() {
+        return lastAccessMallCode;
+    }
+
+    public void setLastAccessMallCode(String lastAccessMallCode) {
+        this.lastAccessMallCode = lastAccessMallCode;
+    }
+
+    public Date getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(Date openTime) {
+        this.openTime = openTime;
+    }
+
+    public String getFirstOpenMallCode() {
+        return firstOpenMallCode;
+    }
+
+    public void setFirstOpenMallCode(String firstOpenMallCode) {
+        this.firstOpenMallCode = firstOpenMallCode;
+    }
 }

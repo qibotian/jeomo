@@ -20,5 +20,19 @@ public class OrderPayDetail {
      */
     private BigDecimal amount;
 
+    public Long getPayTypeId() {
+        return payTypeId;
+    }
 
+    public void setPayTypeId(Long payTypeId) {
+        this.payTypeId = payTypeId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 }

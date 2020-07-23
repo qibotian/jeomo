@@ -1,6 +1,5 @@
 package com.jeomo.flashSale.interfaces.dto;
 
-import lombok.Data;
 
 /**
  * 秒杀请求DTO
@@ -8,7 +7,6 @@ import lombok.Data;
  * @Date: 2020/3/20 18:21
  * @Version 1.0
  */
-@Data
 public class FlashSaleReqDto {
 
     /**
@@ -26,4 +24,27 @@ public class FlashSaleReqDto {
      */
     private Long activityId;
 
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public Long getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Long activityId) {
+        this.activityId = activityId;
+    }
 }

@@ -2,22 +2,11 @@ package com.jeomo.masterdata.entity;
 
 import com.jeomo.common.entity.BaseEntity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 /**
  * @Author: qbt
  * @Date: 2020/3/1 1:16
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@EqualsAndHashCode(callSuper=false)
 public class Merchant extends BaseEntity {
 
     /**  */
@@ -40,5 +29,35 @@ public class Merchant extends BaseEntity {
      */
     private String name;
 
+    public Integer getOrgId() {
+        return orgId;
+    }
 
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+    }
+
+    public Integer getMallId() {
+        return mallId;
+    }
+
+    public void setMallId(Integer mallId) {
+        this.mallId = mallId;
+    }
+
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

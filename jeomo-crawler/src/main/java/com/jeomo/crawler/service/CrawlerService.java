@@ -35,7 +35,10 @@ public class CrawlerService extends ServiceImpl<SchoolMapper, School> {
                 String phone = getPhone(s);
                 String address = getAddress(s);
                 String name = getName(sk);
-                School sc = School.builder().address(address).name(name).phone(phone).build();
+                School sc = new School();
+                sc.setAddress(address);
+                sc.setName(name);
+                sc.setPhone(phone);
                 schools.add(sc);
             }
             System.out.println(no++);

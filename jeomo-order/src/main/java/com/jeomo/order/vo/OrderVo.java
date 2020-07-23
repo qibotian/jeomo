@@ -1,10 +1,5 @@
 package com.jeomo.order.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 
 /**
@@ -12,10 +7,6 @@ import java.math.BigDecimal;
  * @Date: 2020/3/1 23:59
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class OrderVo {
 
 
@@ -75,4 +66,91 @@ public class OrderVo {
      */
     private Integer point;
 
+    public Long getMallId() {
+        return mallId;
+    }
+
+    public void setMallId(Long mallId) {
+        this.mallId = mallId;
+    }
+
+    public Long getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Long merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getOrderFrom() {
+        return orderFrom;
+    }
+
+    public void setOrderFrom(Integer orderFrom) {
+        this.orderFrom = orderFrom;
+    }
+
+    public Integer getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Boolean getRefund() {
+        return refund;
+    }
+
+    public void setRefund(Boolean refund) {
+        this.refund = refund;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public BigDecimal getDiscountAmount() {
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(BigDecimal discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+
+    public BigDecimal getRealAmount() {
+        return realAmount;
+    }
+
+    public void setRealAmount(BigDecimal realAmount) {
+        this.realAmount = realAmount;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
 }

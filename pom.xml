@@ -26,6 +26,7 @@
         <module>jeomo-crawler</module>
         <module>jeomo-bonus</module>
         <module>jeomo-gateway</module>
+        <module>jeomo-security</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -93,13 +94,6 @@
                 <artifactId>validation-api</artifactId>
                 <version>${validation.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lambok.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>

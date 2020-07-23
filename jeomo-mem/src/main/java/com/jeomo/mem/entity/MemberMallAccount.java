@@ -1,10 +1,6 @@
 package com.jeomo.mem.entity;
 
 import com.jeomo.common.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,10 +11,6 @@ import java.util.Date;
  * @Date: 2020/3/1 0:53
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class MemberMallAccount extends BaseEntity {
 
     /**
@@ -56,4 +48,60 @@ public class MemberMallAccount extends BaseEntity {
      */
     private Integer status;
 
+
+    public long getMemberCardId() {
+        return memberCardId;
+    }
+
+    public void setMemberCardId(long memberCardId) {
+        this.memberCardId = memberCardId;
+    }
+
+    public long getMallId() {
+        return mallId;
+    }
+
+    public void setMallId(long mallId) {
+        this.mallId = mallId;
+    }
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
+    public BigDecimal getTotalConsumeAmount() {
+        return totalConsumeAmount;
+    }
+
+    public void setTotalConsumeAmount(BigDecimal totalConsumeAmount) {
+        this.totalConsumeAmount = totalConsumeAmount;
+    }
+
+    public Integer getTotalPoint() {
+        return totalPoint;
+    }
+
+    public void setTotalPoint(Integer totalPoint) {
+        this.totalPoint = totalPoint;
+    }
+
+    public Date getLastConsumeTime() {
+        return lastConsumeTime;
+    }
+
+    public void setLastConsumeTime(Date lastConsumeTime) {
+        this.lastConsumeTime = lastConsumeTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }

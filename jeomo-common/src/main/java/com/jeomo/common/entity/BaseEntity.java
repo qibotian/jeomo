@@ -1,11 +1,9 @@
 package com.jeomo.common.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
-import lombok.Data;
+import java.io.Serializable;
 
 /**
  * @Author: qbt
@@ -13,7 +11,6 @@ import lombok.Data;
  * @Version 1.0
  */
 
-@Data
 public abstract class BaseEntity implements Serializable {
 
     /**  */
@@ -36,4 +33,19 @@ public abstract class BaseEntity implements Serializable {
      */
     private Long version;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
 }

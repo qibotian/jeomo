@@ -2,9 +2,6 @@ package com.jeomo.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -14,9 +11,6 @@ import lombok.experimental.Accessors;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
 @TableName("sys_dict_type")
 public class DictType extends BaseEntity {
 
@@ -27,5 +21,15 @@ public class DictType extends BaseEntity {
      */
     private String name;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

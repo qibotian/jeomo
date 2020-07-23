@@ -4,18 +4,12 @@ import java.util.Date;
 
 import com.jeomo.common.entity.BaseEntity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-
 /**
  * <p>标题: 系统管理的基础实体类</p>
  * @author qibotian
  * @time 2020年7月17日 上午10:57:28
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+
 public class SysBaseEntity extends BaseEntity {
 
 	/**  */
@@ -40,5 +34,36 @@ public class SysBaseEntity extends BaseEntity {
      * 最后修改时间
      */
     private Date lastModifyTime;
-	
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getLastModifyUser() {
+        return lastModifyUser;
+    }
+
+    public void setLastModifyUser(String lastModifyUser) {
+        this.lastModifyUser = lastModifyUser;
+    }
+
+    public Date getLastModifyTime() {
+        return lastModifyTime;
+    }
+
+    public void setLastModifyTime(Date lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+    }
 }

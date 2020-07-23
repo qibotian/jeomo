@@ -3,17 +3,6 @@ package com.jeomo.common.vo;
 import java.io.Serializable;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class PageResponseVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,5 +17,13 @@ public class PageResponseVo implements Serializable {
      */
     private List<?> items;
 
+    public PageResponseVo() {
+        super();
+    }
 
+    public PageResponseVo(long total, List<?> items) {
+        super();
+        this.total = total;
+        this.items = items;
+    }
 }

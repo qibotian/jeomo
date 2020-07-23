@@ -7,8 +7,6 @@ import java.util.List;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -19,8 +17,6 @@ import lombok.experimental.Accessors;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@Accessors(chain = true)
 @TableName("sys_role")
 public class RoleDto implements Serializable {
 
@@ -48,4 +44,35 @@ public class RoleDto implements Serializable {
     @TableField(exist = false)
     private List<MenuDto> menus = new ArrayList<>();
 
+    public String getOrgCode() {
+        return orgCode;
+    }
+
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<MenuDto> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<MenuDto> menus) {
+        this.menus = menus;
+    }
 }

@@ -2,10 +2,6 @@ package com.jeomo.sys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-
 /**
  * <p>
  * 角色-菜单对照表
@@ -14,9 +10,7 @@ import lombok.experimental.Accessors;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+
 @TableName("sys_role_menu")
 public class RoleMenu extends SysBaseEntity {
 
@@ -32,4 +26,19 @@ public class RoleMenu extends SysBaseEntity {
      */
     private Integer menuCode;
 
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
+    }
+
+    public Integer getMenuCode() {
+        return menuCode;
+    }
+
+    public void setMenuCode(Integer menuCode) {
+        this.menuCode = menuCode;
+    }
 }

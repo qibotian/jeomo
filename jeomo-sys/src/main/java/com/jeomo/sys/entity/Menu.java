@@ -4,11 +4,6 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-
 /**
  * <p>
  * 菜单
@@ -17,9 +12,6 @@ import lombok.experimental.Accessors;
  * @author jeomo
  * @since 2019-03-22
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
 @TableName("sys_menu")
 public class Menu extends SysBaseEntity {
 
@@ -55,5 +47,66 @@ public class Menu extends SysBaseEntity {
      */
     @TableField(exist=false)
     private List<Menu> children;
-    
+
+    public Menu() {
+        super();
+    }
+
+    public Menu(String code, String label, String path, String parentCode, int sort, List<Menu> children) {
+        super();
+        this.code = code;
+        this.label = label;
+        this.path = path;
+        this.parentCode = parentCode;
+        this.sort = sort;
+        this.children = children;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getParentCode() {
+        return parentCode;
+    }
+
+    public void setParentCode(String parentCode) {
+        this.parentCode = parentCode;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
+    }
 }

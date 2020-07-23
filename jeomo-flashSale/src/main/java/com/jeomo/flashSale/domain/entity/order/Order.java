@@ -7,8 +7,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.jeomo.common.entity.BaseEntity;
 import com.jeomo.flashSale.enums.OrderStatusEnums;
 import com.jeomo.flashSale.infrastructure.BigDecimalUtils;
-import lombok.Builder;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -21,8 +19,7 @@ import java.util.List;
  * @Date: 2020/3/20 17:28
  * @Version 1.0
  */
-@Data
-@Builder
+
 @TableName("`order`")
 public class Order extends BaseEntity {
 
@@ -99,5 +96,43 @@ public class Order extends BaseEntity {
     }
 
 
+    public String getOrderNo() {
+        return orderNo;
+    }
 
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public OrderStatusEnums getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatusEnums status) {
+        this.status = status;
+    }
+
+    public List<OrderGoods> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<OrderGoods> goods) {
+        this.goods = goods;
+    }
 }

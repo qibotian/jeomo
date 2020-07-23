@@ -6,14 +6,11 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jeomo.mem.intf.enums.MemberCardStatusEnums;
 
-import lombok.Data;
-
 /**
  * @Author: qbt
  * @Date: 2020/5/8 20:19
  * @Version 1.0
  */
-@Data
 public class MemberCardVo implements Serializable {
 
     /**  */
@@ -73,4 +70,109 @@ public class MemberCardVo implements Serializable {
      * 当前状态
      */
     private MemberCardStatusEnums status;
+
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getMallGroupId() {
+        return mallGroupId;
+    }
+
+    public void setMallGroupId(Integer mallGroupId) {
+        this.mallGroupId = mallGroupId;
+    }
+
+    public Integer getOpenMallId() {
+        return openMallId;
+    }
+
+    public void setOpenMallId(Integer openMallId) {
+        this.openMallId = openMallId;
+    }
+
+    public Date getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(Date openTime) {
+        this.openTime = openTime;
+    }
+
+    public Date getLastCheckTime() {
+        return lastCheckTime;
+    }
+
+    public void setLastCheckTime(Date lastCheckTime) {
+        this.lastCheckTime = lastCheckTime;
+    }
+
+    public MemberCardStatusEnums getStatus() {
+        return status;
+    }
+
+    public void setStatus(MemberCardStatusEnums status) {
+        this.status = status;
+    }
 }

@@ -1,25 +1,14 @@
 package com.jeomo.mem.entity;
 
-import java.util.Date;
-
 import com.jeomo.common.entity.BaseEntity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.Date;
 
 /**
  * @Author: qbt
  * @Date: 2020/2/27 23:00
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@EqualsAndHashCode(callSuper=false)
 public class MemberPointDetail extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -55,6 +44,43 @@ public class MemberPointDetail extends BaseEntity {
      */
     private String memo;
 
+    public Integer getBusinessType() {
+        return businessType;
+    }
 
+    public void setBusinessType(Integer businessType) {
+        this.businessType = businessType;
+    }
 
+    public Date getBusinessTime() {
+        return businessTime;
+    }
+
+    public void setBusinessTime(Date businessTime) {
+        this.businessTime = businessTime;
+    }
+
+    public Long getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Long businessId) {
+        this.businessId = businessId;
+    }
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
 }

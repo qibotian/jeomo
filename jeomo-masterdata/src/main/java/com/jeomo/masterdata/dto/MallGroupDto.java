@@ -2,23 +2,12 @@ package com.jeomo.masterdata.dto;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-
 /**
  * 同城店
  * @Author: qbt
  * @Date: 2020/3/1 0:08
  * @Version 1.0
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@EqualsAndHashCode(callSuper=false)
 public class MallGroupDto implements Serializable{
 
 	/**  */
@@ -39,5 +28,27 @@ public class MallGroupDto implements Serializable{
      */
     private String name;
 
+    public String getOrgCode() {
+        return orgCode;
+    }
 
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

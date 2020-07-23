@@ -1,16 +1,10 @@
 package com.jeomo.mem.entity;
 
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.jeomo.common.entity.BaseEntity;
 import com.jeomo.mem.enums.MemberCardStatusEnums;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import java.util.Date;
 
 /**
  * 会员卡信息
@@ -18,11 +12,6 @@ import lombok.NoArgsConstructor;
  * @Date: 2020/3/1 0:48
  * @Version 1.0
  */
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
-@EqualsAndHashCode(callSuper=false)
 public class MemberCard extends BaseEntity {
 
     /**  */
@@ -88,9 +77,115 @@ public class MemberCard extends BaseEntity {
     @TableField(exist = false)
     private String address;
 
-    /**
-     * 版本号
-     */
-    private Long version;
+    public String getMemberCode() {
+        return memberCode;
+    }
 
+    public void setMemberCode(String memberCode) {
+        this.memberCode = memberCode;
+    }
+
+    public String getOrgCode() {
+        return orgCode;
+    }
+
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
+    }
+
+    public String getMallGroupCode() {
+        return mallGroupCode;
+    }
+
+    public void setMallGroupCode(String mallGroupCode) {
+        this.mallGroupCode = mallGroupCode;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getOpenMallCode() {
+        return openMallCode;
+    }
+
+    public void setOpenMallCode(String openMallCode) {
+        this.openMallCode = openMallCode;
+    }
+
+    public Date getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(Date openTime) {
+        this.openTime = openTime;
+    }
+
+    public Long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
+    public Date getLastCheckTime() {
+        return lastCheckTime;
+    }
+
+    public void setLastCheckTime(Date lastCheckTime) {
+        this.lastCheckTime = lastCheckTime;
+    }
+
+    public MemberCardStatusEnums getStatus() {
+        return status;
+    }
+
+    public void setStatus(MemberCardStatusEnums status) {
+        this.status = status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

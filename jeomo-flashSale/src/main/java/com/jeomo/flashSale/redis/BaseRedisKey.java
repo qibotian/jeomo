@@ -1,10 +1,7 @@
 package com.jeomo.flashSale.redis;
 
-import lombok.Data;
-
 import java.util.concurrent.TimeUnit;
 
-@Data
 public class BaseRedisKey {
 
 	/**
@@ -27,4 +24,27 @@ public class BaseRedisKey {
 		this.expireTimeUnit = expireTimeUnit;
 	}
 
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public Long getExpire() {
+		return expire;
+	}
+
+	public void setExpire(Long expire) {
+		this.expire = expire;
+	}
+
+	public TimeUnit getExpireTimeUnit() {
+		return expireTimeUnit;
+	}
+
+	public void setExpireTimeUnit(TimeUnit expireTimeUnit) {
+		this.expireTimeUnit = expireTimeUnit;
+	}
 }

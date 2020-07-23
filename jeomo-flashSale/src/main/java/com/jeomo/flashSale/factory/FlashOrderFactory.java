@@ -14,7 +14,12 @@ import java.util.Date;
 public class FlashOrderFactory {
 
     public  static Order createOrder(Long customerId, Long goodsId) {
-        return Order.builder().createTime(new Date()).customerId(customerId).orderNo(newOrderNo()).status(OrderStatusEnums.TO_BE_PAID).build();
+        Order order = new Order();
+        order.setCreateTime(new Date());
+        order.setCustomerId(customerId);
+        order.setOrderNo(newOrderNo());
+        order.setStatus(OrderStatusEnums.TO_BE_PAID);
+        return order;
     }
 
     /**

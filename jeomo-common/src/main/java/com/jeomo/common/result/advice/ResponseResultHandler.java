@@ -39,11 +39,7 @@ public class ResponseResultHandler implements ResponseBodyAdvice<Object> {
         if (resultClazz.isAssignableFrom(PlatformResult.class)) {
             if (body instanceof DefaultErrorResult) {
                 DefaultErrorResult defaultErrorResult = (DefaultErrorResult) body;
-                return PlatformResult.builder()
-                        .code(Integer.valueOf(defaultErrorResult.getCode()))
-                        .msg(defaultErrorResult.getMsg())
-                        .data(defaultErrorResult.getErrors())
-                        .build();
+                return new PlatformResult(Integer.valueOf(defaultErrorResult.getCode()), defaultErrorResult.getMsg(), defaultErrorResult.getErrors());
             } else if (body instanceof String) {
                 return JSON.toJSONString(PlatformResult.success(body));
             }

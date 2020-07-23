@@ -1,7 +1,6 @@
 package com.jeomo.flashSale.domain.entity.flash;
 
 import com.jeomo.common.entity.BaseEntity;
-import lombok.Data;
 
 import java.util.Date;
 
@@ -10,7 +9,6 @@ import java.util.Date;
  * @Date: 2020/3/25 23:02
  * @Version 1.0
  */
-@Data
 public class FlashSaleActivity extends BaseEntity {
 
     private Long id;
@@ -41,5 +39,53 @@ public class FlashSaleActivity extends BaseEntity {
      */
     private Integer num;
 
+    @Override
+    public Long getId() {
+        return id;
+    }
 
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 }

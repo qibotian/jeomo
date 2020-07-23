@@ -1,8 +1,5 @@
 package com.jeomo.order.vo;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 /**
@@ -10,8 +7,6 @@ import java.util.List;
  * @Date: 2020/3/8 15:18
  * @Version 1.0
  */
-@Data
-@NoArgsConstructor
 public class NewOrderVo {
 
     /**
@@ -39,4 +34,43 @@ public class NewOrderVo {
      */
     List<NewOrderGoodsVo> goods;
 
+    public Long getMallId() {
+        return mallId;
+    }
+
+    public void setMallId(Long mallId) {
+        this.mallId = mallId;
+    }
+
+    public Long getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Long merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public Integer getOrderFrom() {
+        return orderFrom;
+    }
+
+    public void setOrderFrom(Integer orderFrom) {
+        this.orderFrom = orderFrom;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public List<NewOrderGoodsVo> getGoods() {
+        return goods;
+    }
+
+    public void setGoods(List<NewOrderGoodsVo> goods) {
+        this.goods = goods;
+    }
 }
