@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 /**
  * <p>
  * 系统角色
@@ -16,7 +13,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author jeomo
  * @since 2019-03-22
  */
-@TableName("sys_role")
 public class RoleVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,7 +36,6 @@ public class RoleVo implements Serializable {
     /**
      * 角色拥有的菜单
      */
-    @TableField(exist = false)
     private List<MenuVo> menus = new ArrayList<>();
 
     public String getOrgCode() {

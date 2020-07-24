@@ -1,6 +1,5 @@
-package com.jeomo.shiro.bean;
+package com.jeomo.gateway.shiro.bean;
 
-import com.jeomo.sys.service.IUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -8,7 +7,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,10 +35,6 @@ public class UserRealm extends AuthorizingRealm {
         tomPermissionNameSet.add("resource:query");
         jerryPermissionNameSet.add("resource:query");
     }
-
-
-    @Autowired
-    private IUserService userService;
 
     /**
      * 执行授权逻辑

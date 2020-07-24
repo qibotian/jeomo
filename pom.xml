@@ -27,6 +27,8 @@
         <module>jeomo-bonus</module>
         <module>jeomo-gateway</module>
         <module>jeomo-security</module>
+        <module>jeomo-sys-intf</module>
+        <module>jeomo-auth</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -175,8 +177,6 @@
 
 
     <dependencies>
-
-
         <!-- 热加载 -->
         <!--<dependency> -->
         <!--<groupId>org.springframework.boot</groupId> -->

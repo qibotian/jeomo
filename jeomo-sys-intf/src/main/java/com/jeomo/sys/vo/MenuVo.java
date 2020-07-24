@@ -1,9 +1,7 @@
-package com.jeomo.sys.dto;
+package com.jeomo.sys.vo;
 
 import java.io.Serializable;
 import java.util.List;
-
-import com.baomidou.mybatisplus.annotation.TableName;
 
 
 /**
@@ -14,8 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author jeomo
  * @since 2019-03-22
  */
-@TableName("sys_menu")
-public class MenuDto implements Serializable {
+public class MenuVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -42,7 +39,7 @@ public class MenuDto implements Serializable {
     /**
      * 子菜单
      */
-    private List<MenuDto> children;
+    private List<MenuVo> children;
 
     /**
      * 排序
@@ -81,11 +78,11 @@ public class MenuDto implements Serializable {
         this.parentCode = parentCode;
     }
 
-    public List<MenuDto> getChildren() {
+    public List<MenuVo> getChildren() {
         return children;
     }
 
-    public void setChildren(List<MenuDto> children) {
+    public void setChildren(List<MenuVo> children) {
         this.children = children;
     }
 

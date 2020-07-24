@@ -1,6 +1,6 @@
-package com.jeomo.shiro.config;
+package com.jeomo.gateway.shiro.config;
 
-import com.jeomo.shiro.bean.UserRealm;
+import com.jeomo.gateway.shiro.bean.UserRealm;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.realm.Realm;

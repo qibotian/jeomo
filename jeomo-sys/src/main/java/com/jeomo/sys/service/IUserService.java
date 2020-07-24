@@ -16,14 +16,14 @@ public interface IUserService extends IBaseService<User> {
 
     /**
      * 根据用户名查询号用户
-     * @param name
+     * @param username
      * @return
      */
     public int removeByUsername(String username);
     
     /**
      * 根据用户名查询号用户
-     * @param name
+     * @param username
      * @return
      */
     public UserDto findByUsername(String username);

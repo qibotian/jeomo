@@ -1,12 +1,9 @@
-package com.jeomo.sys.dto;
+package com.jeomo.sys.vo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
 
 
 /**
@@ -19,8 +16,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @author jeomo
  * @since 2019-03-22
  */
-@TableName("sys_user")
-public class UserDto implements Serializable {
+public class UserVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -77,8 +73,7 @@ public class UserDto implements Serializable {
     /**
      * 角色
      */
-    @TableField(exist = false)
-    private List<RoleDto> roles = new ArrayList<>();
+    private List<RoleVo> roles = new ArrayList<>();
 
     public String getOrgCode() {
         return orgCode;
@@ -160,11 +155,11 @@ public class UserDto implements Serializable {
         this.lastAccessTime = lastAccessTime;
     }
 
-    public List<RoleDto> getRoles() {
+    public List<RoleVo> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleDto> roles) {
+    public void setRoles(List<RoleVo> roles) {
         this.roles = roles;
     }
 }

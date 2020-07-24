@@ -15,27 +15,27 @@ public interface IUserRoleService extends IBaseService<UserRole> {
 
     /**
      * 删除用户所有权限
-     * @param userId
+     * @param username
      */
     void deleteByUsername(String username);
 
     /**
      * 批量删除用户权限
-     * @param userIds
+     * @param usernames
      */
     void deleteByUsernames(String[] usernames);
 
     /**
      * 给用户赋权
-     * @param userId
-     * @param roleIds
+     * @param username
+     * @param roleCodes
      */
     void insertUserRole(String username, String[] roleCodes);
 
     /**
      * 批量用户赋权
-     * @param userIds
-     * @param rolesIds
+     * @param usernames
+     * @param roleCodes
      */
     void insertUserRoles(String[] usernames, String[] roleCodes);
 
