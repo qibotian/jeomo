@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 @Configuration
 @EnableAuthorizationServer //说明这是一个授权服务类
@@ -37,7 +36,9 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService);
+        clients.inMemory().withClient("client_1").secret(passwordEncoder.encode("123456")).redirectUris("http://www.baidu.com")
+                .authorizedGrantTypes("authorization_code").scopes("all").accessTokenValiditySeconds(7200).refreshTokenValiditySeconds(7200);
+        //clients.withClientDetails(clientDetailsService);
     }
 
 
@@ -49,25 +50,23 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .tokenStore(new InMemoryTokenStore())
+                //.tokenStore(new InMemoryTokenStore())
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService) //要使用refresh_token的话，需要额外配置userDetailsService
+                //.userDetailsService(userDetailsService) //要使用refresh_token的话，需要额外配置userDetailsService
                 // 设置客户端可以使用get和post方式提交
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        // @formatter:off
         oauthServer
                 // 设置一个编码方式
                 .passwordEncoder(passwordEncoder)
                 //获取token的请求，不进行拦截
                 .tokenKeyAccess("permitAll()")
                 //检查token的请求，要先通过验证
-                .checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
-        // @formatter:on
     }
 
 

@@ -29,6 +29,8 @@
         <module>jeomo-security</module>
         <module>jeomo-sys-intf</module>
         <module>jeomo-auth</module>
+        <module>jeomo-shiro-service</module>
+        <module>jeomo-shiro-api</module>
     </modules>
     <packaging>pom</packaging>
 
