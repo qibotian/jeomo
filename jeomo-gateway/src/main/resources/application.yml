@@ -4,20 +4,23 @@ server:
 spring:
   application:
     name: jeomo-gateway
-#  cloud:
-#    nacos:
-#      server-addr: 127.0.0.1:8848
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true #是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
-#          lowerCaseServiceId: true # 请求微服务名称为小写
-
-#      routes:
-#      - id: mem-route   # 路由标识（id：标识，具有唯一性）
-#        uri: lb://jeomo-mem # 目标服务地址
-#        predicates:
-#        - Path=/mem/test/* # 转发地址格式为 uri/mem/test/*
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true #是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
+          lowerCaseServiceId: true # 请求微服务名称为小写
+      routes:
+      - id: mem-route   # 路由标识（id：标识，具有唯一性）
+        uri: lb://jeomo-mem # 目标服务地址
+        predicates:
+        - Path=/mem/test/* # 转发地址格式为 uri/mem/test/*
+      - id: auth-route   # 路由标识（id：标识，具有唯一性）
+        uri: lb://jeomo-shiro-service # 目标服务地址
+        predicates:
+        - Path=/auth/** # 转发地址格式为 uri/shiro/test/*
 
 
 

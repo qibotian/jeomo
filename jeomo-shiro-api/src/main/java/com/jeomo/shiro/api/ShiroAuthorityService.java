@@ -1,6 +1,9 @@
 package com.jeomo.shiro.api;
 
+import com.jeomo.shiro.vo.BaseAuthorityVo;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 /**
  * shiro授权服务
@@ -12,5 +15,5 @@ public interface ShiroAuthorityService {
 
     //这个没有权限
     @GetMapping("/getAuthorityByUsername")
-    public List<BaseAuthorityVM> getAuthorityByUser(String username);
+    public List<BaseAuthorityVo> getAuthorityByUser(String username);
 }

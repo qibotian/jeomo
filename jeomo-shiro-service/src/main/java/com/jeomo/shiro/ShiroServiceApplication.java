@@ -1,23 +1,24 @@
-package com.jeomo.bonus;
+package com.jeomo.shiro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @Author: qbt
+ * @Date: 2020/7/27 8:21
+ * @Version 1.0
+ */
 @SpringBootApplication
 @Configuration
-@EnableTransactionManagement
 @ComponentScan(basePackages ={"com.jeomo"})
 @EnableDiscoveryClient
-public class BonusApplication {
+public class ShiroServiceApplication {
 
-
-    public static void main( String[] args ) {
-        SpringApplication.run(BonusApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(ShiroServiceApplication.class, args);
     }
-
 
 }

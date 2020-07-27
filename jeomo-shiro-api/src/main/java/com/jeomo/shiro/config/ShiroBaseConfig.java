@@ -1,8 +1,6 @@
 package com.jeomo.shiro.config;
 
-import com.jeomo.shiro.bean.MyUserRealm;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.realm.Realm;
+import com.jeomo.shiro.bean.ShiroBaseUserRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -12,8 +10,8 @@ import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,13 +21,12 @@ import java.util.Map;
  * @Date: 2020/7/26 22:10
  * @Version 1.0
  */
-@Configuration
-public class ShiroConfig {
+public class ShiroBaseConfig {
 
-    @Bean
-    public DefaultWebSecurityManager securityManager() {
+    @Bean(name="securityManager")
+    public DefaultWebSecurityManager securityManager(@Qualifier("shiroUserRealm") ShiroBaseUserRealm realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(realm());
+        securityManager.setRealm(realm);
 
         //用了redis缓存注入安全管理器
         securityManager.setCacheManager(cacheManager());
@@ -44,9 +41,9 @@ public class ShiroConfig {
     }
 
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean() {
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        shiroFilterFactoryBean.setSecurityManager(securityManager());
+        shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map<String, String> filterMap = new HashMap<String, String>();
         /*  添加shiro的内置过滤器
                 anon 无需认证就可以访问
@@ -55,13 +52,14 @@ public class ShiroConfig {
                 perms  拥有对某个用户资源才能访问
                 role   拥有某个角色权限才能访问
          */
-        filterMap.put("/auth/login", "anon"); //登录操作
+        filterMap.put("/auth/toLogin", "anon"); //登录页面
+        filterMap.put("/auth/doLogin", "anon"); //登录操作
         filterMap.put("/auth/logout", "anon"); //退出操作
         filterMap.put("/auth/error", "anon"); //认证失败操作
         filterMap.put("/**", "authc");
 
         //登录地址配置为网关条件下的登录地址
-        shiroFilterFactoryBean.setLoginUrl("http://localhost:6666/auth/login");
+        shiroFilterFactoryBean.setLoginUrl("http://192.168.0.103:9527/auth/toLogin");
         //首页
         shiroFilterFactoryBean.setSuccessUrl("/auth/success");
         //错误页面，认证不通过跳转
@@ -121,6 +119,8 @@ public class ShiroConfig {
     public RedisCacheManager cacheManager() {
         RedisCacheManager redisCacheManager = new RedisCacheManager();
         redisCacheManager.setRedisManager(redisManager());
+        // redisCacheManager.setKeySerializer(new StringRedisSerializer());
+        // redisCacheManager.setValueSerializer(new StringRedisSerializer());
         return redisCacheManager;
     }
     /**
@@ -133,29 +133,6 @@ public class ShiroConfig {
         redisManager.setHost("localhost"); //TODO 这里最好用配置方式写
         redisManager.setPort(6379);
         return redisManager;
-    }
-
-
-
-    @Bean
-    public Realm realm() {
-        MyUserRealm userReam = new MyUserRealm();
-        userReam.setCredentialsMatcher(credentialsMatcher());
-        return new MyUserRealm();
-    }
-
-    /**
-     * 设置密码加密规则
-     * @return
-     */
-    @Bean
-    public HashedCredentialsMatcher credentialsMatcher() {
-        HashedCredentialsMatcher credentialsMatcher=new HashedCredentialsMatcher();
-        credentialsMatcher.setHashAlgorithmName("md5");
-        credentialsMatcher.setHashSalted(true);
-        credentialsMatcher.setHashIterations(2);
-        credentialsMatcher.setStoredCredentialsHexEncoded(true);
-        return credentialsMatcher;
     }
 
 

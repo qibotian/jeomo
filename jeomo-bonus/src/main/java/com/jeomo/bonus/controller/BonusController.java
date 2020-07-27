@@ -1,15 +1,14 @@
 package com.jeomo.bonus.controller;
 
-import javax.annotation.Resource;
-
+import com.jeomo.mem.intf.feign.MemberFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.jeomo.mem.intf.feign.MemberFeignService;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @Author: qbt
@@ -36,18 +35,18 @@ public class BonusController {
 //    public String test(@PathVariable(name="code", required=true) String code) {
 //        return  memberFeignService.test(code);
 //    }
-//    
+//
 //    public String testFallback() throws InterruptedException {
 //        return "服务调用超时啦， 请稍后再试，o(╥﹏╥)o";
 //    }
-//    
-//    
+//
+//
 //    @GetMapping("test3/{code}")
 //    @HystrixCommand
 //    public String test3(@PathVariable(name="code", required=true) String code) {
 //        return  memberFeignService.test(code);
 //    }
-//    
+//
 //    public String testFallback3() throws InterruptedException {
 //        return "服务调用超时啦， 请稍后再试，o(╥﹏╥)o";
 //    }
@@ -56,7 +55,7 @@ public class BonusController {
 //    public String test2(@PathVariable(name="code", required=true) String code) {
 //            return  restTemplate.getForObject(MEM_SERVICE_NAME+"/mem/test/"+code, String.class);
 //    }
-	
+
 	  @GetMapping("test4/{code}")
 	  public String test4(@PathVariable(name="code", required=true) String code) {
 	      return  memberFeignService.test(code);

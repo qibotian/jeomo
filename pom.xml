@@ -17,7 +17,6 @@
         <module>jeomo-common</module>
         <module>jeomo-sys</module>
         <module>jeomo-public-dependencies</module>
-        <module>jeomo-shiro</module>
         <module>jeomo-masterdata</module>
         <module>jeomo-order</module>
         <module>jeomo-flashSale</module>
@@ -31,6 +30,7 @@
         <module>jeomo-auth</module>
         <module>jeomo-shiro-service</module>
         <module>jeomo-shiro-api</module>
+        <module>jeomo-shiro-client</module>
     </modules>
     <packaging>pom</packaging>
 

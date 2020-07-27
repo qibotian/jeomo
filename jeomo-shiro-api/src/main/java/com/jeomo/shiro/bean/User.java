@@ -1,11 +1,14 @@
 package com.jeomo.shiro.bean;
 
+import java.beans.Transient;
+import java.io.Serializable;
+
 /**
  * @Author: qbt
  * @Date: 2020/7/26 22:17
  * @Version 1.0
  */
-public class User {
+public class User implements Serializable {
 
     /**
      * 用户名
@@ -25,6 +28,7 @@ public class User {
         this.username = username;
     }
 
+    @Transient
     public String getPassword() {
         return password;
     }
@@ -32,4 +36,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+     * redis-shiro需要一个序列化的id
+     * @return
+     */
+    @Transient
+    public String getAuthCacheKey() {
+        return this.username;
+    }
+
 }

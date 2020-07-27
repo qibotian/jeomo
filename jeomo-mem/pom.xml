@@ -134,6 +134,13 @@
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.jeomo</groupId>
+			<artifactId>jeomo-shiro-client</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+
 	</dependencies>
 
 </project>
