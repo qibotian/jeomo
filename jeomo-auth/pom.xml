@@ -10,8 +10,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>jeomo-auth</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>jeomo-auth-test</module>
+    </modules>
 
-  <dependencies>
+    <dependencies>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>

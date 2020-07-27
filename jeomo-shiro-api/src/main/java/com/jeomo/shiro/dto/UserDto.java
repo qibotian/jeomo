@@ -1,4 +1,4 @@
-package com.jeomo.shiro.vo;
+package com.jeomo.shiro.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,13 +6,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Author: qbt
- * @Date: 2020/7/26 22:17
- * @Version 1.0
+ * <p>
+ *	系统用户
+ *	用户应是组织隔离的
+ *	但是用户名应当唯一，可以使用业务规定用户名唯一，比如使用企业邮箱等作为用户名
+ *
+ * </p>
+ * @author jeomo
+ * @since 2019-03-22
  */
-public class UserVo implements Serializable {
-
-
+public class UserDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -69,7 +72,7 @@ public class UserVo implements Serializable {
     /**
      * 角色
      */
-    private List<RoleVo> roles = new ArrayList<>();
+    private List<RoleDto> roles = new ArrayList<>();
 
     public String getOrgCode() {
         return orgCode;
@@ -151,11 +154,11 @@ public class UserVo implements Serializable {
         this.lastAccessTime = lastAccessTime;
     }
 
-    public List<RoleVo> getRoles() {
+    public List<RoleDto> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleVo> roles) {
+    public void setRoles(List<RoleDto> roles) {
         this.roles = roles;
     }
 }

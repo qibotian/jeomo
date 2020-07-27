@@ -1,6 +1,8 @@
 package com.jeomo.shiro.endpoints;
 
-import com.jeomo.shiro.bean.User;
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.shiro.dto.UserDto;
+import com.jeomo.shiro.vo.UserVo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -38,12 +40,12 @@ public class ShiroEndPoints {
      * @return
      */
     @RequestMapping("/doLogin")
-    public User doLogin(@RequestParam String username, @RequestParam String password) {
+    public UserVo doLogin(@RequestParam String username, @RequestParam String password) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         subject.login(token);
-        User user = (User)(subject.getPrincipal());
-        return user;
+        UserDto user = (UserDto)(subject.getPrincipal());
+        return parseDto2Vo(user);
     }
 
     @RequestMapping(value = "/logout")
@@ -78,11 +80,20 @@ public class ShiroEndPoints {
      * @return
      */
     @RequestMapping("/user/info")
-    public User user() {
-        User subject = (User) SecurityUtils.getSubject().getPrincipal();
-        return subject;
+    public UserVo user() {
+        UserDto user = (UserDto)(SecurityUtils.getSubject().getPrincipal());
+        return parseDto2Vo(user);
     }
 
+
+    private UserVo parseDto2Vo(UserDto userDto) {
+        if(userDto != null) {
+            UserVo userVo = new UserVo();
+            BeanCopyUtil.copyProperties(userDto, userVo);
+            return userVo;
+        }
+        return null;
+    }
 
 
 }

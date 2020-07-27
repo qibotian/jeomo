@@ -1,6 +1,9 @@
 package com.jeomo.shiro.bean;
 
+import com.jeomo.shiro.dto.UserDto;
+import com.jeomo.shiro.service.IUserService;
 import org.apache.shiro.authc.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +13,10 @@ import org.springframework.stereotype.Component;
  */
 @Component("shiroUserRealm")
 public class ShiroServiceUserRealm extends ShiroBaseUserRealm {
+
+    @Autowired
+    private IUserService userService;
+
 
     /**
      * 执行认证逻辑
@@ -25,11 +32,12 @@ public class ShiroServiceUserRealm extends ShiroBaseUserRealm {
         System.out.println("************************登录操作：" + username + "*************************");
         if (username == null)
             throw new UnknownAccountException("用户名不能为空");
-        User user = MOMERY_USER.get(username);
+        UserDto userDto = userService.findByUsername(username);
+        //User user = MOMERY_USER.get(username);
         if(username == null) {
             throw new UnknownAccountException("用户名或密码错误");
         }
-        SimpleAuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user, user.getPassword(), this.getName());
+        SimpleAuthenticationInfo authcInfo = new SimpleAuthenticationInfo(userDto, userDto.getPassword(), this.getName());
         //authcInfo.setCredentialsSalt(ByteSource.Util.bytes(username));
         //清缓存中的授权信息，保证每次登陆 都可以重新授权。因为AuthorizingRealm会先检查缓存有没有 授权信息，再调用授权方法
         super.clearCachedAuthorizationInfo(authcInfo.getPrincipals());

@@ -1,18 +1,24 @@
-package com.jeomo.shiro.vo;
+package com.jeomo.shiro.entity;
 
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * @Author: qbt
- * @Date: 2020/7/26 22:17
- * @Version 1.0
+ * <p>
+ *	系统用户
+ *	用户应是组织隔离的
+ *	但是用户名应当唯一，可以使用业务规定用户名唯一，比如使用企业邮箱等作为用户名
+ *
+ * </p>
+ * @author jeomo
+ * @since 2019-03-22
  */
-public class UserVo implements Serializable {
-
-
+@TableName("sys_user")
+public class User extends SysBaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -69,7 +75,8 @@ public class UserVo implements Serializable {
     /**
      * 角色
      */
-    private List<RoleVo> roles = new ArrayList<>();
+    @TableField(exist = false)
+    private List<Role> roles = new ArrayList<>();
 
     public String getOrgCode() {
         return orgCode;
@@ -151,11 +158,11 @@ public class UserVo implements Serializable {
         this.lastAccessTime = lastAccessTime;
     }
 
-    public List<RoleVo> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RoleVo> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }
