@@ -10,10 +10,12 @@ import com.jeomo.mem.intf.dto.MemberCardDto;
 import com.jeomo.mem.intf.dto.MemberRegisterDto;
 import com.jeomo.mem.intf.vo.MemberCardVo;
 import com.jeomo.mem.service.IMemberCardService;
+import com.jeomo.shiro.dto.UserDto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,8 +54,8 @@ public class MemberController {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
         })
     public String test(@PathVariable(name="code", required=true) String code) throws InterruptedException {
-        System.out.println("O(∩_∩)O哈哈~");
-        return "O(∩_∩)O哈哈~,端口 " + port + " 接收到请求码： " + code ;
+        UserDto user = (UserDto)(SecurityUtils.getSubject().getPrincipal());
+        return "O(∩_∩)O哈哈~, 你好，" + user.getUsername() + ", 端口 " + port + " 接收到请求码： " + code ;
     }
 
     public String testFallback(@PathVariable(name="code", required=true) String code) throws InterruptedException {
