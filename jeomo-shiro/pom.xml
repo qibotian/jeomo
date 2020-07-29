@@ -9,11 +9,12 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
-  <artifactId>jeomo-mem</artifactId>
+  <artifactId>jeomo-shiro</artifactId>
 
   <modules>
-    <module>jeomo-mem-api</module>
-    <module>jeomo-mem-service</module>
+    <module>jeomo-shiro-api</module>
+    <module>jeomo-shiro-client</module>
+    <module>jeomo-shiro-service</module>
   </modules>
 
 

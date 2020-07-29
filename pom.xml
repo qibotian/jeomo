@@ -9,28 +9,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <!-- eureka注册中心 -->
-        <module>jeomo-eureka</module>
-        <!-- 会员接口及其核心包 -->
-        <module>jeomo-mem-intf</module>
-        <module>jeomo-mem</module>
         <module>jeomo-common</module>
-        <module>jeomo-sys</module>
         <module>jeomo-public-dependencies</module>
         <module>jeomo-masterdata</module>
         <module>jeomo-order</module>
-        <module>jeomo-flashSale</module>
-        <module>jeomo-masterdata-intf</module>
-        <module>jeomo-points</module>
         <module>jeomo-crawler</module>
         <module>jeomo-bonus</module>
         <module>jeomo-gateway</module>
-        <module>jeomo-security</module>
-        <module>jeomo-sys-intf</module>
-        <module>jeomo-auth</module>
-        <module>jeomo-shiro-service</module>
-        <module>jeomo-shiro-api</module>
-        <module>jeomo-shiro-client</module>
+        <module>jeomo-mem</module>
+        <module>jeomo-shiro</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -69,7 +56,7 @@
 
         <spring.cloud.version>Hoxton.SR6</spring.cloud.version>
         <com.alibaba.cloud.version>2.2.1.RELEASE</com.alibaba.cloud.version>
-
+        <hutool-all.version>5.3.10</hutool-all.version>
     </properties>
 
     <dependencyManagement>
@@ -171,6 +158,11 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
                 <version>${flywaydb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
             </dependency>
 
 

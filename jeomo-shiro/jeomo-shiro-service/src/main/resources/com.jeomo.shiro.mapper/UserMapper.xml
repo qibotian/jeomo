@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jeomo.shiro.mapper.UserMapper">
+    <sql id="base_select">
+        select * from sys_user u
+    </sql>
+
+    <sql id = "base_allinfo_select">
+      select u.`id`, u.`org_code`, u.`mall_code`, u.`username`, u.`nickname`, u.`password`, u.`age`, u.`email`, u.`phone`, u.`address`, u.`last_access_time`, u.`create_time`, u.`create_user_id`, u.`last_modify_time`, u.`last_modify_user`, u.`version`,
+        ur.`id` ur_id, ur.`username` ur_username, ur.`role_code` ur_role_code, ur.`create_time` ur_create_time, ur.`create_user` ur_create_user, ur.`last_modify_time` ur_last_modify_time, ur.`last_modify_user` ur_last_modify_user, ur.`version` ur_version,
+        r.`id` r_id, r.`org_code` r_org_code, r.`code` r_code, r.`name` r_name, r.`create_time` r_create_time, r.`create_user` r_create_user, r.`last_modify_time` r_last_modify_time, r.`last_modify_user` r_last_modify_user, r.`version` r_version
+      from sys_user u
+      LEFT JOIN sys_user_role ur ON u.username = ur.username
+	    LEFT JOIN sys_role r ON ur.role_code = r.code
+    </sql>
+
+    <select id="queryAllInfoByUsername" parameterType="string" resultMap="userAllInfoMap">
+      <include refid="base_allinfo_select"></include>	WHERE u.username = #{username}
+    </select>
+  
+    <resultMap id="userAllInfoMap" type="user">
+      <result property="id" column="r_id" />
+      <result property="orgCode" column="org_code" />
+      <result property="mallCode" column="mall_code" />
+      <result property="username" column="username" />
+      <result property="password" column="password" />
+      <result property="age" column="age" />
+      <result property="email" column="email" />
+      <result property="phone" column="phone" />
+      <result property="address" column="address" />
+      <result property="lastModifyTime" column="last_access_time" />
+      <result property="createTime" column="create_time" />
+      <result property="createUser" column="create_user_id" />
+      <result property="lastModifyTime" column="last_modify_time" />
+      <result property="lastModifyUser" column="last_modify_user" />
+      <result property="version" column="version" />
+
+      <collection property="roles" ofType="role">
+        <result property="id" column="r_id" />
+        <result property="orgCode" column="r_org_code" />
+        <result property="code" column="r_code" />
+        <result property="name" column="r_name" />
+        <result property="createTime" column="r_create_time" />
+        <result property="createUser" column="r_create_user" />
+        <result property="lastModifyTime" column="r_last_modify_time" />
+        <result property="lastModifyUser" column="r_last_modify_user" />
+        <result property="version" column="r_version" />
+      </collection>
+    </resultMap>
+
+
+    <select id="queryByUsername" parameterType="string" resultType="user">
+        <include refid="base_select"></include>	WHERE u.username = #{username}
+    </select>
+
+    <delete id="removeByUsername" parameterType="string">
+    	delete from sys_user where username = #{username}
+    </delete>
+
+
+</mapper>

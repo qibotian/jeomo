@@ -1,14 +1,9 @@
 package com.jeomo.bonus.controller;
 
-import com.jeomo.mem.intf.feign.MemberFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import javax.annotation.Resource;
 
 /**
  * @Author: qbt
@@ -25,8 +20,8 @@ public class BonusController {
     @Autowired
     private RestTemplate restTemplate;
 //
-    @Resource
-    private MemberFeignService memberFeignService;
+//    @Resource
+//    private MemberFeignService memberFeignService;
 //
 //    @GetMapping("test/{code}")
 //    @HystrixCommand(fallbackMethod = "testFallback", commandProperties = {
@@ -56,9 +51,9 @@ public class BonusController {
 //            return  restTemplate.getForObject(MEM_SERVICE_NAME+"/mem/test/"+code, String.class);
 //    }
 
-	  @GetMapping("test4/{code}")
-	  public String test4(@PathVariable(name="code", required=true) String code) {
-	      return  memberFeignService.test(code);
-	  }
+//	  @GetMapping("test4/{code}")
+//	  public String test4(@PathVariable(name="code", required=true) String code) {
+//	      return  memberFeignService.test(code);
+//	  }
 
 }

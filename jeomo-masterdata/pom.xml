@@ -2,35 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>jeomo</artifactId>
-        <groupId>com.jeomo</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>jeomo</artifactId>
+    <groupId>com.jeomo</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jeomo-masterdata</artifactId>
 
-    <artifactId>jeomo-masterdata</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.jeomo</groupId>
-            <artifactId>jeomo-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jeomo</groupId>
-            <artifactId>jeomo-masterdata-intf</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>p6spy</groupId>
-            <artifactId>p6spy</artifactId>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
+  <modules>
+    <module>jeomo-masterdata-service</module>
+    <module>jeomo-masterdata-api</module>
+  </modules>
 
 </project>
