@@ -1,9 +1,9 @@
 package com.jeomo.mem.api.vo;
 
 
-import java.io.Serializable;
-
 import com.jeomo.mem.api.enums.MemberRegisterTypeEnum;
+
+import java.io.Serializable;
 
 /**
  * @Author: qbt
@@ -34,6 +34,9 @@ public class MemberRegisterVo implements Serializable{
      * 注册类型
      */
     private MemberRegisterTypeEnum registerType;
+
+    //*************************下面是GetterSetter方法*************//
+
 
 	public String getName() {
 		return name;

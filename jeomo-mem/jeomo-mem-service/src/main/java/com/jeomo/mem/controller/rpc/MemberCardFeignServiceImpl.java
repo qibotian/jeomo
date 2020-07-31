@@ -17,4 +17,19 @@ public class MemberCardFeignServiceImpl implements MemberCardFeignService {
         return memberCardService.queryByCode(code);
     }
 
+    @Override
+    public MemberCardDto queryByCodeException(String code) {
+        throw new RuntimeException("这是一个测试异常");
+    }
+
+    @Override
+    public MemberCardDto queryByCodeOvertime(String code) {
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

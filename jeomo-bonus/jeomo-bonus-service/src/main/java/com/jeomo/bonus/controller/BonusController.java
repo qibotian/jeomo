@@ -1,24 +1,19 @@
 package com.jeomo.bonus.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 /**
  * @Author: qbt
  * @Date: 2020/7/19 20:35
  * @Version 1.0
  */
-@RestController
-@RequestMapping("/bonus")
+//@RestController
+//@RequestMapping("/bonus")
 //@DefaultProperties(defaultFallback="testFallback3")
 public class BonusController {
 
-    final String MEM_SERVICE_NAME = "http://jeomo-mem";
-
-    @Autowired
-    private RestTemplate restTemplate;
+//    final String MEM_SERVICE_NAME = "http://jeomo-mem";
+//
+//    @Autowired
+//    private RestTemplate restTemplate;
 //
 //    @Resource
 //    private MemberFeignService memberFeignService;

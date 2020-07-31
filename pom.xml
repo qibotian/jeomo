@@ -14,10 +14,12 @@
         <module>jeomo-masterdata</module>
         <module>jeomo-order</module>
         <module>jeomo-crawler</module>
-        <module>jeomo-bonus</module>
         <module>jeomo-gateway</module>
         <module>jeomo-mem</module>
         <module>jeomo-shiro</module>
+        <module>jeomo-bonus</module>
+        <module>jeomo-bonus-api</module>
+      <module>jeomo-common-util</module>
     </modules>
     <packaging>pom</packaging>
 

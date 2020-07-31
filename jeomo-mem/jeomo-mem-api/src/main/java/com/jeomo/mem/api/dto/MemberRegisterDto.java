@@ -38,6 +38,8 @@ public class MemberRegisterDto {
      */
     private MemberRegisterTypeEnum registerType;
 
+    //***************************** 以下是 getter/setter方法 ********************//
+
 	public String getName() {
 		return name;
 	}

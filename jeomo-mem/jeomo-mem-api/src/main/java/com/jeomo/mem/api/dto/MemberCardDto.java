@@ -1,9 +1,11 @@
 package com.jeomo.mem.api.dto;
 
+import com.jeomo.common.util.BeanCopyUtil;
+import com.jeomo.mem.api.enums.MemberCardStatusEnums;
+import com.jeomo.mem.api.vo.MemberCardVo;
+
 import java.io.Serializable;
 import java.util.Date;
-
-import com.jeomo.mem.api.enums.MemberCardStatusEnums;
 
 
 /**
@@ -70,6 +72,13 @@ public class MemberCardDto implements Serializable {
     private Date birthday;
 
     private String address;
+
+
+    public MemberCardVo toVo() {
+    	MemberCardVo vo = new MemberCardVo();
+        BeanCopyUtil.copyProperties(this, vo);
+        return vo;
+	}
     
     
     

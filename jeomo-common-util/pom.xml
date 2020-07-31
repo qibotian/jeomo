@@ -9,11 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>jeomo-bonus</artifactId>
+  <artifactId>jeomo-common-util</artifactId>
 
-  <modules>
-    <module>jeomo-bonus-service</module>
-    <module>jeomo-bonus-api</module>
-  </modules>
 
 </project>

@@ -14,6 +14,31 @@ import java.util.function.Supplier;
 public class BeanCopyUtil extends BeanUtils {
 
     /**
+     * 如果source为空，则将返回null
+     * T 应该实现一个空参构造函数
+     * @param source
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T copyProperties(Object source, Class<T> clazz) {
+        if(source == null) {
+            return null;
+        }
+        T target = null;
+        try {
+            target = clazz.newInstance();
+            copyProperties(source, target);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return target;
+    }
+
+
+    /**
      * 集合数据的拷贝
      * @param sources: 数据源类
      * @param target: 目标类::new(eg: UserVO::new)
